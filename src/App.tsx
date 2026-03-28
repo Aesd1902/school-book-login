@@ -199,10 +199,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-red-50 dark:bg-red-950/20 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-2xl max-w-md w-full text-center space-y-4 border border-stone-100 dark:border-stone-800">
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-2xl max-w-md w-full text-center space-y-4 border border-slate-100 dark:border-slate-900">
             <XCircle className="w-16 h-16 text-red-500 mx-auto" />
-            <h2 className="text-2xl font-bold text-stone-950 dark:text-stone-50">Something went wrong</h2>
-            <p className="text-stone-600 dark:text-stone-400 text-sm">
+            <h2 className="text-2xl font-bold text-slate-950 dark:text-slate-50">Something went wrong</h2>
+            <p className="text-slate-700 dark:text-slate-600 text-sm">
               {this.state.error?.message?.startsWith('{') 
                 ? "A database permission error occurred. Please contact support." 
                 : "An unexpected error occurred. Please try refreshing the page."}
@@ -317,7 +317,7 @@ const Page = ({ children, backContent, isOpen, index, totalPages, zIndex }: {
     >
       {/* Front of the page */}
       <motion.div 
-        className="absolute inset-0 backface-hidden page-gradient border-l border-stone-300 dark:border-stone-800 page-shadow-left rounded-r-lg overflow-hidden"
+        className="absolute inset-0 backface-hidden page-gradient border-l border-slate-300 dark:border-slate-900 page-shadow-left rounded-r-lg overflow-hidden"
         whileHover={{
           boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)", // Glow effect
           scale: 1.01, // Subtle scale
@@ -343,7 +343,7 @@ const Page = ({ children, backContent, isOpen, index, totalPages, zIndex }: {
       </motion.div>
 
       {/* Back of the page (mirrored) */}
-      <div className="absolute inset-0 backface-hidden page-gradient border-r border-stone-300 page-shadow-right rounded-l-lg overflow-hidden" style={{ transform: 'rotateY(180deg)' }}>
+      <div className="absolute inset-0 backface-hidden page-gradient border-r border-slate-300 page-shadow-right rounded-l-lg overflow-hidden" style={{ transform: 'rotateY(180deg)' }}>
         {/* Crease line */}
         <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-black/5 z-10" />
         
@@ -373,7 +373,7 @@ const LoadingSpinner = ({ size = 'md', color = 'blue' }: { size?: 'sm' | 'md' | 
   const colorClasses: Record<string, string> = {
     blue: 'border-blue-500',
     white: 'border-white',
-    stone: 'border-stone-500'
+    stone: 'border-slate-500'
   };
 
   return (
@@ -1007,7 +1007,7 @@ function AppContent() {
     { role: 'Parent', icon: Users, color: 'bg-purple-500', neon: 'shadow-lg shadow-purple-500/20' },
     { role: 'Security', icon: Shield, color: 'bg-slate-700', neon: 'shadow-lg shadow-slate-500/20' },
     { role: 'Reception', icon: Phone, color: 'bg-yellow-600', neon: 'shadow-lg shadow-yellow-500/20' },
-    { role: 'Store', icon: Briefcase, color: 'bg-stone-600', neon: 'shadow-lg shadow-stone-500/20' },
+    { role: 'Store', icon: Briefcase, color: 'bg-slate-700', neon: 'shadow-lg shadow-slate-500/20' },
     { role: 'Accounts', icon: DollarSign, color: 'bg-emerald-600', neon: 'shadow-lg shadow-emerald-500/20' },
   ];
 
@@ -1054,14 +1054,14 @@ function AppContent() {
       <motion.div 
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
-        className="w-32 h-32 bg-white dark:bg-stone-900 rounded-3xl flex items-center justify-center shadow-2xl border-4 border-blue-400 shadow-lg shadow-blue-500/20"
+        className="w-32 h-32 bg-white dark:bg-slate-950 rounded-3xl flex items-center justify-center shadow-2xl border-4 border-blue-400 shadow-lg shadow-blue-500/20"
       >
         <School className="w-16 h-16 text-blue-600 animate-neon" />
       </motion.div>
       
       <div className="text-center">
-        <h3 className="text-xl font-serif font-bold text-stone-950 dark:text-stone-50 text-blue-600">EduSmart Tech</h3>
-        <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-[0.2em] mt-2">Enterprise Edition 2.0</p>
+        <h3 className="text-xl font-serif font-bold text-slate-950 dark:text-slate-50 text-blue-600">EduSmart Tech</h3>
+        <p className="text-xs text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em] mt-2 font-medium">Enterprise Edition 2.0</p>
       </div>
     </div>
   );
@@ -1092,15 +1092,15 @@ function AppContent() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">Manage Teachers</h3>
-            <p className="text-xs text-stone-400">Manage staff records, salaries, and documents</p>
+            <p className="text-xs text-slate-600">Manage staff records, salaries, and documents</p>
           </div>
           <div className="flex items-center gap-4 w-full md:w-auto">
             <div className="relative flex-1 md:flex-none">
-              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <select
                 value={teacherSubjectFilter}
                 onChange={(e) => setTeacherSubjectFilter(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm focus:ring-2 focus:ring-blue-100 outline-none appearance-none min-w-[150px] dark:text-stone-100"
+                className="pl-10 pr-4 py-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm focus:ring-2 focus:ring-blue-100 outline-none appearance-none min-w-[150px] dark:text-slate-100"
               >
                 {subjects.map(sub => (
                   <option key={sub} value={sub}>{sub}</option>
@@ -1113,7 +1113,7 @@ function AppContent() {
                 const [key, direction] = e.target.value.split('-') as ['name' | 'salary' | 'joiningDate', 'asc' | 'desc'];
                 setSortConfig({ key, direction });
               }}
-              className="px-4 py-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm focus:ring-2 focus:ring-blue-100 outline-none dark:text-stone-100"
+              className="px-4 py-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm focus:ring-2 focus:ring-blue-100 outline-none dark:text-slate-100"
             >
               <option value="name-asc">Name (A-Z)</option>
               <option value="name-desc">Name (Z-A)</option>
@@ -1133,7 +1133,7 @@ function AppContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {isTeachersLoading ? (
             Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
+              <div key={i} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
                 <div className="flex items-center gap-4">
                   <Skeleton className="w-16 h-16 rounded-2xl" />
                   <div className="space-y-2">
@@ -1153,10 +1153,10 @@ function AppContent() {
               </div>
             ))
           ) : sortedTeachers.map(teacher => (
-          <div key={teacher.teacher_id} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4 relative group hover:border-blue-200 dark:hover:border-blue-900 transition-all">
+          <div key={teacher.teacher_id} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4 relative group hover:border-blue-200 dark:hover:border-blue-900 transition-all">
             <button 
               onClick={() => removeTeacher(teacher.teacher_id)}
-              className="absolute top-4 right-4 p-2 text-stone-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+              className="absolute top-4 right-4 p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all opacity-0 group-hover:opacity-100"
             >
               <Trash2 className="w-4 h-4" />
             </button>
@@ -1165,19 +1165,19 @@ function AppContent() {
                 {teacher.photo ? <img src={teacher.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-8 h-8" />}
               </div>
               <div>
-                <h4 className="font-bold text-stone-800 dark:text-stone-100">{teacher.name}</h4>
-                <p className="text-xs text-stone-500 dark:text-stone-400">{teacher.subject} • {teacher.classSection}</p>
-                <p className="text-[10px] text-stone-400 dark:text-stone-500 font-bold uppercase tracking-widest mt-1">Joined: {teacher.joiningDate}</p>
+                <h4 className="font-bold text-slate-900 dark:text-slate-100">{teacher.name}</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-600">{teacher.subject} • {teacher.classSection}</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-600 font-bold uppercase tracking-widest mt-1">Joined: {teacher.joiningDate}</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-stone-50 dark:bg-stone-800 rounded-lg">
-                <p className="text-stone-400 dark:text-stone-500">Salary</p>
-                <p className="font-bold text-stone-800 dark:text-stone-100">${teacher.salary.basic}</p>
+              <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                <p className="text-slate-600 dark:text-slate-600">Salary</p>
+                <p className="font-bold text-slate-900 dark:text-slate-100">${teacher.salary.basic}</p>
               </div>
-              <div className="p-2 bg-stone-50 dark:bg-stone-800 rounded-lg">
-                <p className="text-stone-400 dark:text-stone-500">Phone</p>
-                <p className="font-medium dark:text-stone-300">{teacher.phone}</p>
+              <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                <p className="text-slate-600 dark:text-slate-600">Phone</p>
+                <p className="font-medium dark:text-slate-300">{teacher.phone}</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -1195,7 +1195,7 @@ function AppContent() {
               </button>
               <button 
                 onClick={() => setEditingTeacher(teacher)}
-                className="flex-1 py-2 text-[10px] font-bold text-stone-600 dark:text-stone-400 bg-stone-50 dark:bg-stone-800 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+                className="flex-1 py-2 text-[10px] font-bold text-slate-700 dark:text-slate-600 bg-slate-50 dark:bg-slate-900 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 Edit Profile
               </button>
@@ -1251,31 +1251,31 @@ function AppContent() {
             <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">
               {isTeacher ? 'Students in Your Classes' : 'Manage Students'}
             </h3>
-            <p className="text-xs text-stone-400">
+            <p className="text-xs text-slate-600">
               {isTeacher ? 'View and manage students in your assigned class' : 'Manage student enrollment and fee records'}
             </p>
           </div>
           <div className="flex flex-wrap gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:flex-none">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input 
                 type="text"
                 placeholder="Search students..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full md:w-64 pl-10 pr-4 py-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-stone-100"
+                className="w-full md:w-64 pl-10 pr-4 py-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-slate-100"
               />
             </div>
-            <div className="flex bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl p-1">
+            <div className="flex bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl p-1">
               <button 
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-stone-100 dark:bg-stone-800 text-blue-600' : 'text-stone-400 hover:text-stone-600'}`}
+                className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-slate-100 dark:bg-slate-900 text-blue-600' : 'text-slate-600 hover:text-slate-700'}`}
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
               <button 
                 onClick={() => setViewMode('table')}
-                className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-stone-100 dark:bg-stone-800 text-blue-600' : 'text-stone-400 hover:text-stone-600'}`}
+                className={`p-2 rounded-lg transition-all ${viewMode === 'table' ? 'bg-slate-100 dark:bg-slate-900 text-blue-600' : 'text-slate-600 hover:text-slate-700'}`}
               >
                 <List className="w-4 h-4" />
               </button>
@@ -1310,7 +1310,7 @@ function AppContent() {
           viewMode === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
+                <div key={i} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
                   <div className="flex items-center gap-4">
                     <Skeleton className="w-16 h-16 rounded-2xl" />
                     <div className="space-y-2">
@@ -1331,11 +1331,11 @@ function AppContent() {
               ))}
             </div>
           ) : (
-            <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+            <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-stone-50 dark:bg-stone-800/50 border-b border-stone-100 dark:border-stone-800">
+                    <tr className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900">
                       {['ID', 'Name', 'Class', 'Section', 'Contact', 'Actions'].map(header => (
                         <th key={header} className="p-4"><Skeleton className="h-4 w-16" /></th>
                       ))}
@@ -1343,7 +1343,7 @@ function AppContent() {
                   </thead>
                   <tbody>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <tr key={i} className="border-b border-stone-50 dark:border-stone-800/50">
+                      <tr key={i} className="border-b border-slate-50 dark:border-slate-900/50">
                         {Array.from({ length: 6 }).map((_, j) => (
                           <td key={j} className="p-4"><Skeleton className="h-4 w-full" /></td>
                         ))}
@@ -1357,11 +1357,11 @@ function AppContent() {
         ) : viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {sortedStudents.map(student => (
-              <div key={student.student_id} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4 relative group hover:border-green-200 dark:hover:border-green-900 transition-all">
+              <div key={student.student_id} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4 relative group hover:border-green-200 dark:hover:border-green-900 transition-all">
                 {!isTeacher && (
                   <button 
                     onClick={() => removeStudent(student.student_id)}
-                    className="absolute top-4 right-4 p-2 text-stone-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                    className="absolute top-4 right-4 p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all opacity-0 group-hover:opacity-100"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -1371,25 +1371,25 @@ function AppContent() {
                     {student.photo ? <img src={student.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-8 h-8" />}
                   </div>
                   <div>
-                    <h4 className="font-bold text-stone-800 dark:text-stone-100">{student.name}</h4>
-                    <p className="text-xs text-stone-500 dark:text-stone-400">Class {student.class}-{student.section}</p>
-                    <p className="text-[10px] text-stone-400 dark:text-stone-500 font-bold uppercase tracking-widest mt-1">ID: {student.student_id}</p>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100">{student.name}</h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">Class {student.class}-{student.section}</p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-600 font-bold uppercase tracking-widest mt-1">ID: {student.student_id}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-2 bg-stone-50 dark:bg-stone-800 rounded-lg">
-                    <p className="text-stone-400 dark:text-stone-500">Father</p>
-                    <p className="font-medium dark:text-stone-300">{student.fatherName}</p>
+                  <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                    <p className="text-slate-600 dark:text-slate-600">Father</p>
+                    <p className="font-medium dark:text-slate-300">{student.fatherName}</p>
                   </div>
-                  <div className="p-2 bg-stone-50 dark:bg-stone-800 rounded-lg">
-                    <p className="text-stone-400 dark:text-stone-500">Fees Status</p>
+                  <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg">
+                    <p className="text-slate-600 dark:text-slate-600">Fees Status</p>
                     <p className={`font-bold ${student.fees.status === 'Paid' ? 'text-emerald-600' : 'text-red-600'}`}>{student.fees.status}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <button 
                     onClick={() => setViewingStudent(student)}
-                    className="py-2 text-xs font-bold text-stone-600 dark:text-stone-400 bg-stone-50 dark:bg-stone-800 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+                    className="py-2 text-xs font-bold text-slate-700 dark:text-slate-600 bg-slate-50 dark:bg-slate-900 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                   >
                     View Details
                   </button>
@@ -1402,7 +1402,7 @@ function AppContent() {
                 </div>
                 <button 
                   onClick={() => setEditingStudent(student)}
-                  className="w-full py-2 text-xs font-bold text-stone-600 dark:text-stone-400 bg-stone-50 dark:bg-stone-800 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
+                  className="w-full py-2 text-xs font-bold text-slate-700 dark:text-slate-600 bg-slate-50 dark:bg-slate-900 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 >
                   Edit Profile
                 </button>
@@ -1410,63 +1410,63 @@ function AppContent() {
             ))}
           </div>
         ) : (
-          <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden overflow-x-auto">
+          <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
-                <tr className="bg-stone-50 dark:bg-stone-800/50 border-b border-stone-100 dark:border-stone-800">
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest cursor-pointer hover:text-stone-600 dark:hover:text-stone-300" onClick={() => handleSort('student_id')}>
+                <tr className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900">
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest cursor-pointer hover:text-slate-700 dark:hover:text-slate-300" onClick={() => handleSort('student_id')}>
                     <div className="flex items-center gap-2">
                       Student ID {sortConfig.key === 'id' ? (sortConfig.direction === 'asc' ? <ChevronUp className="w-3 h-3 text-blue-500" /> : <ChevronDown className="w-3 h-3 text-blue-500" />) : <ArrowUpDown className="w-3 h-3 opacity-30" />}
                     </div>
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest cursor-pointer hover:text-stone-600 dark:hover:text-stone-300" onClick={() => handleSort('fullName')}>
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest cursor-pointer hover:text-slate-700 dark:hover:text-slate-300" onClick={() => handleSort('fullName')}>
                     <div className="flex items-center gap-2">
                       Name {sortConfig.key === 'fullName' ? (sortConfig.direction === 'asc' ? <ChevronUp className="w-3 h-3 text-blue-500" /> : <ChevronDown className="w-3 h-3 text-blue-500" />) : <ArrowUpDown className="w-3 h-3 opacity-30" />}
                     </div>
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest cursor-pointer hover:text-stone-600 dark:hover:text-stone-300" onClick={() => handleSort('class')}>
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest cursor-pointer hover:text-slate-700 dark:hover:text-slate-300" onClick={() => handleSort('class')}>
                     <div className="flex items-center gap-2">
                       Class {sortConfig.key === 'class' ? (sortConfig.direction === 'asc' ? <ChevronUp className="w-3 h-3 text-blue-500" /> : <ChevronDown className="w-3 h-3 text-blue-500" />) : <ArrowUpDown className="w-3 h-3 opacity-30" />}
                     </div>
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest cursor-pointer hover:text-stone-600 dark:hover:text-stone-300" onClick={() => handleSort('section')}>
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest cursor-pointer hover:text-slate-700 dark:hover:text-slate-300" onClick={() => handleSort('section')}>
                     <div className="flex items-center gap-2">
                       Section {sortConfig.key === 'section' ? (sortConfig.direction === 'asc' ? <ChevronUp className="w-3 h-3 text-blue-500" /> : <ChevronDown className="w-3 h-3 text-blue-500" />) : <ArrowUpDown className="w-3 h-3 opacity-30" />}
                     </div>
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest cursor-pointer hover:text-stone-600 dark:hover:text-stone-300" onClick={() => handleSort('phone')}>
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest cursor-pointer hover:text-slate-700 dark:hover:text-slate-300" onClick={() => handleSort('phone')}>
                     <div className="flex items-center gap-2">
                       Contact {sortConfig.key === 'phone' ? (sortConfig.direction === 'asc' ? <ChevronUp className="w-3 h-3 text-blue-500" /> : <ChevronDown className="w-3 h-3 text-blue-500" />) : <ArrowUpDown className="w-3 h-3 opacity-30" />}
                     </div>
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Actions</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {sortedStudents.map(student => (
-                  <tr key={student.student_id} className="border-b border-stone-50 dark:border-stone-800/50 hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                    <td className="p-4 text-sm font-mono font-bold text-stone-800 dark:text-stone-100">{student.student_id}</td>
+                  <tr key={student.student_id} className="border-b border-slate-50 dark:border-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                    <td className="p-4 text-sm font-mono font-bold text-slate-900 dark:text-slate-100">{student.student_id}</td>
                     <td className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-stone-100 dark:bg-stone-800 rounded-lg overflow-hidden">
-                          {student.photo ? <img src={student.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-4 h-4 m-auto mt-2 text-stone-400 dark:text-stone-500" />}
+                        <div className="w-8 h-8 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden">
+                          {student.photo ? <img src={student.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-4 h-4 m-auto mt-2 text-slate-600 dark:text-slate-600" />}
                         </div>
-                        <span className="text-sm font-bold text-stone-800 dark:text-stone-100">{student.name}</span>
+                        <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{student.name}</span>
                       </div>
                     </td>
-                    <td className="p-4 text-sm text-stone-600 dark:text-stone-400">{student.class}</td>
-                    <td className="p-4 text-sm text-stone-600 dark:text-stone-400">{student.section}</td>
-                    <td className="p-4 text-sm text-stone-600 dark:text-stone-400">{student.phone}</td>
+                    <td className="p-4 text-sm text-slate-700 dark:text-slate-600">{student.class}</td>
+                    <td className="p-4 text-sm text-slate-700 dark:text-slate-600">{student.section}</td>
+                    <td className="p-4 text-sm text-slate-700 dark:text-slate-600">{student.phone}</td>
                     <td className="p-4">
                       <div className="flex items-center gap-2">
-                        <button onClick={() => setViewingStudent(student)} className="p-2 text-stone-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all" title="View Profile">
+                        <button onClick={() => setViewingStudent(student)} className="p-2 text-slate-600 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all" title="View Profile">
                           <Eye className="w-4 h-4" />
                         </button>
-                        <button onClick={() => setEditingStudent(student)} className="p-2 text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-all" title="Edit">
+                        <button onClick={() => setEditingStudent(student)} className="p-2 text-slate-600 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-all" title="Edit">
                           <FileText className="w-4 h-4" />
                         </button>
                         {!isTeacher && (
-                          <button onClick={() => removeStudent(student.student_id)} className="p-2 text-stone-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all" title="Delete">
+                          <button onClick={() => removeStudent(student.student_id)} className="p-2 text-slate-600 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all" title="Delete">
                             <Trash2 className="w-4 h-4" />
                           </button>
                         )}
@@ -1552,7 +1552,7 @@ function AppContent() {
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
-              className="w-[350px] h-[500px] bg-white dark:bg-stone-900 rounded-[2rem] shadow-2xl border border-stone-100 dark:border-stone-800 flex flex-col overflow-hidden"
+              className="w-[calc(100vw-3rem)] md:w-[350px] h-[60vh] md:h-[500px] bg-white dark:bg-slate-950 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-900 flex flex-col overflow-hidden bottom-20 right-0 md:bottom-auto md:right-auto"
             >
               <div className="p-6 bg-blue-600 text-white flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -1578,7 +1578,7 @@ function AppContent() {
                     <div className={`max-w-[80%] p-4 rounded-2xl text-sm ${
                       msg.role === 'user' 
                         ? 'bg-blue-600 text-white rounded-tr-none' 
-                        : 'bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-100 rounded-tl-none'
+                        : 'bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-tl-none'
                     }`}>
                       {msg.text}
                     </div>
@@ -1586,22 +1586,22 @@ function AppContent() {
                 ))}
                 {isTyping && (
                   <div className="flex justify-start">
-                    <div className="bg-stone-100 dark:bg-stone-800 p-4 rounded-2xl rounded-tl-none flex gap-1">
-                      <div className="w-1 h-1 bg-stone-400 rounded-full animate-bounce" />
-                      <div className="w-1 h-1 bg-stone-400 rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <div className="w-1 h-1 bg-stone-400 rounded-full animate-bounce [animation-delay:0.4s]" />
+                    <div className="bg-slate-100 dark:bg-slate-900 p-4 rounded-2xl rounded-tl-none flex gap-1">
+                      <div className="w-1 h-1 bg-slate-500 rounded-full animate-bounce" />
+                      <div className="w-1 h-1 bg-slate-500 rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <div className="w-1 h-1 bg-slate-500 rounded-full animate-bounce [animation-delay:0.4s]" />
                     </div>
                   </div>
                 )}
               </div>
 
-              <div className="p-4 border-t border-stone-100 dark:border-stone-800 flex gap-2">
+              <div className="p-4 border-t border-slate-100 dark:border-slate-900 flex gap-2">
                 <input 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Ask anything..."
-                  className="flex-1 p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm outline-none focus:border-blue-400 transition-colors dark:text-stone-100"
+                  className="flex-1 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm outline-none focus:border-blue-400 transition-colors dark:text-slate-100"
                 />
                 <button 
                   onClick={handleSend}
@@ -1617,7 +1617,7 @@ function AppContent() {
         <button 
           onClick={() => setShowAIAssistant(!showAIAssistant)}
           className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all ${
-            showAIAssistant ? 'bg-stone-800 text-white' : 'bg-blue-600 text-white hover:scale-110'
+            showAIAssistant ? 'bg-slate-900 text-white' : 'bg-blue-600 text-white hover:scale-110'
           }`}
         >
           {showAIAssistant ? <Plus className="w-8 h-8 rotate-45" /> : <Sparkles className="w-8 h-8" />}
@@ -1634,10 +1634,10 @@ function AppContent() {
         <motion.div 
           initial={{ scale: 0.8, opacity: 0, rotateY: 90 }}
           animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-          className="relative w-[350px] h-[550px] preserve-3d"
+          className="relative w-[320px] md:w-[350px] h-[500px] md:h-[550px] preserve-3d"
         >
           {/* ID Card Front */}
-          <div className="absolute inset-0 bg-white dark:bg-stone-900 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col border-4 border-white dark:border-stone-800">
+          <div className="absolute inset-0 bg-white dark:bg-slate-950 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col border-4 border-white dark:border-slate-900">
             {/* Header */}
             <div className={`h-32 ${isStudent ? 'bg-blue-600' : 'bg-emerald-600'} p-6 text-white relative`}>
               <div className="flex items-center gap-2 mb-2">
@@ -1647,51 +1647,51 @@ function AppContent() {
               <p className="text-[10px] opacity-70 uppercase font-bold tracking-widest">
                 {isStudent ? 'Student ID' : 'Staff ID'}
               </p>
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-4 border-white dark:border-stone-800 bg-stone-100 dark:bg-stone-800 overflow-hidden shadow-lg">
+              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-4 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-900 overflow-hidden shadow-lg">
                 {person.photo ? (
                   <img src={person.photo} alt="User" className="w-full h-full object-cover" />
                 ) : (
-                  <UserIcon className="w-12 h-12 text-stone-300 dark:text-stone-600 m-auto mt-4" />
+                  <UserIcon className="w-12 h-12 text-slate-300 dark:text-slate-700 m-auto mt-4" />
                 )}
               </div>
             </div>
 
             {/* Body */}
             <div className="mt-16 flex-1 flex flex-col items-center p-6 text-center">
-              <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50 mb-1">{person.name}</h3>
+              <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50 mb-1">{person.name}</h3>
               <p className={`text-xs font-bold uppercase tracking-widest ${isStudent ? 'text-blue-600 dark:text-blue-400' : 'text-emerald-600 dark:text-emerald-400'} mb-6`}>
                 {isStudent ? `Grade ${person.class} - Section ${person.section}` : (person as Teacher).subjects?.join(', ')}
               </p>
 
               <div className="grid grid-cols-2 gap-8 w-full text-left mb-8">
                 <div>
-                  <p className="text-[8px] text-stone-400 dark:text-stone-500 uppercase font-bold mb-1">ID Number</p>
-                  <p className="text-xs font-bold text-stone-800 dark:text-stone-100">
+                  <p className="text-[8px] text-slate-600 dark:text-slate-600 uppercase font-bold mb-1">ID Number</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-slate-100">
                     {isStudent ? (person as Student).student_id : (person as Teacher).teacher_id}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[8px] text-stone-400 dark:text-stone-500 uppercase font-bold mb-1">Valid Thru</p>
-                  <p className="text-xs font-bold text-stone-800 dark:text-stone-100">June 2026</p>
+                  <p className="text-[8px] text-slate-600 dark:text-slate-600 uppercase font-bold mb-1">Valid Thru</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-slate-100">June 2026</p>
                 </div>
                 <div className="col-span-2 flex justify-center">
                   <QRGenerator value={isStudent ? (person as Student).student_id : (person as Teacher).teacher_id} size={80} />
                 </div>
               </div>
 
-              <div className="mt-auto w-full flex items-center justify-between pt-6 border-t border-stone-100 dark:border-stone-800">
+              <div className="mt-auto w-full flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-900">
                 <div className="flex flex-col items-start">
-                  <p className="text-[8px] text-stone-400 dark:text-stone-500 uppercase font-bold mb-1">Library Code</p>
-                  <div className="h-6 w-24 bg-stone-100 dark:bg-stone-800 rounded flex items-center px-1 gap-1">
+                  <p className="text-[8px] text-slate-600 dark:text-slate-600 uppercase font-bold mb-1">Library Code</p>
+                  <div className="h-6 w-24 bg-slate-100 dark:bg-slate-900 rounded flex items-center px-1 gap-1">
                     {Array.from({ length: 12 }).map((_, i) => (
-                      <div key={i} className={`h-4 w-[1px] bg-stone-400 dark:bg-stone-600 ${i % 3 === 0 ? 'h-5 w-[2px]' : ''}`} />
+                      <div key={i} className={`h-4 w-[1px] bg-slate-500 dark:bg-slate-700 ${i % 3 === 0 ? 'h-5 w-[2px]' : ''}`} />
                     ))}
                   </div>
                 </div>
-                <div className="w-12 h-12 bg-stone-50 dark:bg-stone-800 rounded-lg p-1 border border-stone-100 dark:border-stone-700">
+                <div className="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-lg p-1 border border-slate-100 dark:border-slate-800">
                   <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-[1px]">
                     {Array.from({ length: 9 }).map((_, i) => (
-                      <div key={i} className={`bg-stone-800 dark:bg-stone-200 rounded-[1px] ${i === 4 ? 'bg-transparent' : ''}`} />
+                      <div key={i} className={`bg-slate-900 dark:bg-slate-200 rounded-[1px] ${i === 4 ? 'bg-transparent' : ''}`} />
                     ))}
                   </div>
                 </div>
@@ -1721,72 +1721,72 @@ function AppContent() {
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white dark:bg-stone-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-stone-100 dark:border-stone-800"
+        className="bg-white dark:bg-slate-950 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-900"
       >
-        <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-800/50">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Student Profile</h3>
-          <button onClick={onClose} className="p-2 hover:bg-stone-200 dark:hover:bg-stone-700 rounded-full transition-colors text-stone-500 dark:text-stone-400">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-900 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Student Profile</h3>
+          <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-600">
             <ArrowLeft className="w-5 h-5" />
           </button>
         </div>
         <div className="p-8 space-y-6 max-h-[80vh] overflow-y-auto custom-scrollbar">
           <div className="flex items-center gap-6">
-            <div className="w-24 h-24 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center overflow-hidden">
+            <div className="w-24 h-24 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden">
               {student.photo ? (
                 <img src={student.photo} alt="Student" className="w-full h-full object-cover" />
               ) : (
-                <UserIcon className="w-12 h-12 text-stone-300 dark:text-stone-600" />
+                <UserIcon className="w-12 h-12 text-slate-300 dark:text-slate-700" />
               )}
             </div>
             <div>
-              <h4 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{student.name}</h4>
-              <p className="text-stone-500 dark:text-stone-400">ID: {student.student_id}</p>
-              <p className="text-stone-500 dark:text-stone-400">Class {student.class_id} - Section {student.section}</p>
+              <h4 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{student.name}</h4>
+              <p className="text-slate-600 dark:text-slate-600">ID: {student.student_id}</p>
+              <p className="text-slate-600 dark:text-slate-600">Class {student.class_id} - Section {student.section}</p>
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h5 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Personal Details</h5>
+              <h5 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Personal Details</h5>
               <div className="space-y-2">
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Father:</span> {student.fatherName}</p>
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Mother:</span> {student.motherName}</p>
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">DOB:</span> {student.dob}</p>
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Gender:</span> {student.gender}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Father:</span> {student.fatherName}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Mother:</span> {student.motherName}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">DOB:</span> {student.dob}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Gender:</span> {student.gender}</p>
               </div>
             </div>
             <div className="space-y-4">
-              <h5 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Contact Information</h5>
+              <h5 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Contact Information</h5>
               <div className="space-y-2">
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Phone:</span> {student.phone}</p>
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Email:</span> {student.email}</p>
-                <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Address:</span> {student.address}, {student.city}, {student.state} - {student.pincode}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Phone:</span> {student.phone}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Email:</span> {student.email}</p>
+                <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Address:</span> {student.address}, {student.city}, {student.state} - {student.pincode}</p>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
             <div className="space-y-4">
-              <h5 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Academic Performance</h5>
-              <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">GPA:</span> {gpa}</p>
+              <h5 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Academic Performance</h5>
+              <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">GPA:</span> {gpa}</p>
               <div className="space-y-2">
                 {studentResults.map(r => (
-                    <p key={r.id} className="text-sm dark:text-stone-300">{r.subject}: {r.grade}</p>
+                    <p key={r.id} className="text-sm dark:text-slate-300">{r.subject}: {r.grade}</p>
                 ))}
               </div>
             </div>
             <div className="space-y-4">
-              <h5 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Fee Status</h5>
+              <h5 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Fee Status</h5>
               <p className={`text-sm font-bold ${student.fees.status === 'Paid' ? 'text-emerald-600' : 'text-red-600'}`}>{student.fees.status}</p>
-              <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Total:</span> ${student.fees.total}</p>
-              <p className="text-sm dark:text-stone-300"><span className="text-stone-400 dark:text-stone-500">Paid:</span> ${student.fees.paid}</p>
+              <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Total:</span> ${student.fees.total}</p>
+              <p className="text-sm dark:text-slate-300"><span className="text-slate-600 dark:text-slate-600">Paid:</span> ${student.fees.paid}</p>
             </div>
           </div>
 
           <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-2xl space-y-4">
             <h5 className="text-xs font-bold text-blue-400 dark:text-blue-300 uppercase tracking-widest">Guardian Information</h5>
             <div className="flex items-start gap-6">
-              <div className="w-16 h-16 bg-white dark:bg-stone-800 rounded-xl flex items-center justify-center overflow-hidden border border-blue-100 dark:border-stone-700 shadow-sm">
+              <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden border border-blue-100 dark:border-slate-800 shadow-sm">
                 {student.guardian.photo ? (
                   <img src={student.guardian.photo} alt="Guardian" className="w-full h-full object-cover" />
                 ) : (
@@ -1794,11 +1794,11 @@ function AppContent() {
                 )}
               </div>
               <div className="grid grid-cols-2 gap-x-8 gap-y-2 flex-1">
-                <p className="text-sm font-medium dark:text-stone-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Name:</span> {student.guardian.name}</p>
-                <p className="text-sm font-medium dark:text-stone-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Relation:</span> {student.guardian.relation}</p>
-                <p className="text-sm font-medium dark:text-stone-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Phone:</span> {student.guardian.phone}</p>
-                <p className="text-sm font-medium dark:text-stone-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Email:</span> {student.guardian.email}</p>
-                <p className="text-sm font-medium col-span-2 dark:text-stone-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Address:</span> {student.guardian.address}</p>
+                <p className="text-sm font-medium dark:text-slate-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Name:</span> {student.guardian.name}</p>
+                <p className="text-sm font-medium dark:text-slate-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Relation:</span> {student.guardian.relation}</p>
+                <p className="text-sm font-medium dark:text-slate-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Phone:</span> {student.guardian.phone}</p>
+                <p className="text-sm font-medium dark:text-slate-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Email:</span> {student.guardian.email}</p>
+                <p className="text-sm font-medium col-span-2 dark:text-slate-200"><span className="text-blue-400 dark:text-blue-300 font-normal">Address:</span> {student.guardian.address}</p>
               </div>
             </div>
           </div>
@@ -1951,13 +1951,13 @@ function AppContent() {
         <motion.div 
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white dark:bg-stone-900 w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-stone-100 dark:border-stone-800"
+          className="bg-white dark:bg-slate-950 w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-slate-100 dark:border-slate-900"
         >
-          <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center bg-stone-50 dark:bg-stone-800/50">
-            <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">
+          <div className="p-6 border-b border-slate-100 dark:border-slate-900 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
               {activeEdit ? 'Edit' : 'Add New'} {isTeacher ? 'Teacher' : 'Student'}
             </h3>
-            <button onClick={closeAll} className="p-2 hover:bg-stone-100 dark:hover:bg-stone-700 rounded-full transition-colors text-stone-500 dark:text-stone-400">
+            <button onClick={closeAll} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-600">
               <ArrowLeft className="w-5 h-5" />
             </button>
           </div>
@@ -1965,24 +1965,24 @@ function AppContent() {
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
               {/* Personal Info */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Personal Information</h4>
+                <h4 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Personal Information</h4>
                 <input 
                   name="id" 
                   defaultValue={activeEdit?.student_id || activeEdit?.teacher_id}
                   placeholder={isTeacher ? "Teacher ID" : "Student ID"} 
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" 
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" 
                   required 
                   readOnly={!!activeEdit}
                 />
-                <input name="name" defaultValue={activeEdit?.name} placeholder="Full Name" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
+                <input name="name" defaultValue={activeEdit?.name} placeholder="Full Name" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
                 {isTeacher ? (
                   <>
                     <div className="grid grid-cols-2 gap-4">
-                      <select name="classSection" defaultValue={editingTeacher?.classSection} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100" required>
+                      <select name="classSection" defaultValue={editingTeacher?.classSection} className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100" required>
                         <option value="">Select Class</option>
                         {CLASSES.map(c => <option key={c} value={c}>Class {c}</option>)}
                       </select>
-                      <select name="subject" defaultValue={editingTeacher?.subject} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100" required>
+                      <select name="subject" defaultValue={editingTeacher?.subject} className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100" required>
                         <option value="">Select Subject</option>
                         {SUBJECTS.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
@@ -1990,14 +1990,14 @@ function AppContent() {
                   </>
                 ) : (
                   <>
-                    <input name="fatherName" defaultValue={editingStudent?.fatherName} placeholder="Father's Name" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
-                    <input name="motherName" defaultValue={editingStudent?.motherName} placeholder="Mother's Name" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
+                    <input name="fatherName" defaultValue={editingStudent?.fatherName} placeholder="Father's Name" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
+                    <input name="motherName" defaultValue={editingStudent?.motherName} placeholder="Mother's Name" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
                     <div className="grid grid-cols-2 gap-4">
-                      <select name="class" defaultValue={editingStudent?.class} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100" required>
+                      <select name="class" defaultValue={editingStudent?.class} className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100" required>
                         <option value="">Class</option>
                         {CLASSES.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
-                      <select name="section" defaultValue={editingStudent?.section} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100" required>
+                      <select name="section" defaultValue={editingStudent?.section} className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100" required>
                         <option value="">Section</option>
                         {SECTIONS.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
@@ -2005,12 +2005,12 @@ function AppContent() {
                   </>
                 )}
                 <div className="grid grid-cols-2 gap-4">
-                  <select name="gender" defaultValue={activeEdit?.gender} className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100">
+                  <select name="gender" defaultValue={activeEdit?.gender} className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100">
                     <option>Male</option>
                     <option>Female</option>
                     <option>Other</option>
                   </select>
-                  <input name="dob" defaultValue={activeEdit?.dob} type="date" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100" required />
+                  <input name="dob" defaultValue={activeEdit?.dob} type="date" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100" required />
                 </div>
                 
                 <div className="relative group">
@@ -2020,13 +2020,13 @@ function AppContent() {
                     onChange={(e) => handleFileChange(e, 'photo')}
                     className="absolute inset-0 opacity-0 cursor-pointer z-10" 
                   />
-                  <div className="flex items-center gap-4 p-4 border-2 border-dashed border-stone-200 rounded-2xl group-hover:border-blue-400 transition-colors">
+                  <div className="flex items-center gap-4 p-4 border-2 border-dashed border-slate-200 rounded-2xl group-hover:border-blue-400 transition-colors">
                     {photoPreview ? (
                       <img src={photoPreview} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
                     ) : (
-                      <Upload className="w-5 h-5 text-stone-400" />
+                      <Upload className="w-5 h-5 text-slate-600" />
                     )}
-                    <span className="text-sm text-stone-500">
+                    <span className="text-sm text-slate-600">
                       {photoPreview ? 'Change Photo' : 'Upload Photo (JPG/PNG)'}
                     </span>
                   </div>
@@ -2035,26 +2035,26 @@ function AppContent() {
 
               {/* Contact & Address */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Contact & Address</h4>
-                <input name="email" type="email" defaultValue={activeEdit?.email} placeholder="Email Address (Auto-generated)" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 opacity-50" readOnly />
-                <input name="phone" defaultValue={activeEdit?.phone} placeholder="Phone Number" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
-                <textarea name="address" defaultValue={activeEdit?.address} placeholder="Full Address" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 h-24" required />
+                <h4 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Contact & Address</h4>
+                <input name="email" type="email" defaultValue={activeEdit?.email} placeholder="Email Address (Auto-generated)" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 opacity-50" readOnly />
+                <input name="phone" defaultValue={activeEdit?.phone} placeholder="Phone Number" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
+                <textarea name="address" defaultValue={activeEdit?.address} placeholder="Full Address" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 h-24" required />
                 <div className="grid grid-cols-2 gap-4">
-                  <input name="city" defaultValue={activeEdit?.city} placeholder="City" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
-                  <input name="pincode" defaultValue={activeEdit?.pincode} placeholder="Pincode" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
+                  <input name="city" defaultValue={activeEdit?.city} placeholder="City" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
+                  <input name="pincode" defaultValue={activeEdit?.pincode} placeholder="Pincode" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
                 </div>
-                <input name="state" defaultValue={activeEdit?.state} placeholder="State" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
+                <input name="state" defaultValue={activeEdit?.state} placeholder="State" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
                 {!isTeacher && (
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-800 space-y-3">
                     <h5 className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Fee Configuration</h5>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-[10px] text-stone-500 dark:text-stone-400 mb-1 block">Total Annual Fee</label>
-                        <input name="totalFee" type="number" defaultValue={editingStudent?.fees?.total || 12000} className="w-full p-2 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg text-sm dark:text-stone-100" required />
+                        <label className="text-[10px] text-slate-600 dark:text-slate-600 mb-1 block">Total Annual Fee</label>
+                        <input name="totalFee" type="number" defaultValue={editingStudent?.fees?.total || 12000} className="w-full p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm dark:text-slate-100" required />
                       </div>
                       <div>
-                        <label className="text-[10px] text-stone-500 dark:text-stone-400 mb-1 block">Initial Payment</label>
-                        <input name="paidFee" type="number" defaultValue={editingStudent?.fees?.paid || 0} className="w-full p-2 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg text-sm dark:text-stone-100" required />
+                        <label className="text-[10px] text-slate-600 dark:text-slate-600 mb-1 block">Initial Payment</label>
+                        <input name="paidFee" type="number" defaultValue={editingStudent?.fees?.paid || 0} className="w-full p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm dark:text-slate-100" required />
                       </div>
                     </div>
                   </div>
@@ -2064,24 +2064,24 @@ function AppContent() {
               {/* Guardian Info */}
               {!isTeacher && (
                 <div className="space-y-4">
-                  <h4 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Guardian Details</h4>
+                  <h4 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Guardian Details</h4>
                   <input 
                     name="guardianName" 
                     value={guardianName}
                     onChange={(e) => setGuardianName(e.target.value)}
                     placeholder="Guardian Name" 
-                    className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" 
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" 
                     required 
                   />
                   <input 
                     value={guardianName.trim() ? `${guardianName.trim().split(' ')[0].toLowerCase()}${guardianName.trim().split(' ').length > 1 ? guardianName.trim().split(' ')[guardianName.trim().split(' ').length - 1].toLowerCase() : ''}@school.com` : ''} 
                     placeholder="Guardian Email (Auto-generated)" 
-                    className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 opacity-50" 
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 opacity-50" 
                     readOnly 
                   />
-                  <input name="guardianPhone" defaultValue={guardianRef?.phone} placeholder="Guardian Phone" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
-                  <input name="relation" defaultValue={guardianRef?.relation} placeholder="Relation to Student" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
-                  <textarea name="guardianAddress" defaultValue={guardianRef?.address} placeholder="Guardian Address" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 h-20" required />
+                  <input name="guardianPhone" defaultValue={guardianRef?.phone} placeholder="Guardian Phone" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
+                  <input name="relation" defaultValue={guardianRef?.relation} placeholder="Relation to Student" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
+                  <textarea name="guardianAddress" defaultValue={guardianRef?.address} placeholder="Guardian Address" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 h-20" required />
                   
                   <div className="relative group">
                     <input 
@@ -2090,13 +2090,13 @@ function AppContent() {
                       onChange={(e) => handleFileChange(e, 'guardianPhoto')}
                       className="absolute inset-0 opacity-0 cursor-pointer z-10" 
                     />
-                    <div className="flex items-center gap-4 p-4 border-2 border-dashed border-stone-200 dark:border-stone-700 rounded-2xl group-hover:border-blue-400 transition-colors">
+                    <div className="flex items-center gap-4 p-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl group-hover:border-blue-400 transition-colors">
                       {guardianPhotoPreview ? (
                         <img src={guardianPhotoPreview} alt="Preview" className="w-10 h-10 rounded-lg object-cover" />
                       ) : (
-                        <Upload className="w-5 h-5 text-stone-400 dark:text-stone-500" />
+                        <Upload className="w-5 h-5 text-slate-600 dark:text-slate-600" />
                       )}
-                      <span className="text-sm text-stone-500 dark:text-stone-400">
+                      <span className="text-sm text-slate-600 dark:text-slate-600">
                         {guardianPhotoPreview ? 'Change Guardian Photo' : 'Upload Guardian Photo (JPG/PNG)'}
                       </span>
                     </div>
@@ -2107,8 +2107,8 @@ function AppContent() {
               {/* Qualification (Teacher Only) */}
               {isTeacher && (
                 <div className="space-y-4">
-                  <h4 className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Qualifications</h4>
-                  <input name="qualification" defaultValue={editingTeacher?.qualification} placeholder="Highest Qualification" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-sm dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500" required />
+                  <h4 className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Qualifications</h4>
+                  <input name="qualification" defaultValue={editingTeacher?.qualification} placeholder="Highest Qualification" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500" required />
                   <div className="relative group">
                     <input 
                       type="file" 
@@ -2116,9 +2116,9 @@ function AppContent() {
                       onChange={(e) => handleFileChange(e, 'doc')}
                       className="absolute inset-0 opacity-0 cursor-pointer z-10" 
                     />
-                    <div className="flex items-center gap-4 p-4 border-2 border-dashed border-stone-200 rounded-2xl group-hover:border-blue-400 transition-colors">
-                      <FileText className="w-5 h-5 text-stone-400" />
-                      <span className="text-sm text-stone-500 truncate max-w-[200px]">
+                    <div className="flex items-center gap-4 p-4 border-2 border-dashed border-slate-200 rounded-2xl group-hover:border-blue-400 transition-colors">
+                      <FileText className="w-5 h-5 text-slate-600" />
+                      <span className="text-sm text-slate-600 truncate max-w-[200px]">
                         {docName || 'Upload Qualification (PDF)'}
                       </span>
                     </div>
@@ -2162,7 +2162,7 @@ function AppContent() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="bg-white dark:bg-stone-900 w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden border border-stone-100 dark:border-stone-800"
+          className="bg-white dark:bg-slate-950 w-full max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-900"
         >
           <div className="p-8 space-y-8">
             <div className="flex justify-between items-start">
@@ -2171,52 +2171,52 @@ function AppContent() {
                   <School className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-stone-950 dark:text-stone-50">Academic Report Card</h3>
-                  <p className="text-xs text-stone-400 uppercase tracking-widest">Session 2025-26 • Term 1</p>
+                  <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-slate-50">Academic Report Card</h3>
+                  <p className="text-xs text-slate-600 uppercase tracking-widest">Session 2025-26 • Term 1</p>
                 </div>
               </div>
               <button 
                 onClick={() => setViewingReportCard(null)}
-                className="p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-xl transition-colors"
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-xl transition-colors"
               >
-                <XCircle className="w-6 h-6 text-stone-400" />
+                <XCircle className="w-6 h-6 text-slate-600" />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 p-6 bg-stone-50 dark:bg-stone-800/50 rounded-3xl border border-stone-100 dark:border-stone-700">
+            <div className="grid grid-cols-2 gap-6 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
               <div>
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Student Name</p>
-                <p className="font-bold text-stone-800 dark:text-stone-200">{student.name}</p>
+                <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-1">Student Name</p>
+                <p className="font-bold text-slate-900 dark:text-slate-200">{student.name}</p>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Student ID</p>
-                <p className="font-mono text-stone-600 dark:text-stone-400">{student.student_id}</p>
+                <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-1">Student ID</p>
+                <p className="font-mono text-slate-700 dark:text-slate-600">{student.student_id}</p>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Class & Section</p>
-                <p className="font-bold text-stone-800 dark:text-stone-200">Class {student.class} - {student.section}</p>
+                <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-1">Class & Section</p>
+                <p className="font-bold text-slate-900 dark:text-slate-200">Class {student.class} - {student.section}</p>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Overall GPA</p>
+                <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-1">Overall GPA</p>
                 <p className="text-xl font-black text-indigo-600 dark:text-indigo-400">{gpa}</p>
               </div>
             </div>
 
-            <div className="overflow-hidden overflow-x-auto border border-stone-100 dark:border-stone-800 rounded-2xl">
+            <div className="overflow-hidden overflow-x-auto border border-slate-100 dark:border-slate-900 rounded-2xl">
               <table className="w-full text-left text-sm">
-                <thead className="bg-stone-50 dark:bg-stone-800/50 border-b border-stone-100 dark:border-stone-800">
+                <thead className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900">
                   <tr>
-                    <th className="p-4 font-bold text-stone-500">Subject</th>
-                    <th className="p-4 font-bold text-stone-500">Marks</th>
-                    <th className="p-4 font-bold text-stone-500">Grade</th>
-                    <th className="p-4 font-bold text-stone-500 text-right">Status</th>
+                    <th className="p-4 font-bold text-slate-600">Subject</th>
+                    <th className="p-4 font-bold text-slate-600">Marks</th>
+                    <th className="p-4 font-bold text-slate-600">Grade</th>
+                    <th className="p-4 font-bold text-slate-600 text-right">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-stone-50 dark:divide-stone-800">
+                <tbody className="divide-y divide-slate-50 dark:divide-slate-900">
                   {results.length > 0 ? results.map((res, i) => (
-                    <tr key={i} className="hover:bg-stone-50/50 dark:hover:bg-stone-800/30 transition-colors">
-                      <td className="p-4 font-bold text-stone-800 dark:text-stone-200">{res.subject}</td>
-                      <td className="p-4 text-stone-600 dark:text-stone-400">{res.marksObtained}/{res.maxMarks}</td>
+                    <tr key={i} className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors">
+                      <td className="p-4 font-bold text-slate-900 dark:text-slate-200">{res.subject}</td>
+                      <td className="p-4 text-slate-700 dark:text-slate-600">{res.marksObtained}/{res.maxMarks}</td>
                       <td className="p-4">
                         <span className="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg font-bold text-xs">
                           {res.grade}
@@ -2230,7 +2230,7 @@ function AppContent() {
                     </tr>
                   )) : (
                     <tr>
-                      <td colSpan={4} className="p-8 text-center text-stone-400 italic">No exam records found for this term.</td>
+                      <td colSpan={4} className="p-8 text-center text-slate-600 italic">No exam records found for this term.</td>
                     </tr>
                   )}
                 </tbody>
@@ -2240,13 +2240,13 @@ function AppContent() {
             <div className="flex gap-4">
               <button 
                 onClick={() => window.print()}
-                className="flex-1 py-4 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all"
+                className="flex-1 py-4 bg-slate-950 dark:bg-slate-100 text-white dark:text-slate-950 rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all"
               >
                 <Download className="w-5 h-5" /> Download PDF
               </button>
               <button 
                 onClick={() => setViewingReportCard(null)}
-                className="flex-1 py-4 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-2xl font-bold hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                className="flex-1 py-4 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-600 rounded-2xl font-bold hover:bg-slate-200 dark:hover:bg-slate-800 transition-all"
               >
                 Close
               </button>
@@ -2423,7 +2423,7 @@ function AppContent() {
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
-                className="fixed inset-x-0 bottom-0 z-[300] bg-white dark:bg-stone-900 p-6 rounded-t-3xl shadow-2xl border-t border-stone-100 dark:border-stone-800"
+                className="fixed inset-x-0 bottom-0 z-[300] bg-white dark:bg-slate-950 p-6 rounded-t-3xl shadow-2xl border-t border-slate-100 dark:border-slate-900"
               >
                 <div className="max-w-md mx-auto relative">
                   {scanStatus === 'success' && (
@@ -2457,9 +2457,9 @@ function AppContent() {
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
                 exit={{ y: '100%' }}
-                className="fixed inset-x-0 bottom-0 z-[300] bg-white dark:bg-stone-900 p-6 rounded-t-3xl shadow-2xl border-t border-stone-100 dark:border-stone-800"
+                className="fixed inset-x-0 bottom-0 z-[300] bg-white dark:bg-slate-950 p-6 rounded-t-3xl shadow-2xl border-t border-slate-100 dark:border-slate-900"
               >
-                <div className="max-w-md mx-auto relative p-8 border-2 border-dashed border-stone-300 dark:border-stone-700 rounded-3xl flex flex-col items-center justify-center min-h-[300px]">
+                <div className="max-w-md mx-auto relative p-8 border-2 border-dashed border-slate-300 dark:border-slate-800 rounded-3xl flex flex-col items-center justify-center min-h-[300px]">
                   {faceStatus === 'idle' && (
                     <>
                       <Eye className="w-16 h-16 text-purple-500 mb-4 animate-pulse" />
@@ -2469,7 +2469,7 @@ function AppContent() {
                   {faceStatus === 'scanning' && (
                     <>
                       <div className="w-16 h-16 rounded-full border-4 border-purple-500 border-t-transparent animate-spin mb-4" />
-                      <p className="font-bold text-stone-600 dark:text-stone-400">Scanning Subject...</p>
+                      <p className="font-bold text-slate-700 dark:text-slate-600">Scanning Subject...</p>
                     </>
                   )}
                   {faceStatus === 'success' && (
@@ -2486,8 +2486,8 @@ function AppContent() {
         </AnimatePresence>
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Attendance Records</h3>
-            <p className="text-xs text-stone-400">View and manage attendance data</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Attendance Records</h3>
+            <p className="text-xs text-slate-600">View and manage attendance data</p>
           </div>
           <div className="flex flex-wrap gap-3 w-full lg:w-auto">
             <button onClick={() => setShowScanner(true)} className="bg-emerald-600 text-white px-4 py-3 lg:py-2 rounded-xl flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 dark:shadow-none w-full lg:w-auto font-bold">
@@ -2500,26 +2500,26 @@ function AppContent() {
               <CheckCircle2 className="w-4 h-4" /> Submit All
             </button>
             <div className="relative flex-1 lg:flex-none">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input 
                 type="text" 
                 placeholder="Search by name or ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm outline-none focus:ring-2 focus:ring-blue-100 transition-all w-full lg:w-64 dark:text-stone-100"
+                className="pl-10 pr-4 py-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm outline-none focus:ring-2 focus:ring-blue-100 transition-all w-full lg:w-64 dark:text-slate-100"
               />
             </div>
             <input 
               type="date" 
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm outline-none font-bold text-stone-600 dark:text-stone-400 w-full lg:w-auto"
+              className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm outline-none font-bold text-slate-700 dark:text-slate-600 w-full lg:w-auto"
             />
             {!isTeacher && view === 'Students' && (
               <select 
                 value={selectedClass} 
                 onChange={(e) => setSelectedClass(e.target.value)}
-                className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm outline-none font-bold text-stone-600 dark:text-stone-400 w-full lg:w-auto"
+                className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm outline-none font-bold text-slate-700 dark:text-slate-600 w-full lg:w-auto"
               >
                 {Array.from({ length: 10 }, (_, i) => (i + 1).toString()).map(c => (
                   <option key={c} value={c}>Class {c}</option>
@@ -2535,35 +2535,35 @@ function AppContent() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 overflow-hidden overflow-x-auto">
+        <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 overflow-hidden overflow-x-auto">
           <table className="w-full text-left">
-            <thead className="bg-stone-50 dark:bg-stone-800/50 border-b border-stone-100 dark:border-stone-800">
+            <thead className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-900">
               <tr>
-                <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Student/Staff</th>
-                <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest">ID</th>
-                <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Status</th>
-                <th className="p-4 text-xs font-bold text-stone-400 uppercase tracking-widest text-right">Action</th>
+                <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Student/Staff</th>
+                <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest">ID</th>
+                <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Status</th>
+                <th className="p-4 text-xs font-bold text-slate-600 uppercase tracking-widest text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-50 dark:divide-stone-800/50">
+            <tbody className="divide-y divide-slate-50 dark:divide-slate-900/50">
               {filteredList.map(person => {
                 const personId = person.student_id || person.staff_id;
                 const record = filteredRecords.find(r => r.student_id === personId);
                 const canMark = (isTeacher || isAttender || loggedInUser?.role === 'Super Admin' || loggedInUser?.role === 'Management') && view === 'Students';
                 
                 return (
-                  <tr key={personId} className="hover:bg-stone-50/50 dark:hover:bg-stone-800/30 transition-colors">
+                  <tr key={personId} className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors">
                     <td className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center overflow-hidden">
-                          {person.photo ? <img src={person.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-5 h-5 text-stone-300 dark:text-stone-600" />}
+                        <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden">
+                          {person.photo ? <img src={person.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-5 h-5 text-slate-300 dark:text-slate-700" />}
                         </div>
-                        <span className="font-bold text-stone-800 dark:text-stone-100">
+                        <span className="font-bold text-slate-900 dark:text-slate-100">
                           {person.name}
                         </span>
                       </div>
                     </td>
-                    <td className="p-4 text-sm text-stone-500 dark:text-stone-400">{personId}</td>
+                    <td className="p-4 text-sm text-slate-600 dark:text-slate-600">{personId}</td>
                     <td className="p-4">
                       <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                         record?.status === 'Present'
@@ -2586,7 +2586,7 @@ function AppContent() {
                           {record?.status === 'Present' ? <X className="w-4 h-4" /> : <CheckCircle2 className="w-4 h-4" />}
                         </button>
                       ) : (
-                        <span className="text-xs text-stone-400 dark:text-stone-500 font-mono">
+                        <span className="text-xs text-slate-600 dark:text-slate-600 font-mono">
                           {record ? new Date(record.timestamp).toLocaleTimeString() : '-'}
                         </span>
                       )}
@@ -2597,7 +2597,7 @@ function AppContent() {
             </tbody>
           </table>
           {filteredList.length === 0 && (
-            <div className="p-12 text-center text-stone-400 dark:text-stone-500">
+            <div className="p-12 text-center text-slate-600 dark:text-slate-600">
               No records found for this selection.
             </div>
           )}
@@ -2633,7 +2633,7 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Smart Library</h3>
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Smart Library</h3>
           <button className="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 dark:shadow-none">
             <Plus className="w-4 h-4" /> Add Book
           </button>
@@ -2641,19 +2641,19 @@ function AppContent() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {books.map(book => (
-            <div key={book.id} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
+            <div key={book.id} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center">
                   <BookIcon className="w-6 h-6" />
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500">{book.id}</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600 dark:text-slate-600">{book.id}</span>
               </div>
               <div>
-                <h4 className="font-bold text-stone-800 dark:text-stone-100">{book.title}</h4>
-                <p className="text-xs text-stone-500 dark:text-stone-400">{book.author}</p>
+                <h4 className="font-bold text-slate-900 dark:text-slate-100">{book.title}</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-600">{book.author}</p>
               </div>
-              <div className="flex items-center justify-between pt-4 border-t border-stone-50 dark:border-stone-800">
-                <span className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">{book.category}</span>
+              <div className="flex items-center justify-between pt-4 border-t border-slate-50 dark:border-slate-900">
+                <span className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">{book.category}</span>
                 <button 
                   onClick={() => handleReserveBook(book)}
                   className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/40"
@@ -2667,13 +2667,13 @@ function AppContent() {
 
         {loggedInUser?.role === 'Librarian' && (
           <div className="mt-8">
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50 mb-4">Manage Reservations</h3>
-            <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50 mb-4">Manage Reservations</h3>
+            <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
               {reservations.map(res => (
-                <div key={res.id} className="flex justify-between items-center py-4 border-b border-stone-100 dark:border-stone-800">
+                <div key={res.id} className="flex justify-between items-center py-4 border-b border-slate-100 dark:border-slate-900">
                   <div>
                     <p className="font-bold">{res.book_title}</p>
-                    <p className="text-xs text-stone-500">Student: {res.student_name} | Date: {new Date(res.reservation_date).toLocaleDateString()}</p>
+                    <p className="text-xs text-slate-600">Student: {res.student_name} | Date: {new Date(res.reservation_date).toLocaleDateString()}</p>
                   </div>
                   <div className="flex gap-2">
                     {res.status === 'Pending' && (
@@ -2685,7 +2685,7 @@ function AppContent() {
                     {res.status === 'Approved' && (
                       <button onClick={() => handleUpdateReservation(res.id, 'Returned')} className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Mark Returned</button>
                     )}
-                    <span className="text-xs font-bold text-stone-400">{res.status}</span>
+                    <span className="text-xs font-bold text-slate-600">{res.status}</span>
                   </div>
                 </div>
               ))}
@@ -2717,12 +2717,12 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Subject Management</h3>
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Subject Management</h3>
           <div className="flex gap-4">
             <select 
               value={selectedClass} 
               onChange={(e) => setSelectedClass(e.target.value)}
-              className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-sm outline-none dark:text-stone-100"
+              className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-sm outline-none dark:text-slate-100"
             >
               {Array.from({ length: 10 }, (_, i) => (i + 1).toString()).map(c => (
                 <option key={c} value={c}>Class {c}</option>
@@ -2744,15 +2744,15 @@ function AppContent() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 flex items-center justify-between hover:border-blue-200 dark:hover:border-blue-900 transition-all group"
+              className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 flex items-center justify-between hover:border-blue-200 dark:hover:border-blue-900 transition-all group"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
                   <BookIcon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-stone-800 dark:text-stone-100">{subject.name}</h4>
-                  <p className="text-[10px] text-stone-400 dark:text-stone-500 uppercase font-bold tracking-widest">Core Subject</p>
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100">{subject.name}</h4>
+                  <p className="text-[10px] text-slate-600 dark:text-slate-600 uppercase font-bold tracking-widest">Core Subject</p>
                 </div>
               </div>
               <button 
@@ -2763,8 +2763,8 @@ function AppContent() {
               </button>
             </motion.div>
           )) : (
-            <div className="col-span-full py-12 text-center bg-white dark:bg-stone-900 rounded-3xl border border-dashed border-stone-200 dark:border-stone-800">
-              <p className="text-stone-400 dark:text-stone-500">No subjects added for Class {selectedClass} yet.</p>
+            <div className="col-span-full py-12 text-center bg-white dark:bg-slate-950 rounded-3xl border border-dashed border-slate-200 dark:border-slate-900">
+              <p className="text-slate-600 dark:text-slate-600">No subjects added for Class {selectedClass} yet.</p>
             </div>
           )}
         </div>
@@ -2840,21 +2840,21 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Homework Management</h3>
-            <p className="text-xs text-stone-400">Assign and track subject-wise homework</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Homework Management</h3>
+            <p className="text-xs text-slate-600">Assign and track subject-wise homework</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Assign New Homework</h4>
+          <div className="lg:col-span-1 bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Assign New Homework</h4>
             <form onSubmit={handleAddHomework} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Classes</label>
-                  <div className="h-32 overflow-y-auto bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl p-2 space-y-1">
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Classes</label>
+                  <div className="h-32 overflow-y-auto bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl p-2 space-y-1">
                     {CLASSES.map(c => (
-                      <label key={c} className="flex items-center gap-2 text-xs text-stone-700 dark:text-stone-300 cursor-pointer">
+                      <label key={c} className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-300 cursor-pointer">
                         <input 
                           type="checkbox" 
                           checked={selectedClasses.includes(c)}
@@ -2862,7 +2862,7 @@ function AppContent() {
                             if (e.target.checked) setSelectedClasses([...selectedClasses, c]);
                             else setSelectedClasses(selectedClasses.filter(cls => cls !== c));
                           }}
-                          className="rounded border-stone-300 text-blue-600 focus:ring-blue-500"
+                          className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                         />
                         Grade {c}
                       </label>
@@ -2870,10 +2870,10 @@ function AppContent() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Sections</label>
-                  <div className="h-32 overflow-y-auto bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl p-2 space-y-1">
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Sections</label>
+                  <div className="h-32 overflow-y-auto bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl p-2 space-y-1">
                     {SECTIONS.map(s => (
-                      <label key={s} className="flex items-center gap-2 text-xs text-stone-700 dark:text-stone-300 cursor-pointer">
+                      <label key={s} className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-300 cursor-pointer">
                         <input 
                           type="checkbox" 
                           checked={selectedSections.includes(s)}
@@ -2881,7 +2881,7 @@ function AppContent() {
                             if (e.target.checked) setSelectedSections([...selectedSections, s]);
                             else setSelectedSections(selectedSections.filter(sec => sec !== s));
                           }}
-                          className="rounded border-stone-300 text-blue-600 focus:ring-blue-500"
+                          className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                         />
                         Section {s}
                       </label>
@@ -2891,11 +2891,11 @@ function AppContent() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Subject</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Subject</label>
                 <select 
                   value={selectedSubject} 
                   onChange={(e) => setSelectedSubject(e.target.value)}
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                   required
                 >
                   <option value="">Select Subject</option>
@@ -2904,34 +2904,34 @@ function AppContent() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Title</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Title</label>
                 <input 
                   type="text" 
                   value={title} 
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g. Algebra Worksheet"
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Description</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Description</label>
                 <textarea 
                   value={description} 
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Instructions for students..."
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 min-h-[100px] dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 min-h-[100px] dark:text-slate-100"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Due Date</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Due Date</label>
                 <input 
                   type="date" 
                   value={dueDate} 
                   onChange={(e) => setDueDate(e.target.value)}
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                   required
                 />
               </div>
@@ -2947,19 +2947,19 @@ function AppContent() {
 
           <div className="lg:col-span-2 space-y-4">
             <div className="flex justify-between items-center mb-2">
-              <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">Active Assignments</h4>
+              <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">Active Assignments</h4>
               <div className="flex gap-2">
                 <select 
                   value={selectedClasses[0] || CLASSES[0]} 
                   onChange={(e) => setSelectedClasses([e.target.value])}
-                  className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg text-xs font-bold outline-none dark:text-stone-100"
+                  className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-lg text-xs font-bold outline-none dark:text-slate-100"
                 >
                   {CLASSES.map(c => <option key={c} value={c}>Grade {c}</option>)}
                 </select>
                 <select 
                   value={selectedSections[0] || SECTIONS[0]} 
                   onChange={(e) => setSelectedSections([e.target.value])}
-                  className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg text-xs font-bold outline-none dark:text-stone-100"
+                  className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-lg text-xs font-bold outline-none dark:text-slate-100"
                 >
                   {SECTIONS.map(s => <option key={s} value={s}>Section {s}</option>)}
                 </select>
@@ -2967,21 +2967,21 @@ function AppContent() {
             </div>
 
             {filteredHomeworks.length === 0 ? (
-              <div className="bg-white dark:bg-stone-900 p-12 rounded-3xl border border-dashed border-stone-200 dark:border-stone-800 text-center">
-                <p className="text-stone-400 dark:text-stone-500">No homework assigned for this class/section.</p>
+              <div className="bg-white dark:bg-slate-950 p-12 rounded-3xl border border-dashed border-slate-200 dark:border-slate-900 text-center">
+                <p className="text-slate-600 dark:text-slate-600">No homework assigned for this class/section.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-4">
                 {filteredHomeworks.map(hw => (
-                  <div key={hw.id} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 group">
+                  <div key={hw.id} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center">
                           <BookIcon className="w-6 h-6" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-stone-800 dark:text-stone-100">{hw.title}</h4>
-                          <p className="text-xs text-stone-400 dark:text-stone-500">{hw.subject} • Due: {new Date(hw.dueDate).toLocaleDateString()}</p>
+                          <h4 className="font-bold text-slate-900 dark:text-slate-100">{hw.title}</h4>
+                          <p className="text-xs text-slate-600 dark:text-slate-600">{hw.subject} • Due: {new Date(hw.dueDate).toLocaleDateString()}</p>
                         </div>
                       </div>
                       <button 
@@ -2992,18 +2992,18 @@ function AppContent() {
                       </button>
                     </div>
                     {hw.description && (
-                      <p className="mt-4 text-sm text-stone-600 dark:text-stone-400 bg-stone-50 dark:bg-stone-800 p-3 rounded-xl italic">
+                      <p className="mt-4 text-sm text-slate-700 dark:text-slate-600 bg-slate-50 dark:bg-slate-900 p-3 rounded-xl italic">
                         "{hw.description}"
                       </p>
                     )}
-                    <div className="mt-4 pt-4 border-t border-stone-50 dark:border-stone-800 flex justify-between items-center">
+                    <div className="mt-4 pt-4 border-t border-slate-50 dark:border-slate-900 flex justify-between items-center">
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center text-[10px] font-bold text-stone-400">
+                        <div className="w-6 h-6 bg-slate-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-600">
                           {hw.teacherName.charAt(0)}
                         </div>
-                        <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest">Assigned by {hw.teacherName}</span>
+                        <span className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">Assigned by {hw.teacherName}</span>
                       </div>
-                      <span className="text-[10px] text-stone-400 dark:text-stone-500 font-mono">{new Date(hw.createdAt).toLocaleDateString()}</span>
+                      <span className="text-[10px] text-slate-600 dark:text-slate-600 font-mono">{new Date(hw.createdAt).toLocaleDateString()}</span>
                     </div>
                   </div>
                 ))}
@@ -3086,8 +3086,8 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Result Management</h3>
-            <p className="text-xs text-stone-400">Enter and publish exam results</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Result Management</h3>
+            <p className="text-xs text-slate-600">Enter and publish exam results</p>
           </div>
           <button 
             onClick={handleSaveResults}
@@ -3097,10 +3097,10 @@ function AppContent() {
           </button>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Class</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Class</label>
               <select 
                 value={selectedClass} 
                 onChange={(e) => {
@@ -3111,7 +3111,7 @@ function AppContent() {
                   }
                 }}
                 disabled={isTeacher && (!teacher?.assigned_classes || teacher.assigned_classes.length <= 1)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100 disabled:opacity-50"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100 disabled:opacity-50"
               >
                 {isTeacher && teacher?.assigned_classes ? 
                   Array.from(new Set(teacher.assigned_classes.map(c => c.split('-')[0]))).map((c: string) => (
@@ -3122,12 +3122,12 @@ function AppContent() {
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Section</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Section</label>
               <select 
                 value={selectedSection} 
                 onChange={(e) => setSelectedSection(e.target.value)}
                 disabled={isTeacher && (!teacher?.assigned_classes || teacher.assigned_classes.length <= 1)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100 disabled:opacity-50"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100 disabled:opacity-50"
               >
                 {isTeacher && teacher?.assigned_classes ?
                   Array.from(new Set(
@@ -3140,22 +3140,22 @@ function AppContent() {
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Subject</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Subject</label>
               <select 
                 value={selectedSubject} 
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
               >
                 <option value="">Select Subject</option>
                 {availableSubjects.map(s => <option key={s.id} value={s.name}>{s.name}</option>)}
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Exam</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Exam</label>
               <select 
                 value={examName} 
                 onChange={(e) => setExamName(e.target.value)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
               >
                 <option value="Midterm">Midterm</option>
                 <option value="Final">Final</option>
@@ -3164,20 +3164,20 @@ function AppContent() {
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Date</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Date</label>
               <input 
                 type="date" 
                 value={examDate} 
                 onChange={(e) => setExamDate(e.target.value)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Sort By</label>
+              <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Sort By</label>
               <select 
                 value={sortOrder} 
                 onChange={(e) => setSortOrder(e.target.value)}
-                className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
               >
                 <option value="name_asc">Name (A-Z)</option>
                 <option value="name_desc">Name (Z-A)</option>
@@ -3187,26 +3187,26 @@ function AppContent() {
             </div>
           </div>
 
-          <div className="overflow-hidden overflow-x-auto rounded-2xl border border-stone-100 dark:border-stone-800">
+          <div className="overflow-hidden overflow-x-auto rounded-2xl border border-slate-100 dark:border-slate-900">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-stone-50 dark:bg-stone-800 border-b border-stone-100 dark:border-stone-800">
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Student ID</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Student Name</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Marks (out of 100)</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Date</th>
+                <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Student ID</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Student Name</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Marks (out of 100)</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Date</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-50 dark:divide-stone-800">
+              <tbody className="divide-y divide-slate-50 dark:divide-slate-900">
                 {filteredStudents.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="p-8 text-center text-stone-400 dark:text-stone-500 italic">No students found in this section.</td>
+                    <td colSpan={4} className="p-8 text-center text-slate-600 dark:text-slate-600 italic">No students found in this section.</td>
                   </tr>
                 ) : (
                   filteredStudents.map(student => (
-                    <tr key={student.student_id} className="hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
-                      <td className="p-4 text-xs font-bold text-stone-500 dark:text-stone-400 font-mono">{student.student_id}</td>
-                      <td className="p-4 font-bold text-stone-800 dark:text-stone-100">{student.name}</td>
+                    <tr key={student.student_id} className="hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                      <td className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 font-mono">{student.student_id}</td>
+                      <td className="p-4 font-bold text-slate-900 dark:text-slate-100">{student.name}</td>
                       <td className="p-4">
                         <input 
                           type="number" 
@@ -3214,10 +3214,10 @@ function AppContent() {
                           max="100"
                           value={marks[student.student_id] || ''}
                           onChange={(e) => setMarks(prev => ({ ...prev, [student.student_id]: Number(e.target.value) }))}
-                          className="w-24 p-2 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                          className="w-24 p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                         />
                       </td>
-                      <td className="p-4 text-xs font-bold text-stone-500 dark:text-stone-400">{examDate}</td>
+                      <td className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600">{examDate}</td>
                     </tr>
                   ))
                 )}
@@ -3269,14 +3269,14 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Payroll Management</h3>
-            <p className="text-xs text-stone-400">Manage staff salaries and disbursements</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Payroll Management</h3>
+            <p className="text-xs text-slate-600">Manage staff salaries and disbursements</p>
           </div>
           <div className="flex gap-2">
             <select 
               value={selectedMonth} 
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-xs font-bold outline-none dark:text-stone-100"
+              className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-xs font-bold outline-none dark:text-slate-100"
             >
               {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map(m => (
                 <option key={m} value={m}>{m}</option>
@@ -3285,34 +3285,34 @@ function AppContent() {
             <select 
               value={selectedYear} 
               onChange={(e) => setSelectedYear(Number(e.target.value))}
-              className="p-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl text-xs font-bold outline-none dark:text-stone-100"
+              className="p-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl text-xs font-bold outline-none dark:text-slate-100"
             >
               {[2024, 2025, 2026].map(y => <option key={y} value={y}>{y}</option>)}
             </select>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+        <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-stone-50 dark:bg-stone-800 border-b border-stone-100 dark:border-stone-800">
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Staff Name</th>
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Role</th>
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Basic</th>
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Net Salary</th>
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Status</th>
-                <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Action</th>
+              <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Staff Name</th>
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Role</th>
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Basic</th>
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Net Salary</th>
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Status</th>
+                <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Action</th>
               </tr>
             </thead>
             <tbody>
               {teachers.map(teacher => {
                 const isPaid = teacher.salary.history?.some(h => h.month === selectedMonth && h.year === selectedYear);
                 return (
-                  <tr key={teacher.teacher_id} className="border-b border-stone-50 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
-                    <td className="p-4 font-bold text-stone-800 dark:text-stone-100">{teacher.name}</td>
-                    <td className="p-4 text-stone-600 dark:text-stone-400">Teacher</td>
-                    <td className="p-4 text-stone-600 dark:text-stone-400">${teacher.salary.basic}</td>
-                    <td className="p-4 font-bold text-stone-800 dark:text-stone-100">${teacher.salary.basic + teacher.salary.allowances}</td>
+                  <tr key={teacher.teacher_id} className="border-b border-slate-50 dark:border-slate-900 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+                    <td className="p-4 font-bold text-slate-900 dark:text-slate-100">{teacher.name}</td>
+                    <td className="p-4 text-slate-700 dark:text-slate-600">Teacher</td>
+                    <td className="p-4 text-slate-700 dark:text-slate-600">${teacher.salary.basic}</td>
+                    <td className="p-4 font-bold text-slate-900 dark:text-slate-100">${teacher.salary.basic + teacher.salary.allowances}</td>
                     <td className="p-4">
                       <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
                         isPaid ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400' : 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400'
@@ -3390,32 +3390,32 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Inventory Management</h3>
-            <p className="text-xs text-stone-400">Manage school store and supplies</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Inventory Management</h3>
+            <p className="text-xs text-slate-600">Manage school store and supplies</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Add New Item</h4>
+          <div className="lg:col-span-1 bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Add New Item</h4>
             <form onSubmit={handleAddItem} className="space-y-4">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Item Name</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Item Name</label>
                 <input 
                   type="text" 
                   value={name} 
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. School Tie"
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Category</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Category</label>
                 <select 
                   value={category} 
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                  className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                 >
                   <option value="Stationery">Stationery</option>
                   <option value="Uniform">Uniform</option>
@@ -3425,63 +3425,63 @@ function AppContent() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Quantity</label>
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Quantity</label>
                   <input 
                     type="number" 
                     value={quantity} 
                     onChange={(e) => setQuantity(Number(e.target.value))}
-                    className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Price</label>
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Price</label>
                   <input 
                     type="number" 
                     value={price} 
                     onChange={(e) => setPrice(Number(e.target.value))}
-                    className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-stone-100"
+                    className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-sm font-bold outline-none focus:ring-2 focus:ring-blue-500 dark:text-slate-100"
                     required
                   />
                 </div>
               </div>
               <button 
                 type="submit"
-                className="w-full py-4 bg-stone-800 dark:bg-stone-700 text-white rounded-2xl font-bold shadow-lg hover:bg-stone-900 dark:hover:bg-stone-600 transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 bg-slate-900 dark:bg-slate-800 text-white rounded-2xl font-bold shadow-lg hover:bg-slate-950 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2"
               >
                 <Plus className="w-5 h-5" /> Add Item
               </button>
             </form>
           </div>
 
-          <div className="lg:col-span-2 bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-stone-50 dark:bg-stone-800 border-b border-stone-100 dark:border-stone-800">
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Item</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Category</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Stock</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Price</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Action</th>
+                <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-900">
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Item</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Category</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Stock</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Price</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {storeItems.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="p-8 text-center text-stone-400 dark:text-stone-500 italic">No items in inventory.</td>
+                    <td colSpan={5} className="p-8 text-center text-slate-600 dark:text-slate-600 italic">No items in inventory.</td>
                   </tr>
                 ) : (
                   storeItems.map(item => (
-                    <tr key={item.id} className="border-b border-stone-50 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">
+                    <tr key={item.id} className="border-b border-slate-50 dark:border-slate-900 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
                       <td className="p-4">
-                        <p className="font-bold text-stone-800 dark:text-stone-100">{item.name}</p>
-                        <p className="text-[10px] text-stone-400 dark:text-stone-500 uppercase font-bold tracking-widest">ID: {item.id}</p>
+                        <p className="font-bold text-slate-900 dark:text-slate-100">{item.name}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-slate-600 uppercase font-bold tracking-widest">ID: {item.id}</p>
                       </td>
-                      <td className="p-4 text-stone-600 dark:text-stone-400">{item.category}</td>
+                      <td className="p-4 text-slate-700 dark:text-slate-600">{item.category}</td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <span className={`font-bold ${item.quantity <= item.minQuantity ? 'text-red-600 dark:text-red-400' : 'text-stone-800 dark:text-stone-100'}`}>
+                          <span className={`font-bold ${item.quantity <= item.minQuantity ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-slate-100'}`}>
                             {item.quantity}
                           </span>
                           {item.quantity <= item.minQuantity && (
@@ -3489,18 +3489,18 @@ function AppContent() {
                           )}
                         </div>
                       </td>
-                      <td className="p-4 font-bold text-stone-800 dark:text-stone-100">${item.price}</td>
+                      <td className="p-4 font-bold text-slate-900 dark:text-slate-100">${item.price}</td>
                       <td className="p-4">
                         <div className="flex gap-2">
                           <button 
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="p-1 bg-stone-100 dark:bg-stone-800 rounded hover:bg-stone-200 dark:hover:bg-stone-700"
+                            className="p-1 bg-slate-100 dark:bg-slate-900 rounded hover:bg-slate-200 dark:hover:bg-slate-800"
                           >
-                            <Plus className="w-3 h-3 dark:text-stone-100" />
+                            <Plus className="w-3 h-3 dark:text-slate-100" />
                           </button>
                           <button 
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="p-1 bg-stone-100 dark:bg-stone-800 rounded hover:bg-stone-200 dark:hover:bg-stone-700"
+                            className="p-1 bg-slate-100 dark:bg-slate-900 rounded hover:bg-slate-200 dark:hover:bg-slate-800"
                           >
                             <Trash2 className="w-3 h-3 text-red-400" />
                           </button>
@@ -3524,7 +3524,7 @@ function AppContent() {
 
     return (
       <div className="space-y-8">
-        <div className="flex items-center gap-4 bg-white dark:bg-stone-900 p-1 rounded-2xl border border-stone-200 dark:border-stone-800 w-fit overflow-x-auto max-w-full">
+        <div className="flex items-center gap-4 bg-white dark:bg-slate-950 p-1 rounded-2xl border border-slate-200 dark:border-slate-900 w-fit overflow-x-auto max-w-full">
           {[
             { id: 'overview', label: 'Overview' },
             { id: 'attendance', label: 'Attendance' },
@@ -3535,7 +3535,7 @@ function AppContent() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-6 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
-                activeTab === tab.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'
+                activeTab === tab.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-slate-600 hover:text-slate-700 dark:hover:text-slate-300'
               }`}
             >
               {tab.label}
@@ -3546,8 +3546,9 @@ function AppContent() {
         {activeTab === 'overview' && (
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">My Class</h3>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+                <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">My Class</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                     <span className="font-bold text-blue-800 dark:text-blue-300">{teacher?.classSection || '10-A'}</span>
@@ -3555,15 +3556,17 @@ function AppContent() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Class Attendance</h3>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500 opacity-50" />
+                <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Class Attendance</h3>
                 <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">94.2%</div>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Average for your section</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Average for your section</p>
               </div>
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Pending Grades</h3>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 opacity-50" />
+                <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Pending Grades</h3>
                 <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">12</div>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Assignments to review</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Assignments to review</p>
               </div>
             </div>
             <StudentManagement />
@@ -3581,11 +3584,11 @@ function AppContent() {
 
     return (
       <div className="space-y-8">
-        <div className="flex items-center gap-4 bg-white dark:bg-stone-900 p-1 rounded-2xl border border-stone-200 dark:border-stone-800 w-fit">
+        <div className="flex items-center gap-4 bg-white dark:bg-slate-950 p-1 rounded-2xl border border-slate-200 dark:border-slate-900 w-fit">
           <button
             onClick={() => setActiveTab('fees')}
             className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${
-              activeTab === 'fees' ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'
+              activeTab === 'fees' ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-slate-600 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
           >
             Fees
@@ -3593,7 +3596,7 @@ function AppContent() {
           <button
             onClick={() => setActiveTab('payroll')}
             className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${
-              activeTab === 'payroll' ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300'
+              activeTab === 'payroll' ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' : 'text-slate-600 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
           >
             Payroll
@@ -3601,20 +3604,23 @@ function AppContent() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Total Revenue</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500 opacity-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Total Revenue</h3>
             <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">$124,500</div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">This academic year</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">This academic year</p>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Pending Fees</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-red-500 opacity-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Pending Fees</h3>
             <div className="text-3xl font-bold text-red-600 dark:text-red-400">$12,400</div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">42 students overdue</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">42 students overdue</p>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Staff Salaries</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Staff Salaries</h3>
             <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">$85,000</div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Monthly disbursement</p>
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Monthly disbursement</p>
           </div>
         </div>
 
@@ -3626,20 +3632,23 @@ function AppContent() {
   const SecurityDashboard = () => (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Active Personnel</h3>
-          <div className="text-3xl font-bold text-slate-700 dark:text-stone-100">8 / 12</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Currently on duty</p>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-slate-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Active Personnel</h3>
+          <div className="text-3xl font-bold text-slate-700 dark:text-slate-100">8 / 12</div>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Currently on duty</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Visitor Count</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Visitor Count</h3>
           <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">14</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Checked in today</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Checked in today</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Incidents</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Incidents</h3>
           <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">0</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">No active reports</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">No active reports</p>
         </div>
       </div>
       <SecurityManagement />
@@ -3649,24 +3658,27 @@ function AppContent() {
   const StoreDashboard = () => (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Total Items</h3>
-          <div className="text-3xl font-bold text-stone-800 dark:text-stone-100">{storeItems.length}</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">In inventory</p>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-slate-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Total Items</h3>
+          <div className="text-3xl font-bold text-slate-900 dark:text-slate-100">{storeItems.length}</div>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">In inventory</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Low Stock</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-red-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Low Stock</h3>
           <div className="text-3xl font-bold text-red-600 dark:text-red-400">
             {storeItems.filter(i => i.quantity <= i.minQuantity).length}
           </div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Items need restocking</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Items need restocking</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Inventory Value</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Inventory Value</h3>
           <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
             ${storeItems.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0).toLocaleString()}
           </div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Total asset value</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Total asset value</p>
         </div>
       </div>
       <StoreManagement />
@@ -3676,20 +3688,23 @@ function AppContent() {
   const ReceptionDashboard = () => (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Today's Visitors</h3>
-          <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">24</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Scheduled appointments</p>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-amber-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Today's Visitors</h3>
+          <div className="text-3xl font-bold text-amber-600 dark:text-amber-400">24</div>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Scheduled appointments</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">New Admissions</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">New Admissions</h3>
           <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">12</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Applications this week</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Applications this week</p>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Inquiries</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500 opacity-50" />
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Inquiries</h3>
           <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">8</div>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Pending response</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Pending response</p>
         </div>
       </div>
       <ContactManagement />
@@ -3701,7 +3716,7 @@ function AppContent() {
     const [report, setReport] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
 
-    if (!student) return <div className="dark:text-stone-100">Student profile not found.</div>;
+    if (!student) return <div className="dark:text-slate-100">Student profile not found.</div>;
 
     const today = new Date().toISOString().split('T')[0];
     const hasMarkedToday = attendanceRecords.some(r => r.student_id === student.student_id && r.date === today);
@@ -3730,6 +3745,14 @@ function AppContent() {
             date: r.date,
             status: r.status === 'Present' ? 1 : 0
         }));
+
+    const calculateAttendancePercentage = (records: AttendanceRecord[]) => {
+      if (records.length === 0) return "0.0";
+      const presentCount = records.filter(r => r.status === 'Present').length;
+      return ((presentCount / records.length) * 100).toFixed(1);
+    };
+
+    const attendancePercentage = calculateAttendancePercentage(attendance);
 
     const calculateGPA = (results: ExamResult[]) => {
       if (results.length === 0) return "0.00";
@@ -3763,36 +3786,39 @@ function AppContent() {
     return (
       <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 relative overflow-hidden">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Attendance</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 relative overflow-hidden group hover:shadow-xl transition-all">
+            <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500 opactiy-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Attendance</h3>
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">98%</div>
-                <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Present this month</p>
+                <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">{attendancePercentage}%</div>
+                <p className="text-xs text-slate-600 dark:text-slate-600 mt-1">Present over all days</p>
               </div>
             </div>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">GPA</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 opacity-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">GPA</h3>
             <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{gpa}</div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Academic performance</p>
+            <p className="text-xs text-slate-600 dark:text-slate-600 mt-1">Academic performance</p>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Fee Status</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 group hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-amber-500 opacity-50" />
+            <h3 className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Fee Status</h3>
             <div className={`text-3xl font-bold ${student.fees.status === 'Paid' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
               {student.fees.status}
             </div>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Next due: April 1st</p>
+            <p className="text-xs text-slate-600 dark:text-slate-600 mt-1">Next due: April 1st</p>
           </div>
         </div>
-        <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
+        <div className="bg-white dark:bg-slate-950 p-4 md:p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Academic Performance</h3>
+            <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-slate-100">Academic Performance</h3>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-                  <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Academic Progress</h3>
+              <div className="bg-white dark:bg-slate-950 p-4 md:p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+                  <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Academic Progress</h3>
                   <div className="h-[300px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={gradeData}>
@@ -3806,8 +3832,8 @@ function AppContent() {
                     </ResponsiveContainer>
                   </div>
               </div>
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-                  <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Attendance Trend</h3>
+              <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Attendance Trend</h3>
                   <div className="h-[300px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={attendanceData}>
@@ -3840,28 +3866,28 @@ function AppContent() {
           </div>
 
           {report && (
-            <div className="p-4 mb-4 bg-stone-50 dark:bg-stone-800 rounded-2xl text-stone-700 dark:text-stone-300 text-sm">
+            <div className="p-4 mb-4 bg-slate-50 dark:bg-slate-900 rounded-2xl text-slate-800 dark:text-slate-300 text-sm">
                 {report}
             </div>
           )}
           <div className="space-y-4">
             {results.length > 0 ? (
               results.map((result, idx) => (
-                <div key={result.id || idx} className="flex justify-between items-center p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+                <div key={result.id || idx} className="flex justify-between items-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">
                   <div>
-                    <p className="font-bold text-stone-800 dark:text-stone-200">{result.subject}</p>
-                    <p className="text-xs text-stone-400 dark:text-stone-500">{result.examName}</p>
+                    <p className="font-bold text-slate-900 dark:text-slate-200">{result.subject}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">{result.examName}</p>
                   </div>
                   <div className="text-right">
                     <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">{result.grade}</span>
-                    <p className="text-[10px] text-stone-400 dark:text-stone-500 font-bold">{result.marksObtained}/{result.maxMarks}</p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-600 font-bold">{result.marksObtained}/{result.maxMarks}</p>
                   </div>
                 </div>
               ))
             ) : (
               <div className="text-center py-12">
-                <GraduationCap className="w-12 h-12 text-stone-200 dark:text-stone-700 mx-auto mb-4" />
-                <p className="text-stone-500 dark:text-stone-400">No academic records found yet.</p>
+                <GraduationCap className="w-12 h-12 text-slate-200 dark:text-slate-800 mx-auto mb-4" />
+                <p className="text-slate-600 dark:text-slate-600">No academic records found yet.</p>
               </div>
             )}
           </div>
@@ -3879,7 +3905,17 @@ function AppContent() {
     const child = children[selectedChildIndex];
 
     const studentAttendance = attendanceRecords.filter(a => a.student_id === child.student_id);
-    const studentAlerts = alerts.filter(a => a.scope === child.student_id);
+    const studentAlerts = alerts.filter(a => a.scope === child.student_id || a.scope === 'All').filter(a => a.sender === child.name || a.message.includes(child.name));
+    const childResults = examResults.filter(r => r.student_id === child.student_id);
+
+    const calculateAttendancePercentage = (records: AttendanceRecord[]) => {
+      if (records.length === 0) return "0.0";
+      const presentCount = records.filter(r => r.status === 'Present').length;
+      return ((presentCount / records.length) * 100).toFixed(1);
+    };
+
+    const attendancePercentage = calculateAttendancePercentage(studentAttendance);
+    const lastGrade = childResults.length > 0 ? childResults.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0].grade : 'N/A';
     
     const activities = [
       ...studentAttendance.map(a => ({
@@ -3910,10 +3946,12 @@ function AppContent() {
     
     if (children.length === 0) {
       return (
-        <div className="bg-white dark:bg-stone-900 p-12 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 text-center">
-          <Users className="w-16 h-16 text-stone-200 dark:text-stone-700 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-2">No Student Found</h3>
-          <p className="text-stone-500 dark:text-stone-400">We couldn't find any student associated with your account. Please contact the administration.</p>
+        <div className="bg-white dark:bg-slate-950 p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 text-center">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-slate-100 dark:border-slate-800">
+            <Users className="w-8 h-8 md:w-10 md:h-10 text-slate-400 dark:text-slate-600" />
+          </div>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">No Student Found</h3>
+          <p className="text-sm text-slate-600 dark:text-slate-400 max-w-xs mx-auto">We couldn't find any student associated with your account. Please contact the administration to link your child's profile.</p>
         </div>
       );
     }
@@ -3951,11 +3989,11 @@ function AppContent() {
                 className={`flex items-center gap-3 px-6 py-3 rounded-2xl font-bold transition-all whitespace-nowrap ${
                   selectedChildIndex === idx 
                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
-                    : 'bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-400 border border-stone-100 dark:border-stone-800 hover:border-blue-200 dark:hover:border-blue-900'
+                    : 'bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-600 border border-slate-100 dark:border-slate-900 hover:border-blue-200 dark:hover:border-blue-900'
                 }`}
               >
-                <div className="w-8 h-8 rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-800">
-                  {c.photo ? <img src={c.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-4 h-4 m-auto mt-2 text-stone-400" />}
+                <div className="w-8 h-8 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  {c.photo ? <img src={c.photo} className="w-full h-full object-cover" /> : <UserIcon className="w-4 h-4 m-auto mt-2 text-slate-600" />}
                 </div>
                 {c.name.split(' ')[0]}
               </button>
@@ -3966,7 +4004,7 @@ function AppContent() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
           {/* Child Info */}
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center overflow-hidden border border-blue-100 dark:border-blue-900/30">
                 {child.photo ? (
@@ -3976,8 +4014,8 @@ function AppContent() {
                 )}
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-stone-800 dark:text-stone-100">{child.name}</h3>
-                <p className="text-stone-500 dark:text-stone-400">Class {child.class_id} - Section {child.section} • ID: {child.student_id}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{child.name}</h3>
+                <p className="text-slate-600 dark:text-slate-600">Class {child.class_id} - Section {child.section} • ID: {child.student_id}</p>
               </div>
               <button 
                 onClick={() => setViewingStudent(child)}
@@ -3988,38 +4026,38 @@ function AppContent() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl">
-                <p className="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-1">Attendance</p>
-                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">96.5%</p>
+              <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/30 group hover:border-emerald-200 transition-colors">
+                <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-1">Attendance</p>
+                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{attendancePercentage}%</p>
               </div>
-              <div className="p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl">
-                <p className="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-1">Last Grade</p>
-                <p className="text-xl font-bold text-blue-600 dark:text-blue-400">A+</p>
+              <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/30 group hover:border-blue-200 transition-colors">
+                <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-1">Last Grade</p>
+                <p className="text-xl font-bold text-blue-600 dark:text-blue-400">{lastGrade}</p>
               </div>
-              <div className="p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl">
-                <p className="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-1">Dues</p>
+              <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800/30 group hover:border-red-200 transition-colors">
+                <p className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-1">Dues</p>
                 <p className="text-xl font-bold text-red-600 dark:text-red-400">${(child.fees?.total || 0) - (child.fees?.paid || 0)}</p>
               </div>
             </div>
           </div>
 
         {/* Recent Activities */}
-        <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-          <h3 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Recent Activities</h3>
+        <div className="bg-white dark:bg-slate-950 p-4 md:p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Recent Activities</h3>
           <div className="space-y-6">
             {activities.length > 0 ? activities.map((activity, i) => (
               <div key={i} className="flex gap-4">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-stone-50 dark:bg-stone-800 ${activity.color}`}>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-slate-50 dark:bg-slate-900 ${activity.color}`}>
                   <activity.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-stone-800 dark:text-stone-100 text-sm">{activity.title}</h4>
-                  <p className="text-xs text-stone-400 dark:text-stone-500 mb-1">{activity.time}</p>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">{activity.desc}</p>
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100 text-sm">{activity.title}</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-600 mb-1">{activity.time}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600">{activity.desc}</p>
                 </div>
               </div>
             )) : (
-              <p className="text-sm text-stone-400 text-center py-4">No recent activities found.</p>
+              <p className="text-sm text-slate-600 text-center py-4">No recent activities found.</p>
             )}
           </div>
         </div>
@@ -4027,8 +4065,8 @@ function AppContent() {
 
       <div className="space-y-8">
         {/* Quick Actions */}
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Quick Actions</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: 'Pay Fees', icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20', action: () => { setFeeModalStudent(child); setShowFeeModal(true); } },
@@ -4039,45 +4077,45 @@ function AppContent() {
               <button 
                 key={action.label} 
                 onClick={action.action}
-                className="flex flex-col items-center gap-2 p-4 rounded-2xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                className="flex flex-col items-center gap-2 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
               >
                 <div className={`w-10 h-10 ${action.bg} ${action.color} rounded-xl flex items-center justify-center`}>
                   <action.icon className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold text-stone-600 dark:text-stone-400">{action.label}</span>
+                <span className="text-[10px] font-bold text-slate-700 dark:text-slate-600">{action.label}</span>
               </button>
             ))}
           </div>
         </div>
 
         {/* School Contact */}
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">School Contact</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-4">School Contact</h3>
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-stone-50 dark:bg-stone-800 rounded-lg flex items-center justify-center text-stone-400 dark:text-stone-500">
+              <div className="w-8 h-8 bg-slate-50 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-600">
                 <School className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] font-bold text-stone-800 dark:text-stone-100">Main Office</p>
-                <p className="text-[10px] text-stone-500 dark:text-stone-400">+1 (555) 123-4567</p>
+                <p className="text-[10px] font-bold text-slate-900 dark:text-slate-100">Main Office</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-600">+1 (555) 123-4567</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-stone-50 dark:bg-stone-800 rounded-lg flex items-center justify-center text-stone-400 dark:text-stone-500">
+              <div className="w-8 h-8 bg-slate-50 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-600">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] font-bold text-stone-800 dark:text-stone-100">Support Email</p>
-                <p className="text-[10px] text-stone-500 dark:text-stone-400">support@edusmart.tech</p>
+                <p className="text-[10px] font-bold text-slate-900 dark:text-slate-100">Support Email</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-600">support@edusmart.tech</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Notice Board */}
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Notice Board</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+          <h3 className="text-sm font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-4">Notice Board</h3>
           <div className="space-y-4">
             <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-900/30">
               <p className="text-xs font-bold text-blue-600 dark:text-blue-400 mb-1">Annual Sports Day</p>
@@ -4120,7 +4158,7 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Smart Transport</h3>
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Smart Transport</h3>
           <button 
             onClick={handleAddRoute}
             className="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 dark:shadow-none"
@@ -4130,11 +4168,11 @@ function AppContent() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 min-h-[400px] relative overflow-hidden">
-            <div className="absolute inset-0 bg-stone-50 dark:bg-stone-950 flex items-center justify-center">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 min-h-[400px] relative overflow-hidden">
+            <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
               <div className="text-center opacity-20">
-                <School className="w-32 h-32 mx-auto mb-4 dark:text-stone-100" />
-                <p className="font-bold text-2xl uppercase tracking-widest dark:text-stone-100">Live Map Simulation</p>
+                <School className="w-32 h-32 mx-auto mb-4 dark:text-slate-100" />
+                <p className="font-bold text-2xl uppercase tracking-widest dark:text-slate-100">Live Map Simulation</p>
               </div>
               {/* Simulated Bus Markers */}
               <motion.div 
@@ -4152,16 +4190,16 @@ function AppContent() {
                 <School className="w-4 h-4" />
               </motion.div>
             </div>
-            <div className="absolute bottom-6 left-6 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md p-4 rounded-2xl border border-white dark:border-stone-800 shadow-xl">
-              <p className="text-xs font-bold text-stone-800 dark:text-stone-100 mb-2">Live Tracking</p>
+            <div className="absolute bottom-6 left-6 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md p-4 rounded-2xl border border-white dark:border-slate-900 shadow-xl">
+              <p className="text-xs font-bold text-slate-900 dark:text-slate-100 mb-2">Live Tracking</p>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-600 rounded-full" />
-                  <span className="text-[10px] font-bold text-stone-500 dark:text-stone-400">BUS-01</span>
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-600">BUS-01</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-emerald-600 rounded-full" />
-                  <span className="text-[10px] font-bold text-stone-500 dark:text-stone-400">BUS-02</span>
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-600">BUS-02</span>
                 </div>
               </div>
             </div>
@@ -4169,9 +4207,9 @@ function AppContent() {
 
           <div className="space-y-4">
             {busRoutes.map(route => (
-              <div key={route.id} className="bg-white dark:bg-stone-900 p-4 rounded-2xl shadow-md border border-stone-100 dark:border-stone-800 group">
+              <div key={route.id} className="bg-white dark:bg-slate-950 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-900 group">
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold text-stone-800 dark:text-stone-100">{route.name}</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100">{route.name}</h4>
                   <div className="flex items-center gap-2">
                     <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
                       route.status === 'On Route' ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' :
@@ -4188,9 +4226,9 @@ function AppContent() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xs text-stone-500 dark:text-stone-400">Bus: <span className="font-bold text-stone-800 dark:text-stone-200">{route.bus}</span></p>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">Driver: <span className="font-bold text-stone-800 dark:text-stone-200">{route.driver}</span></p>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">Students: <span className="font-bold text-stone-800 dark:text-stone-200">{route.students}</span></p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600">Bus: <span className="font-bold text-slate-900 dark:text-slate-200">{route.bus}</span></p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600">Driver: <span className="font-bold text-slate-900 dark:text-slate-200">{route.driver}</span></p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600">Students: <span className="font-bold text-slate-900 dark:text-slate-200">{route.students}</span></p>
                 </div>
               </div>
             ))}
@@ -4206,7 +4244,7 @@ function AppContent() {
         <motion.div 
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white dark:bg-stone-900 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-stone-100 dark:border-stone-800"
+          className="bg-white dark:bg-slate-950 w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-900"
         >
           <div className="p-8 space-y-6">
             <div className="flex justify-between items-start">
@@ -4214,49 +4252,49 @@ function AppContent() {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
                   <School className="w-5 h-5" />
                 </div>
-                <span className="font-bold text-lg text-stone-800 dark:text-stone-100">EduSmart <span className="text-blue-600">Tech</span></span>
+                <span className="font-bold text-lg text-slate-900 dark:text-slate-100">EduSmart <span className="text-blue-600">Tech</span></span>
               </div>
               <div className="text-right">
-                <p className="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Receipt #</p>
-                <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{record.id}</p>
+                <p className="text-[10px] font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Receipt #</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{record.id}</p>
               </div>
             </div>
 
-            <div className="border-y border-stone-100 dark:border-stone-800 py-6 space-y-4">
+            <div className="border-y border-slate-100 dark:border-slate-900 py-6 space-y-4">
               <div className="flex justify-between">
-                <span className="text-xs text-stone-500 dark:text-stone-400 uppercase font-bold tracking-widest">Student Name</span>
-                <span className="text-sm font-bold text-stone-800 dark:text-stone-100">{record.student}</span>
+                <span className="text-xs text-slate-600 dark:text-slate-600 uppercase font-bold tracking-widest">Student Name</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{record.student}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-stone-500 dark:text-stone-400 uppercase font-bold tracking-widest">Class & Section</span>
-                <span className="text-sm font-bold text-stone-800 dark:text-stone-100">{record.class}</span>
+                <span className="text-xs text-slate-600 dark:text-slate-600 uppercase font-bold tracking-widest">Class & Section</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{record.class}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-xs text-stone-500 dark:text-stone-400 uppercase font-bold tracking-widest">Payment Date</span>
-                <span className="text-sm font-bold text-stone-800 dark:text-stone-100">{record.date}</span>
+                <span className="text-xs text-slate-600 dark:text-slate-600 uppercase font-bold tracking-widest">Payment Date</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{record.date}</span>
               </div>
             </div>
 
-            <div className="bg-stone-50 dark:bg-stone-800 p-4 rounded-2xl flex justify-between items-center">
-              <span className="text-sm font-bold text-stone-800 dark:text-stone-100">Total Amount Paid</span>
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl flex justify-between items-center">
+              <span className="text-sm font-bold text-slate-900 dark:text-slate-100">Total Amount Paid</span>
               <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">${record.amount}</span>
             </div>
 
             <div className="text-center space-y-2">
-              <p className="text-[10px] text-stone-400 dark:text-stone-500">This is a computer-generated receipt and does not require a signature.</p>
+              <p className="text-[10px] text-slate-600 dark:text-slate-600">This is a computer-generated receipt and does not require a signature.</p>
               <div className="flex gap-2">
                 <button 
                   onClick={() => {
                     window.print();
                     onClose();
                   }}
-                  className="flex-1 py-3 bg-stone-800 dark:bg-stone-700 text-white rounded-xl font-bold text-sm hover:bg-stone-900 dark:hover:bg-stone-600 transition-all"
+                  className="flex-1 py-3 bg-slate-900 dark:bg-slate-800 text-white rounded-xl font-bold text-sm hover:bg-slate-950 dark:hover:bg-slate-700 transition-all"
                 >
                   Print Receipt
                 </button>
                 <button 
                   onClick={onClose}
-                  className="flex-1 py-3 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-xl font-bold text-sm hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                  className="flex-1 py-3 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-600 rounded-xl font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-800 transition-all"
                 >
                   Close
                 </button>
@@ -4320,8 +4358,8 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Leave Management</h3>
-            <p className="text-xs text-stone-400 dark:text-stone-500">Track and manage leave requests</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Leave Management</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-600">Track and manage leave requests</p>
           </div>
           {!isAdminOrManagement && (
             <button 
@@ -4335,20 +4373,20 @@ function AppContent() {
 
         <div className="grid grid-cols-1 gap-4">
           {leaveRequests.length === 0 ? (
-            <div className="bg-white dark:bg-stone-900 p-12 rounded-3xl border border-dashed border-stone-200 dark:border-stone-800 text-center">
-              <p className="text-stone-400 dark:text-stone-500">No leave requests found.</p>
+            <div className="bg-white dark:bg-slate-950 p-12 rounded-3xl border border-dashed border-slate-200 dark:border-slate-900 text-center">
+              <p className="text-slate-600 dark:text-slate-600">No leave requests found.</p>
             </div>
           ) : (
             leaveRequests.map(request => (
-              <div key={request.id} className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div key={request.id} className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center text-stone-400 dark:text-stone-500">
+                  <div className="w-12 h-12 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center text-slate-600 dark:text-slate-600">
                     <Calendar className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-stone-800 dark:text-stone-100">{request.userName}</h4>
-                    <p className="text-xs text-stone-400 dark:text-stone-500">{request.role} • {request.startDate} to {request.endDate}</p>
-                    <p className="text-sm text-stone-600 dark:text-stone-400 mt-1 italic">"{request.reason}"</p>
+                    <h4 className="font-bold text-slate-900 dark:text-slate-100">{request.userName}</h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">{request.role} • {request.startDate} to {request.endDate}</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-600 mt-1 italic">"{request.reason}"</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -4393,15 +4431,15 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Alert Center</h3>
-            <p className="text-xs text-stone-400 dark:text-stone-500">Send and monitor system-wide alerts</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Alert Center</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-600">Send and monitor system-wide alerts</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {(loggedInUser?.role === 'Super Admin' || loggedInUser?.role === 'Management' || loggedInUser?.role === 'Teacher' || loggedInUser?.role === 'Security') && (
-            <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
-              <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">Send New Alert</h4>
+            <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
+              <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">Send New Alert</h4>
               <div className="space-y-4">
                 <button 
                   onClick={() => sendAlert('Emergency', 'Medical Emergency in Block B')}
@@ -4431,7 +4469,7 @@ function AppContent() {
                 </button>
                 <button 
                   onClick={() => sendAlert('Incident', 'Suspicious activity near gate 2')}
-                  className="w-full bg-stone-800 dark:bg-stone-700 text-white p-4 rounded-2xl flex items-center justify-between hover:bg-stone-900 dark:hover:bg-stone-600 transition-all shadow-lg shadow-stone-100 dark:shadow-none"
+                  className="w-full bg-slate-900 dark:bg-slate-800 text-white p-4 rounded-2xl flex items-center justify-between hover:bg-slate-950 dark:hover:bg-slate-700 transition-all shadow-lg shadow-slate-100 dark:shadow-none"
                 >
                   <div className="flex items-center gap-3">
                     <ShieldCheck className="w-6 h-6" />
@@ -4446,17 +4484,17 @@ function AppContent() {
             </div>
           )}
 
-          <div className={`${(loggedInUser?.role === 'Super Admin' || loggedInUser?.role === 'Management' || loggedInUser?.role === 'Teacher' || loggedInUser?.role === 'Security') ? '' : 'md:col-span-2'} bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800`}>
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-4">Active Alerts</h4>
+          <div className={`${(loggedInUser?.role === 'Super Admin' || loggedInUser?.role === 'Management' || loggedInUser?.role === 'Teacher' || loggedInUser?.role === 'Security') ? '' : 'md:col-span-2'} bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900`}>
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-4">Active Alerts</h4>
             <div className="space-y-3">
               {filteredAlerts.length === 0 ? (
-                <p className="text-center text-stone-400 dark:text-stone-500 py-8 italic">No active alerts.</p>
+                <p className="text-center text-slate-600 dark:text-slate-600 py-8 italic">No active alerts.</p>
               ) : (
                 filteredAlerts.map(alert => (
                   <div key={alert.id} className={`p-4 rounded-2xl border ${
                     alert.type === 'Emergency' ? 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800 text-red-700 dark:text-red-400' :
                     alert.type === 'Fire' ? 'bg-orange-50 dark:bg-orange-900/20 border-orange-100 dark:border-orange-800 text-orange-700 dark:text-orange-400' :
-                    'bg-stone-50 dark:bg-stone-800 border-stone-100 dark:border-stone-700 text-stone-700 dark:text-stone-300'
+                    'bg-slate-50 dark:bg-slate-900 border-slate-100 dark:border-slate-800 text-slate-800 dark:text-slate-300'
                   }`}>
                     <div className="flex justify-between items-start mb-1">
                       <p className="font-bold text-sm">{alert.type} Alert</p>
@@ -4486,8 +4524,8 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Smart Security</h3>
-            <p className="text-xs text-stone-400 dark:text-stone-500">Real-time surveillance and emergency protocols</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Smart Security</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-600">Real-time surveillance and emergency protocols</p>
           </div>
           <div className="flex gap-2">
             <button 
@@ -4507,19 +4545,19 @@ function AppContent() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {cameras.map(cam => (
-            <div key={cam.id} className="bg-stone-900 rounded-3xl overflow-hidden aspect-video relative group border-2 border-stone-800">
+            <div key={cam.id} className="bg-slate-950 rounded-3xl overflow-hidden aspect-video relative group border-2 border-slate-900">
               <div className="absolute inset-0 flex items-center justify-center">
                 {cam.status === 'Active' ? (
-                  <div className="w-full h-full bg-stone-800 flex items-center justify-center">
+                  <div className="w-full h-full bg-slate-900 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mx-auto mb-2" />
-                      <p className="text-[10px] text-stone-500 font-bold uppercase tracking-widest">Live Feed: {cam.location}</p>
+                      <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">Live Feed: {cam.location}</p>
                     </div>
                   </div>
                 ) : (
                   <div className="text-center">
-                    <Plus className="w-8 h-8 text-stone-700 rotate-45 mx-auto mb-2" />
-                    <p className="text-[10px] text-stone-700 font-bold uppercase tracking-widest">Feed Offline</p>
+                    <Plus className="w-8 h-8 text-slate-800 rotate-45 mx-auto mb-2" />
+                    <p className="text-[10px] text-slate-800 font-bold uppercase tracking-widest">Feed Offline</p>
                   </div>
                 )}
               </div>
@@ -4533,20 +4571,20 @@ function AppContent() {
           ))}
         </div>
 
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-          <h3 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Recent Security Logs</h3>
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Recent Security Logs</h3>
           <div className="space-y-4">
             {[
               { time: '10:45 AM', event: 'Visitor Entry', details: 'Guest ID #V-902 checked in at Main Gate.', status: 'Normal' },
               { time: '09:15 AM', event: 'Staff Arrival', details: 'All staff members verified via Biometric.', status: 'Normal' },
               { time: '08:00 AM', event: 'System Check', details: 'All security protocols active and verified.', status: 'Normal' },
             ].map((log, i) => (
-              <div key={i} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700">
+              <div key={i} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-4">
-                  <span className="text-xs font-bold text-stone-400 dark:text-stone-500">{log.time}</span>
+                  <span className="text-xs font-bold text-slate-600 dark:text-slate-600">{log.time}</span>
                   <div>
-                    <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{log.event}</p>
-                    <p className="text-xs text-stone-500 dark:text-stone-400">{log.details}</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{log.event}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">{log.details}</p>
                   </div>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">{log.status}</span>
@@ -4618,8 +4656,8 @@ function AppContent() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Fee Management</h3>
-            <p className="text-xs text-stone-400 dark:text-stone-500">Track payments and generate receipts</p>
+            <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Fee Management</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-600">Track payments and generate receipts</p>
           </div>
           <div className="flex gap-2">
             {activeTab === 'students' && selectedFeeIds.length > 0 && (
@@ -4653,16 +4691,16 @@ function AppContent() {
           </div>
         </div>
 
-        <div className="flex gap-4 border-b border-stone-200 dark:border-stone-800">
+        <div className="flex gap-4 border-b border-slate-200 dark:border-slate-900">
           <button 
             onClick={() => setActiveTab('records')}
-            className={`pb-2 px-1 text-sm font-bold ${activeTab === 'records' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-stone-500'}`}
+            className={`pb-2 px-1 text-sm font-bold ${activeTab === 'records' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-600'}`}
           >
             Fee Records
           </button>
           <button 
             onClick={() => setActiveTab('students')}
-            className={`pb-2 px-1 text-sm font-bold ${activeTab === 'students' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-stone-500'}`}
+            className={`pb-2 px-1 text-sm font-bold ${activeTab === 'students' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-600'}`}
           >
             Student Fee Status
           </button>
@@ -4671,43 +4709,43 @@ function AppContent() {
         {activeTab === 'records' ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <p className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Total Expected</p>
-                <p className="text-3xl font-bold text-stone-800 dark:text-stone-100">${totalExpected.toLocaleString()}</p>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+                <p className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-2">Total Expected</p>
+                <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">${totalExpected.toLocaleString()}</p>
               </div>
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <p className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Total Collected</p>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+                <p className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-2">Total Collected</p>
                 <p className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">${totalCollected.toLocaleString()}</p>
               </div>
-              <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-                <p className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-2">Pending Dues</p>
+              <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+                <p className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest mb-2">Pending Dues</p>
                 <p className="text-3xl font-bold text-red-600 dark:text-red-400">${pendingDues.toLocaleString()}</p>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+            <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-stone-50 dark:bg-stone-800 border-b border-stone-100 dark:border-stone-700">
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Student</th>
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Class</th>
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Amount</th>
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Status</th>
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Date</th>
-                    <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Action</th>
+                  <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Student</th>
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Class</th>
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Amount</th>
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Status</th>
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Date</th>
+                    <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {feeRecords.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="p-8 text-center text-stone-400 dark:text-stone-500 italic">No fee records found.</td>
+                      <td colSpan={6} className="p-8 text-center text-slate-600 dark:text-slate-600 italic">No fee records found.</td>
                     </tr>
                   ) : (
                     feeRecords.map(record => (
-                      <tr key={record.id} className="border-b border-stone-50 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
-                        <td className="p-4 font-bold text-stone-800 dark:text-stone-100">{record.student}</td>
-                        <td className="p-4 text-stone-600 dark:text-stone-400">{record.class}</td>
-                        <td className="p-4 font-bold text-stone-800 dark:text-stone-100">${record.amount}</td>
+                      <tr key={record.id} className="border-b border-slate-50 dark:border-slate-900 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                        <td className="p-4 font-bold text-slate-900 dark:text-slate-100">{record.student}</td>
+                        <td className="p-4 text-slate-700 dark:text-slate-600">{record.class}</td>
+                        <td className="p-4 font-bold text-slate-900 dark:text-slate-100">${record.amount}</td>
                         <td className="p-4">
                           <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
                             record.status === 'Paid' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400' : 'bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400'
@@ -4715,7 +4753,7 @@ function AppContent() {
                             {record.status}
                           </span>
                         </td>
-                        <td className="p-4 text-stone-500 dark:text-stone-400">{record.date}</td>
+                        <td className="p-4 text-slate-600 dark:text-slate-600">{record.date}</td>
                         <td className="p-4">
                           <button 
                             onClick={() => printReceipt(record)}
@@ -4732,10 +4770,10 @@ function AppContent() {
             </div>
           </>
         ) : (
-          <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+          <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-stone-50 dark:bg-stone-800 border-b border-stone-100 dark:border-stone-700">
+                <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
                   <th className="p-4">
                     <input 
                       type="checkbox"
@@ -4749,16 +4787,16 @@ function AppContent() {
                       checked={selectedFeeIds.length === students.length && students.length > 0}
                     />
                   </th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Student</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Class</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Total Fee</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Paid</th>
-                  <th className="p-4 text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Status</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Student</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Class</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Total Fee</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Paid</th>
+                  <th className="p-4 text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {students.map(student => (
-                  <tr key={student.student_id} className="border-b border-stone-50 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
+                  <tr key={student.student_id} className="border-b border-slate-50 dark:border-slate-900 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
                     <td className="p-4">
                       <input 
                         type="checkbox"
@@ -4772,10 +4810,10 @@ function AppContent() {
                         }}
                       />
                     </td>
-                    <td className="p-4 font-bold text-stone-800 dark:text-stone-100">{student.name}</td>
-                    <td className="p-4 text-stone-600 dark:text-stone-400">{student.class}-{student.section}</td>
-                    <td className="p-4 font-bold text-stone-800 dark:text-stone-100">${student.fees.total}</td>
-                    <td className="p-4 font-bold text-stone-800 dark:text-stone-100">${student.fees.paid}</td>
+                    <td className="p-4 font-bold text-slate-900 dark:text-slate-100">{student.name}</td>
+                    <td className="p-4 text-slate-700 dark:text-slate-600">{student.class}-{student.section}</td>
+                    <td className="p-4 font-bold text-slate-900 dark:text-slate-100">${student.fees.total}</td>
+                    <td className="p-4 font-bold text-slate-900 dark:text-slate-100">${student.fees.paid}</td>
                     <td className="p-4">
                       <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
                         student.fees.status === 'Paid' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400' : 'bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400'
@@ -4797,58 +4835,58 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Contact & Support</h3>
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Contact & Support</h3>
           <button className="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 dark:shadow-none">
             <Plus className="w-4 h-4" /> New Inquiry
           </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 space-y-6">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">School Contact Information</h4>
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 space-y-6">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">School Contact Information</h4>
             <div className="space-y-4">
-              <div className="flex items-center gap-4 p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700">
+              <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800">
                 <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center">
                   <School className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-stone-400 dark:text-stone-500 font-bold uppercase tracking-widest">Address</p>
-                  <p className="text-sm font-bold text-stone-800 dark:text-stone-100">123 Education Excellence Way, Springfield, IL</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600 font-bold uppercase tracking-widest">Address</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-slate-100">123 Education Excellence Way, Springfield, IL</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700">
+              <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800">
                 <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-stone-400 dark:text-stone-500 font-bold uppercase tracking-widest">Phone</p>
-                  <p className="text-sm font-bold text-stone-800 dark:text-stone-100">+1 (555) 123-4567</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600 font-bold uppercase tracking-widest">Phone</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-slate-100">+1 (555) 123-4567</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700">
+              <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800">
                 <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-stone-400 dark:text-stone-500 font-bold uppercase tracking-widest">Email</p>
-                  <p className="text-sm font-bold text-stone-800 dark:text-stone-100">support@edusmart.tech</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-600 font-bold uppercase tracking-widest">Email</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-slate-100">support@edusmart.tech</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Recent Support Tickets</h4>
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6">Recent Support Tickets</h4>
             <div className="space-y-4">
               {[
                 { id: 'T-101', subject: 'Login Issue', user: 'James Smith', status: 'Resolved' },
                 { id: 'T-102', subject: 'Fee Payment Error', user: 'Maria Garcia', status: 'Pending' },
                 { id: 'T-103', subject: 'Transport Route Query', user: 'Rahul Patel', status: 'In Progress' },
               ].map(ticket => (
-                <div key={ticket.id} className="flex items-center justify-between p-4 border-b border-stone-50 dark:border-stone-800 last:border-0 hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors rounded-xl">
+                <div key={ticket.id} className="flex items-center justify-between p-4 border-b border-slate-50 dark:border-slate-900 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors rounded-xl">
                   <div>
-                    <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{ticket.subject}</p>
-                    <p className="text-xs text-stone-400 dark:text-stone-500">By {ticket.user} • {ticket.id}</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{ticket.subject}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">By {ticket.user} • {ticket.id}</p>
                   </div>
                   <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
                     ticket.status === 'Resolved' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400' :
@@ -4888,7 +4926,7 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">Management Members</h3>
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">Management Members</h3>
           <button 
             onClick={handleAddMember}
             className="bg-blue-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 dark:shadow-none"
@@ -4904,14 +4942,14 @@ function AppContent() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 flex items-center gap-4 group"
+              className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 flex items-center gap-4 group"
             >
-              <div className="w-12 h-12 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center text-stone-400 dark:text-stone-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+              <div className="w-12 h-12 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center text-slate-600 dark:text-slate-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                 <UserCog className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-stone-800 dark:text-stone-100">{member.name}</h4>
-                <p className="text-xs text-stone-400 dark:text-stone-500">{member.email}</p>
+                <h4 className="font-bold text-slate-900 dark:text-slate-100">{member.name}</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-600">{member.email}</p>
               </div>
             </motion.div>
           ))}
@@ -4924,38 +4962,38 @@ function AppContent() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-stone-950 dark:text-stone-50">System Settings</h3>
-          <button className="bg-stone-800 dark:bg-stone-700 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-stone-900 dark:hover:bg-stone-600 transition-all shadow-lg shadow-stone-100 dark:shadow-none">
+          <h3 className="text-xl font-bold text-slate-950 dark:text-slate-50">System Settings</h3>
+          <button className="bg-slate-900 dark:bg-slate-800 text-white px-4 py-2 rounded-xl flex items-center gap-2 hover:bg-slate-950 dark:hover:bg-slate-700 transition-all shadow-lg shadow-slate-100 dark:shadow-none">
             <Plus className="w-4 h-4" /> Save Changes
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 space-y-6">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">General Branding</h4>
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 space-y-6">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">General Branding</h4>
             <div className="space-y-4">
               <div>
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">School Name</label>
-                <input type="text" defaultValue="EduSmart Tech" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-stone-800 dark:text-stone-100" />
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest block mb-2">School Name</label>
+                <input type="text" defaultValue="EduSmart Tech" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 dark:text-slate-100" />
               </div>
               <div>
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">Tagline</label>
-                <input type="text" defaultValue="Enterprise Edition 2.0" className="w-full p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-stone-800 dark:text-stone-100" />
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest block mb-2">Tagline</label>
+                <input type="text" defaultValue="Enterprise Edition 2.0" className="w-full p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-slate-900 dark:text-slate-100" />
               </div>
               <div>
-                <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest block mb-2">Primary Color</label>
+                <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest block mb-2">Primary Color</label>
                 <div className="flex gap-2">
                   {['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'].map(color => (
-                    <button key={color} className="w-8 h-8 rounded-full border-2 border-white dark:border-stone-800 shadow-sm" style={{ backgroundColor: color }} />
+                    <button key={color} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 shadow-sm" style={{ backgroundColor: color }} />
                   ))}
                 </div>
               </div>
             </div>
 
             {loggedInUser?.role === 'Super Admin' && (
-              <div className="pt-6 border-t border-stone-100 dark:border-stone-800 space-y-4">
-                <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">System Operations</h4>
-                <p className="text-sm text-stone-500 dark:text-stone-400">Initialize default credentials and system data in the Firebase database.</p>
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-900 space-y-4">
+                <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">System Operations</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-600">Initialize default credentials and system data in the Firebase database.</p>
                 <button 
                   onClick={bootstrapDatabase}
                   className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-100 dark:shadow-none"
@@ -4966,24 +5004,24 @@ function AppContent() {
             )}
           </div>
 
-          <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 space-y-6">
-            <h4 className="text-lg font-bold text-stone-800 dark:text-stone-100">System Information</h4>
+          <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 space-y-6">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-slate-100">System Information</h4>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                <span className="text-stone-500 dark:text-stone-400">Version</span>
-                <span className="font-bold text-stone-800 dark:text-stone-100">2.0.4-stable</span>
+              <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                <span className="text-slate-600 dark:text-slate-600">Version</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">2.0.4-stable</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                <span className="text-stone-500 dark:text-stone-400">Database Status</span>
+              <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                <span className="text-slate-600 dark:text-slate-600">Database Status</span>
                 <span className="text-emerald-600 dark:text-emerald-400 font-bold">Connected</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                <span className="text-stone-500 dark:text-stone-400">Last Backup</span>
-                <span className="text-stone-800 dark:text-stone-100 font-bold">Today, 04:00 AM</span>
+              <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                <span className="text-slate-600 dark:text-slate-600">Last Backup</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">Today, 04:00 AM</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-stone-500 dark:text-stone-400">Server Region</span>
-                <span className="text-stone-800 dark:text-stone-100 font-bold">Asia-Southeast1</span>
+                <span className="text-slate-600 dark:text-slate-600">Server Region</span>
+                <span className="text-slate-900 dark:text-slate-100 font-bold">Asia-Southeast1</span>
               </div>
             </div>
           </div>
@@ -5012,43 +5050,43 @@ function AppContent() {
     return (
       <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Attendance Summary</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Attendance Summary</h3>
             <div className="text-center space-y-2">
               <div className="text-4xl font-serif font-bold text-indigo-600 dark:text-indigo-400">{percentage.toFixed(1)}%</div>
-              <p className="text-stone-500 dark:text-stone-400 text-sm">Overall Attendance</p>
+              <p className="text-slate-600 dark:text-slate-600 text-sm">Overall Attendance</p>
             </div>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Present Days</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Present Days</h3>
             <div className="text-center space-y-2">
               <div className="text-4xl font-serif font-bold text-emerald-600 dark:text-emerald-400">{presentCount}</div>
-              <p className="text-stone-500 dark:text-stone-400 text-sm">Out of {totalCount} working days</p>
+              <p className="text-slate-600 dark:text-slate-600 text-sm">Out of {totalCount} working days</p>
             </div>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Absent Days</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Absent Days</h3>
             <div className="text-center space-y-2">
               <div className="text-4xl font-serif font-bold text-red-600 dark:text-red-400">{totalCount - presentCount}</div>
-              <p className="text-stone-500 dark:text-stone-400 text-sm">Total absences</p>
+              <p className="text-slate-600 dark:text-slate-600 text-sm">Total absences</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+        <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-stone-50 dark:bg-stone-800/50">
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Date</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Status</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Time</th>
+              <tr className="bg-slate-50 dark:bg-slate-900/50">
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Date</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Status</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Time</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-100 dark:divide-stone-800">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-900">
               {studentAttendance.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((record) => (
-                <tr key={record.id} className="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
+                <tr key={record.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
                   <td className="px-6 py-4">
-                    <span className="font-medium text-stone-800 dark:text-stone-200">{new Date(record.date).toLocaleDateString()}</span>
+                    <span className="font-medium text-slate-900 dark:text-slate-200">{new Date(record.date).toLocaleDateString()}</span>
                   </td>
                   <td className="px-6 py-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${
@@ -5059,7 +5097,7 @@ function AppContent() {
                       {record.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-stone-500 dark:text-stone-400 text-sm">
+                  <td className="px-6 py-4 text-slate-600 dark:text-slate-600 text-sm">
                     {record.timestamp ? new Date(record.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
                   </td>
                 </tr>
@@ -5075,22 +5113,22 @@ function AppContent() {
     return (
       <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Total Fees</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Total Fees</h3>
             <div className="text-center space-y-2">
-              <div className="text-4xl font-serif font-bold text-stone-800 dark:text-stone-100">${student.fees.total}</div>
-              <p className="text-stone-500 dark:text-stone-400 text-sm">Academic Year 2023-24</p>
+              <div className="text-4xl font-serif font-bold text-slate-900 dark:text-slate-100">${student.fees.total}</div>
+              <p className="text-slate-600 dark:text-slate-600 text-sm">Academic Year 2023-24</p>
             </div>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Paid Amount</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Paid Amount</h3>
             <div className="text-center space-y-2">
               <div className="text-4xl font-serif font-bold text-emerald-600 dark:text-emerald-400">${student.fees.paid}</div>
-              <p className="text-stone-500 dark:text-stone-400 text-sm">Successfully processed</p>
+              <p className="text-slate-600 dark:text-slate-600 text-sm">Successfully processed</p>
             </div>
           </div>
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Balance Due</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Balance Due</h3>
             <div className="text-center space-y-2">
               <div className="text-4xl font-serif font-bold text-red-600 dark:text-red-400">${student.fees.total - student.fees.paid}</div>
               <p className={`text-xs font-bold px-2 py-1 rounded-full inline-block ${
@@ -5102,9 +5140,9 @@ function AppContent() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
-          <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
-            <h3 className="font-bold text-stone-800 dark:text-stone-100">Payment History</h3>
+        <div className="bg-white dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 overflow-hidden">
+          <div className="p-6 border-b border-slate-100 dark:border-slate-900 flex justify-between items-center">
+            <h3 className="font-bold text-slate-900 dark:text-slate-100">Payment History</h3>
             {student.fees.status !== 'Paid' && (
               <button 
                 onClick={() => { setFeeModalStudent(student); setShowFeeModal(true); }}
@@ -5116,21 +5154,21 @@ function AppContent() {
           </div>
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-stone-50 dark:bg-stone-800/50">
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Receipt No</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Date</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Amount</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Method</th>
-                <th className="px-6 py-4 text-xs font-bold text-stone-400 uppercase tracking-widest">Action</th>
+              <tr className="bg-slate-50 dark:bg-slate-900/50">
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Receipt No</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Date</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Amount</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Method</th>
+                <th className="px-6 py-4 text-xs font-bold text-slate-600 uppercase tracking-widest">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-100 dark:divide-stone-800">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-900">
               {student.fees.history.map((payment) => (
-                <tr key={payment.id} className="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                  <td className="px-6 py-4 font-mono text-xs text-stone-500 dark:text-stone-400">{payment.receiptNo}</td>
-                  <td className="px-6 py-4 text-stone-800 dark:text-stone-200">{payment.date}</td>
-                  <td className="px-6 py-4 font-bold text-stone-800 dark:text-stone-100">${payment.amount}</td>
-                  <td className="px-6 py-4 text-stone-500 dark:text-stone-400">{payment.method}</td>
+                <tr key={payment.id} className="hover:bg-slate-50 dark:hover:bg-slate-900/30 transition-colors">
+                  <td className="px-6 py-4 font-mono text-xs text-slate-600 dark:text-slate-600">{payment.receiptNo}</td>
+                  <td className="px-6 py-4 text-slate-900 dark:text-slate-200">{payment.date}</td>
+                  <td className="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">${payment.amount}</td>
+                  <td className="px-6 py-4 text-slate-600 dark:text-slate-600">{payment.method}</td>
                   <td className="px-6 py-4">
                     <button 
                       onClick={() => setViewingReceipt(payment)}
@@ -5153,10 +5191,10 @@ function AppContent() {
     
     if (!route) {
       return (
-        <div className="bg-white dark:bg-stone-900 p-12 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 text-center">
-          <School className="w-16 h-16 text-stone-200 dark:text-stone-700 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-2">No Transport Assigned</h3>
-          <p className="text-stone-500 dark:text-stone-400">Please contact the school office for transport allocation.</p>
+        <div className="bg-white dark:bg-slate-950 p-12 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 text-center">
+          <School className="w-16 h-16 text-slate-200 dark:text-slate-800 mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">No Transport Assigned</h3>
+          <p className="text-slate-600 dark:text-slate-600">Please contact the school office for transport allocation.</p>
         </div>
       );
     }
@@ -5176,19 +5214,19 @@ function AppContent() {
     return (
       <div className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Bus Details</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Bus Details</h3>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                <span className="text-stone-500 dark:text-stone-400">Bus Number</span>
-                <span className="font-bold text-stone-800 dark:text-stone-100">{route.bus}</span>
+              <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                <span className="text-slate-600 dark:text-slate-600">Bus Number</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{route.bus}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                <span className="text-stone-500 dark:text-stone-400">Driver</span>
-                <span className="font-bold text-stone-800 dark:text-stone-100">{route.driver}</span>
+              <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                <span className="text-slate-600 dark:text-slate-600">Driver</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{route.driver}</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-stone-500 dark:text-stone-400">Status</span>
+                <span className="text-slate-600 dark:text-slate-600">Status</span>
                 <span className={`font-bold ${route.status === 'On Route' ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400'}`}>
                   {route.status}
                 </span>
@@ -5196,17 +5234,17 @@ function AppContent() {
             </div>
           </div>
 
-          <div className="md:col-span-2 bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-4">Route Stops</h3>
+          <div className="md:col-span-2 bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-4">Route Stops</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {stops.map((stop, i) => (
-                <div key={i} className="flex items-center gap-4 p-3 bg-stone-50 dark:bg-stone-800/50 rounded-2xl border border-stone-100 dark:border-stone-800">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${i === 0 ? 'bg-blue-600 text-white' : 'bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300'}`}>
+                <div key={i} className="flex items-center gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-900">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${i === 0 ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'}`}>
                     {i + 1}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-bold text-stone-800 dark:text-stone-200">{stop.name}</p>
-                    <p className="text-xs text-stone-400 dark:text-stone-500">{stop.time}</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-slate-200">{stop.name}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-600">{stop.time}</p>
                   </div>
                 </div>
               ))}
@@ -5214,14 +5252,14 @@ function AppContent() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 h-[500px] relative overflow-hidden">
+        <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 h-[500px] relative overflow-hidden">
           <div className="absolute top-6 left-6 z-10">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest bg-white/80 dark:bg-stone-900/80 backdrop-blur px-3 py-1 rounded-full border border-stone-100 dark:border-stone-800">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest bg-white/80 dark:bg-slate-950/80 backdrop-blur px-3 py-1 rounded-full border border-slate-100 dark:border-slate-900">
               Live Route Map - {route.name}
             </h3>
           </div>
           
-          <div className="absolute inset-0 bg-stone-50 dark:bg-stone-950">
+          <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950">
             {/* Grid background for map feel */}
             <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                  style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
@@ -5233,7 +5271,7 @@ function AppContent() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="0.5"
-                className="text-stone-200 dark:text-stone-800"
+                className="text-slate-200 dark:text-slate-900"
                 strokeDasharray="2 2"
               />
               <motion.path
@@ -5251,7 +5289,7 @@ function AppContent() {
                     cx={getX(stop.lng)}
                     cy={getY(stop.lat)}
                     r="1.5"
-                    className={i === 0 ? 'fill-blue-600' : 'fill-stone-400 dark:fill-stone-600'}
+                    className={i === 0 ? 'fill-blue-600' : 'fill-slate-500 dark:fill-slate-700'}
                   />
                   {/* Stop Marker Label */}
                   <g transform={`translate(${getX(stop.lng)}, ${getY(stop.lat)})`}>
@@ -5261,20 +5299,20 @@ function AppContent() {
                       width="20"
                       height="8"
                       rx="1"
-                      className="fill-white/90 dark:fill-stone-900/90 stroke-stone-200 dark:stroke-stone-700"
+                      className="fill-white/90 dark:fill-slate-950/90 stroke-slate-200 dark:stroke-slate-800"
                       strokeWidth="0.2"
                     />
                     <text
                       y="-9"
                       textAnchor="middle"
-                      className="text-[1.8px] font-bold fill-stone-800 dark:fill-stone-100"
+                      className="text-[1.8px] font-bold fill-slate-900 dark:fill-slate-100"
                     >
                       {stop.name}
                     </text>
                     <text
                       y="-6"
                       textAnchor="middle"
-                      className="text-[1.5px] fill-stone-500 dark:fill-stone-400 font-mono"
+                      className="text-[1.5px] fill-slate-500 dark:fill-slate-500 font-mono"
                     >
                       {stop.time}
                     </text>
@@ -5292,7 +5330,7 @@ function AppContent() {
                 >
                   <circle r="3" className="fill-blue-600 shadow-lg" />
                   <foreignObject x="-4" y="-4" width="8" height="8">
-                    <div className="w-full h-full flex items-center justify-center bg-blue-600 rounded-full text-white shadow-xl border-2 border-white dark:border-stone-900">
+                    <div className="w-full h-full flex items-center justify-center bg-blue-600 rounded-full text-white shadow-xl border-2 border-white dark:border-slate-950">
                       <Truck className="w-4 h-4" />
                     </div>
                   </foreignObject>
@@ -5301,9 +5339,9 @@ function AppContent() {
             </svg>
           </div>
 
-          <div className="absolute bottom-6 right-6 z-10 flex items-center gap-2 bg-white/80 dark:bg-stone-900/80 backdrop-blur px-4 py-2 rounded-2xl border border-stone-100 dark:border-stone-800">
+          <div className="absolute bottom-6 right-6 z-10 flex items-center gap-2 bg-white/80 dark:bg-slate-950/80 backdrop-blur px-4 py-2 rounded-2xl border border-slate-100 dark:border-slate-900">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-xs font-bold text-stone-800 dark:text-stone-100">Live Tracking Active</span>
+            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">Live Tracking Active</span>
           </div>
         </div>
       </div>
@@ -5340,17 +5378,17 @@ function AppContent() {
 
     return (
       <div className="space-y-8">
-        <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800 flex flex-col md:flex-row items-center gap-8">
-          <div className="w-32 h-32 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center overflow-hidden border-4 border-white dark:border-stone-700 shadow-xl">
+        <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900 flex flex-col md:flex-row items-center gap-8">
+          <div className="w-32 h-32 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl">
             {student.photo ? (
               <img src={student.photo} alt={student.name} className="w-full h-full object-cover" />
             ) : (
-              <UserIcon className="w-16 h-16 text-stone-300" />
+              <UserIcon className="w-16 h-16 text-slate-300" />
             )}
           </div>
           <div className="flex-1 text-center md:text-left space-y-2">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <h2 className="text-3xl font-serif font-bold text-stone-800 dark:text-stone-100">{student.name}</h2>
+              <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-slate-100">{student.name}</h2>
               <button
                 onClick={() => setViewingReportCard(student)}
                 className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-2xl text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 dark:shadow-none active:scale-95"
@@ -5366,9 +5404,9 @@ function AppContent() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest">Academic Performance</h3>
+              <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest">Academic Performance</h3>
               <div className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg text-xs font-bold">
                 GPA: {gpa}
               </div>
@@ -5377,10 +5415,10 @@ function AppContent() {
               {displayResults.map((item) => (
                 <div key={item.subject} className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="font-bold text-stone-800 dark:text-stone-200">{item.subject}</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-200">{item.subject}</span>
                     <span className="text-indigo-600 dark:text-indigo-400 font-bold">{item.grade}</span>
                   </div>
-                  <div className="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-slate-100 dark:bg-slate-900 rounded-full overflow-hidden">
                     <div className="h-full bg-indigo-600 rounded-full" style={{ width: `${item.score}%` }} />
                   </div>
                 </div>
@@ -5388,19 +5426,19 @@ function AppContent() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
-            <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-6">Recent Achievements</h3>
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
+            <h3 className="text-sm font-bold text-slate-600 uppercase tracking-widest mb-6">Recent Achievements</h3>
             <div className="space-y-4">
               {[
                 { title: 'Math Olympiad - 1st Place', date: 'Oct 2023', icon: Award, color: 'text-amber-500' },
                 { title: 'Perfect Attendance - Q1', date: 'Sep 2023', icon: CheckCircle2, color: 'text-emerald-500' },
                 { title: 'Best Project - Science Fair', date: 'Aug 2023', icon: Sparkles, color: 'text-blue-500' },
               ].map((achievement, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50">
+                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50">
                   <achievement.icon className={`w-8 h-8 ${achievement.color}`} />
                   <div>
-                    <p className="font-bold text-stone-800 dark:text-stone-200">{achievement.title}</p>
-                    <p className="text-xs text-stone-400">{achievement.date}</p>
+                    <p className="font-bold text-slate-900 dark:text-slate-200">{achievement.title}</p>
+                    <p className="text-xs text-slate-600">{achievement.date}</p>
                   </div>
                 </div>
               ))}
@@ -5447,7 +5485,7 @@ function AppContent() {
         }
       case 'Parent': {
         const student = getAssociatedStudent();
-        if (!student) return <div className="p-8 text-center text-stone-500">No linked student found.</div>;
+        if (!student) return <div className="p-8 text-center text-slate-600">No linked student found.</div>;
         
         switch (activeAdminTab) {
           case 'overview': return <ParentDashboard />;
@@ -5462,7 +5500,7 @@ function AppContent() {
       }
       case 'Student': {
         const student = getAssociatedStudent();
-        if (!student) return <div className="p-8 text-center text-stone-500">Student record not found.</div>;
+        if (!student) return <div className="p-8 text-center text-slate-600">Student record not found.</div>;
 
         switch (activeAdminTab) {
           case 'overview': return <StudentDashboard />;
@@ -5508,19 +5546,19 @@ function AppContent() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Profile Card */}
-            <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
-              <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Your Profile</h3>
+            <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
+              <h3 className="text-sm font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Your Profile</h3>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                  <span className="text-stone-500 dark:text-stone-400">Email</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-100">{loggedInUser.email}</span>
+                <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                  <span className="text-slate-600 dark:text-slate-600">Email</span>
+                  <span className="font-medium text-slate-900 dark:text-slate-100">{loggedInUser.email}</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-stone-50 dark:border-stone-800">
-                  <span className="text-stone-500 dark:text-stone-400">Role</span>
-                  <span className="font-medium text-stone-800 dark:text-stone-100">{loggedInUser.role}</span>
+                <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-900">
+                  <span className="text-slate-600 dark:text-slate-600">Role</span>
+                  <span className="font-medium text-slate-900 dark:text-slate-100">{loggedInUser.role}</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-stone-500 dark:text-stone-400">Status</span>
+                  <span className="text-slate-600 dark:text-slate-600">Status</span>
                   <span className="text-green-600 dark:text-emerald-400 font-bold flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 dark:bg-emerald-500 rounded-full animate-pulse" /> Active
                   </span>
@@ -5529,8 +5567,8 @@ function AppContent() {
             </div>
 
             {/* Quick Actions */}
-            <div className="md:col-span-2 bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800 space-y-4">
-              <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Quick Actions</h3>
+            <div className="md:col-span-2 bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900 space-y-4">
+              <h3 className="text-sm font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Quick Actions</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {[
                   { label: 'Attendance', icon: UserIcon, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
@@ -5538,11 +5576,11 @@ function AppContent() {
                   { label: 'Schedule', icon: BookIcon, color: 'text-orange-600', bg: 'bg-orange-50 dark:bg-orange-900/20' },
                   { label: 'Messages', icon: Users, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
                 ].map((action) => (
-                  <button key={action.label} className="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors group">
+                  <button key={action.label} className="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
                     <div className={`w-12 h-12 ${action.bg} ${action.color} rounded-xl flex items-center justify-center transition-transform group-hover:scale-110`}>
                       <action.icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-bold text-stone-600 dark:text-stone-400">{action.label}</span>
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-600">{action.label}</span>
                   </button>
                 ))}
               </div>
@@ -5574,9 +5612,9 @@ function AppContent() {
     };
 
     return (
-      <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
+      <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Academic Performance</h3>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Academic Performance</h3>
           <button 
             onClick={handlePredict}
             disabled={loading}
@@ -5594,14 +5632,14 @@ function AppContent() {
 
         <div className="space-y-4">
           {studentGrades.map(item => (
-            <div key={item.id} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+            <div key={item.id} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl">
               <div>
-                <p className="font-bold text-stone-800 dark:text-stone-200">{item.subject}</p>
-                <p className="text-xs text-stone-400 dark:text-stone-500">{item.examName}</p>
+                <p className="font-bold text-slate-900 dark:text-slate-200">{item.subject}</p>
+                <p className="text-xs text-slate-600 dark:text-slate-600">{item.examName}</p>
               </div>
               <div className="text-right">
                 <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{item.grade}</p>
-                <p className="text-[10px] text-stone-400 dark:text-stone-500 font-bold">{item.marksObtained}%</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-600 font-bold">{item.marksObtained}%</p>
               </div>
             </div>
           ))}
@@ -5611,14 +5649,14 @@ function AppContent() {
   };
 
   const StudentAttendance = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Attendance History</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Attendance History</h3>
       <div className="space-y-4">
         {attendanceRecords.filter(r => r.student_id === students.find(s => s.email === loggedInUser?.email)?.student_id).map(record => (
-          <div key={record.id} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+          <div key={record.id} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl">
             <div>
-              <p className="font-bold text-stone-800 dark:text-stone-200">{record.date}</p>
-              <p className="text-xs text-stone-400 dark:text-stone-500">{new Date(record.timestamp).toLocaleTimeString()}</p>
+              <p className="font-bold text-slate-900 dark:text-slate-200">{record.date}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-600">{new Date(record.timestamp).toLocaleTimeString()}</p>
             </div>
             <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 rounded-full text-[10px] font-bold uppercase">
               {record.status}
@@ -5630,24 +5668,24 @@ function AppContent() {
   );
 
   const StudentFees = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Fee Details</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Fee Details</h3>
       <div className="space-y-6">
         <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-100 dark:border-blue-800">
           <p className="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mb-1">Current Balance</p>
-          <h4 className="text-3xl font-bold text-stone-800 dark:text-stone-100">$0.00</h4>
-          <p className="text-xs text-stone-400 dark:text-stone-500 mt-2">All dues are cleared for current term.</p>
+          <h4 className="text-3xl font-bold text-slate-900 dark:text-slate-100">$0.00</h4>
+          <p className="text-xs text-slate-600 dark:text-slate-600 mt-2">All dues are cleared for current term.</p>
         </div>
         <div className="space-y-3">
-          <p className="text-sm font-bold text-stone-800 dark:text-stone-200">Payment History</p>
+          <p className="text-sm font-bold text-slate-900 dark:text-slate-200">Payment History</p>
           {[
             { date: '2026-02-15', amount: '$1,200', method: 'Credit Card', status: 'Success' },
             { date: '2026-01-10', amount: '$1,200', method: 'Bank Transfer', status: 'Success' },
           ].map((p, i) => (
-            <div key={i} className="flex items-center justify-between p-4 border border-stone-100 dark:border-stone-800 rounded-2xl">
+            <div key={i} className="flex items-center justify-between p-4 border border-slate-100 dark:border-slate-900 rounded-2xl">
               <div>
-                <p className="text-sm font-bold text-stone-800 dark:text-stone-200">{p.amount}</p>
-                <p className="text-[10px] text-stone-400 dark:text-stone-500">{p.date} • {p.method}</p>
+                <p className="text-sm font-bold text-slate-900 dark:text-slate-200">{p.amount}</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-600">{p.date} • {p.method}</p>
               </div>
               <span className="text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase">{p.status}</span>
             </div>
@@ -5658,16 +5696,16 @@ function AppContent() {
   );
 
   const FinancialReports = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Financial Reports</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Financial Reports</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {['Monthly Revenue', 'Expense Summary', 'Fee Collection Report', 'Salary Disbursement'].map(report => (
-          <button key={report} className="p-6 text-left bg-stone-50 dark:bg-stone-800/50 rounded-3xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
-            <div className="w-12 h-12 bg-white dark:bg-stone-900 rounded-2xl flex items-center justify-center mb-4 shadow-sm group-hover:text-blue-600 dark:group-hover:text-blue-400">
+          <button key={report} className="p-6 text-left bg-slate-50 dark:bg-slate-900/50 rounded-3xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
+            <div className="w-12 h-12 bg-white dark:bg-slate-950 rounded-2xl flex items-center justify-center mb-4 shadow-sm group-hover:text-blue-600 dark:group-hover:text-blue-400">
               <FileText className="w-6 h-6" />
             </div>
-            <p className="font-bold text-stone-800 dark:text-stone-200">{report}</p>
-            <p className="text-xs text-stone-400 dark:text-stone-500 mt-1">Generate and download PDF</p>
+            <p className="font-bold text-slate-900 dark:text-slate-200">{report}</p>
+            <p className="text-xs text-slate-600 dark:text-slate-600 mt-1">Generate and download PDF</p>
           </button>
         ))}
       </div>
@@ -5675,23 +5713,23 @@ function AppContent() {
   );
 
   const SecurityLogs = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Entry/Exit Logs</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Entry/Exit Logs</h3>
       <div className="space-y-4">
         {[
           { time: '08:15 AM', person: 'John Doe (Student)', action: 'Entry', gate: 'Main Gate' },
           { time: '08:10 AM', person: 'Sarah Smith (Teacher)', action: 'Entry', gate: 'Staff Gate' },
           { time: '07:55 AM', person: 'Mike Wilson (Security)', action: 'Entry', gate: 'Main Gate' },
         ].map((log, i) => (
-          <div key={i} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+          <div key={i} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl">
             <div className="flex items-center gap-4">
               <div className={`w-2 h-2 rounded-full ${log.action === 'Entry' ? 'bg-emerald-500' : 'bg-rose-500'}`} />
               <div>
-                <p className="font-bold text-stone-800 dark:text-stone-200">{log.person}</p>
-                <p className="text-xs text-stone-400 dark:text-stone-500">{log.gate}</p>
+                <p className="font-bold text-slate-900 dark:text-slate-200">{log.person}</p>
+                <p className="text-xs text-slate-600 dark:text-slate-600">{log.gate}</p>
               </div>
             </div>
-            <p className="text-sm font-mono font-bold text-stone-600 dark:text-stone-400">{log.time}</p>
+            <p className="text-sm font-mono font-bold text-slate-700 dark:text-slate-600">{log.time}</p>
           </div>
         ))}
       </div>
@@ -5699,8 +5737,8 @@ function AppContent() {
   );
 
   const StockManagement = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Stock Inventory</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Stock Inventory</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[
           { item: 'A4 Paper Bundles', stock: 45, status: 'In Stock' },
@@ -5708,17 +5746,17 @@ function AppContent() {
           { item: 'Cleaning Supplies', stock: 8, status: 'Critical' },
           { item: 'Printer Ink', stock: 24, status: 'In Stock' },
         ].map((item, i) => (
-          <div key={i} className="p-4 border border-stone-100 dark:border-stone-800 rounded-2xl">
+          <div key={i} className="p-4 border border-slate-100 dark:border-slate-900 rounded-2xl">
             <div className="flex justify-between items-start mb-2">
-              <p className="font-bold text-stone-800 dark:text-stone-200">{item.item}</p>
+              <p className="font-bold text-slate-900 dark:text-slate-200">{item.item}</p>
               <span className={`text-[10px] font-bold uppercase px-2 py-1 rounded-lg ${
                 item.status === 'In Stock' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400' :
                 item.status === 'Low Stock' ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400' :
                 'bg-rose-100 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400'
               }`}>{item.status}</span>
             </div>
-            <p className="text-2xl font-bold text-stone-800 dark:text-stone-100">{item.stock}</p>
-            <p className="text-xs text-stone-400 dark:text-stone-500">Units available</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{item.stock}</p>
+            <p className="text-xs text-slate-600 dark:text-slate-600">Units available</p>
           </div>
         ))}
       </div>
@@ -5726,20 +5764,20 @@ function AppContent() {
   );
 
   const PurchaseOrders = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Purchase Orders</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Purchase Orders</h3>
       <div className="space-y-4">
         {[
           { id: 'PO-9921', vendor: 'Office Depot', date: '2026-03-10', total: '$450.00', status: 'Delivered' },
           { id: 'PO-9922', vendor: 'Tech Solutions', date: '2026-03-15', total: '$1,200.00', status: 'Pending' },
         ].map((po, i) => (
-          <div key={i} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+          <div key={i} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl">
             <div>
-              <p className="font-bold text-stone-800 dark:text-stone-200">{po.vendor}</p>
-              <p className="text-xs text-stone-400 dark:text-stone-500">{po.id} • {po.date}</p>
+              <p className="font-bold text-slate-900 dark:text-slate-200">{po.vendor}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-600">{po.id} • {po.date}</p>
             </div>
             <div className="text-right">
-              <p className="font-bold text-stone-800 dark:text-stone-200">{po.total}</p>
+              <p className="font-bold text-slate-900 dark:text-slate-200">{po.total}</p>
               <p className={`text-[10px] font-bold uppercase ${po.status === 'Delivered' ? 'text-emerald-600 dark:text-emerald-400' : 'text-yellow-600 dark:text-yellow-400'}`}>{po.status}</p>
             </div>
           </div>
@@ -5749,20 +5787,20 @@ function AppContent() {
   );
 
   const VisitorLog = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Visitor Management</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Visitor Management</h3>
       <div className="space-y-4">
         {[
           { name: 'Robert Fox', purpose: 'Parent Meeting', time: '10:30 AM', status: 'Checked In' },
           { name: 'Jane Cooper', purpose: 'Vendor Visit', time: '11:15 AM', status: 'Expected' },
         ].map((v, i) => (
-          <div key={i} className="flex items-center justify-between p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl">
+          <div key={i} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl">
             <div>
-              <p className="font-bold text-stone-800 dark:text-stone-100">{v.name}</p>
-              <p className="text-xs text-stone-400">{v.purpose}</p>
+              <p className="font-bold text-slate-900 dark:text-slate-100">{v.name}</p>
+              <p className="text-xs text-slate-600">{v.purpose}</p>
             </div>
             <div className="text-right">
-              <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{v.time}</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{v.time}</p>
               <p className="text-[10px] font-bold text-blue-600 uppercase">{v.status}</p>
             </div>
           </div>
@@ -5772,16 +5810,16 @@ function AppContent() {
   );
 
   const AdmissionsManagement = () => (
-    <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
-      <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100 mb-6">Admissions Overview</h3>
+    <div className="bg-white dark:bg-slate-950 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-900">
+      <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Admissions Overview</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {[
           { label: 'New Enquiries', count: 24, color: 'text-blue-600' },
           { label: 'Interviews', count: 8, color: 'text-purple-600' },
           { label: 'Confirmed', count: 12, color: 'text-emerald-600' },
         ].map(stat => (
-          <div key={stat.label} className="p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl">
-            <p className="text-xs text-stone-400 font-bold uppercase mb-1">{stat.label}</p>
+          <div key={stat.label} className="p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl">
+            <p className="text-xs text-slate-600 font-bold uppercase mb-1">{stat.label}</p>
             <p className={`text-2xl font-bold ${stat.color}`}>{stat.count}</p>
           </div>
         ))}
@@ -5820,30 +5858,30 @@ function AppContent() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800"
+              className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-12 h-12 ${kpi.bg} ${kpi.color} rounded-2xl flex items-center justify-center`}>
                   <kpi.icon className="w-6 h-6" />
                 </div>
-                <span className={`text-xs font-bold ${kpi.trend.includes('+') ? 'text-emerald-500' : 'text-stone-400'}`}>
+                <span className={`text-xs font-bold ${kpi.trend.includes('+') ? 'text-emerald-500' : 'text-slate-600'}`}>
                   {kpi.trend}
                 </span>
               </div>
-              <p className="text-2xl font-bold text-stone-800 dark:text-stone-100">{kpi.value}</p>
-              <p className="text-xs text-stone-400 font-bold uppercase tracking-widest">{kpi.label}</p>
+              <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{kpi.value}</p>
+              <p className="text-xs text-slate-600 font-bold uppercase tracking-widest">{kpi.label}</p>
             </motion.div>
           ))}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Attendance Trends */}
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-bold text-stone-800 dark:text-stone-100 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-blue-500" /> Attendance Trends
               </h3>
-              <span className="text-xs text-stone-400 font-bold">Today: Mar 14, 2026</span>
+              <span className="text-xs text-slate-600 font-bold">Today: Mar 14, 2026</span>
             </div>
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -5872,12 +5910,12 @@ function AppContent() {
           </div>
 
           {/* Fee Collection Donut */}
-          <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-lg border border-stone-100 dark:border-stone-800">
+          <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-900">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-bold text-stone-800 dark:text-stone-100 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <PieChart className="w-5 h-5 text-purple-500" /> Fee Collection
               </h3>
-              <span className="text-xs text-stone-400 font-bold">Month: March</span>
+              <span className="text-xs text-slate-600 font-bold">Month: March</span>
             </div>
             <div className="h-[300px] w-full relative">
               <ResponsiveContainer width="100%" height="100%">
@@ -5907,8 +5945,8 @@ function AppContent() {
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <p className="text-3xl font-bold text-stone-800 dark:text-stone-100">$124,500</p>
-                <p className="text-xs text-stone-400 font-bold uppercase">Total Collected</p>
+                <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">$124,500</p>
+                <p className="text-xs text-slate-600 font-bold uppercase">Total Collected</p>
               </div>
             </div>
           </div>
@@ -5919,18 +5957,18 @@ function AppContent() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-stone-100 dark:bg-stone-950 flex items-center justify-center p-4 perspective-1000 transition-colors duration-300">
+      <div className="min-h-screen bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-4 perspective-1000 transition-colors duration-300">
       <AnimatePresence>
         {isInitialLoad && (
           <motion.div 
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[2000] bg-white dark:bg-stone-950 flex flex-col items-center justify-center gap-6"
+            className="fixed inset-0 z-[2000] bg-white dark:bg-slate-950 flex flex-col items-center justify-center gap-6"
           >
             <LoadingSpinner size="lg" />
             <div className="text-center">
-              <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100">EduSmart Tech</h2>
-              <p className="text-stone-400 uppercase tracking-widest text-[10px] mt-2 animate-pulse">Initializing System...</p>
+              <h2 className="text-2xl font-serif font-bold text-slate-900 dark:text-slate-100">EduSmart Tech</h2>
+              <p className="text-slate-600 uppercase tracking-widest text-[10px] mt-2 animate-pulse">Initializing System...</p>
             </div>
           </motion.div>
         )}
@@ -5942,11 +5980,11 @@ function AppContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1500] bg-stone-900/20 backdrop-blur-[2px] flex items-center justify-center"
+            className="fixed inset-0 z-[1500] bg-slate-950/20 backdrop-blur-[2px] flex items-center justify-center"
           >
-            <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl shadow-2xl border border-stone-100 dark:border-stone-800 flex flex-col items-center gap-4">
+            <div className="bg-white dark:bg-slate-950 p-6 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-900 flex flex-col items-center gap-4">
               <LoadingSpinner size="md" />
-              <p className="text-xs font-bold text-stone-600 dark:text-stone-400 uppercase tracking-widest">Processing...</p>
+              <p className="text-xs font-bold text-slate-700 dark:text-slate-600 uppercase tracking-widest">Processing...</p>
             </div>
           </motion.div>
         )}
@@ -5977,21 +6015,21 @@ function AppContent() {
           <div className="relative">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="fixed top-8 right-8 z-[200] p-3 rounded-2xl bg-white dark:bg-stone-900 shadow-xl border border-stone-200 dark:border-stone-800 text-stone-500 dark:text-stone-400 hover:scale-110 transition-all active:scale-95"
+              className="fixed top-8 right-8 z-[200] p-3 rounded-2xl bg-white dark:bg-slate-950 shadow-xl border border-slate-200 dark:border-slate-900 text-slate-600 dark:text-slate-600 hover:scale-110 transition-all active:scale-95"
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
               {darkMode ? <Sun className="w-6 h-6 text-amber-500" /> : <Moon className="w-6 h-6" />}
             </button>
             {isMobile && (
               <div className="w-full h-full max-w-sm flex flex-col items-center justify-center p-4 relative z-10 transition-colors">
-                <div className="w-full bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden flex flex-col h-[85vh] mt-8">
-                  <div className="p-5 border-b border-stone-100 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/50 flex items-center justify-between shrink-0">
+                <div className="w-full bg-white dark:bg-slate-950 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-900 overflow-hidden flex flex-col h-[85vh] mt-8">
+                  <div className="p-5 border-b border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950/50 flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                         <School className="w-6 h-6" />
                       </div>
                       <div>
-                        <h1 className="font-bold text-lg text-stone-800 dark:text-stone-100 leading-tight">EduSmart</h1>
+                        <h1 className="font-bold text-lg text-slate-900 dark:text-slate-100 leading-tight">EduSmart</h1>
                         <p className="text-[10px] text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest leading-none mt-0.5">Platform</p>
                       </div>
                     </div>
@@ -6000,22 +6038,22 @@ function AppContent() {
                           if (currentPage === 1) setCurrentPage(0);
                           else if (currentPage === 2 || currentPage >= 3) setCurrentPage(1);
                         }} 
-                        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 text-stone-500 dark:text-stone-400 transition-colors"
+                        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-900 text-slate-600 dark:text-slate-600 transition-colors"
                       >
                         <ArrowLeft className="w-5 h-5" />
                       </button>
                     )}
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-6 flex flex-col relative custom-scrollbar bg-white dark:bg-stone-900">
+                  <div className="flex-1 overflow-y-auto p-6 flex flex-col relative custom-scrollbar bg-white dark:bg-slate-950">
                     
                     {currentPage === 0 && (
                       <div className="flex flex-col h-full items-center justify-center text-center animate-in fade-in zoom-in-95 duration-500">
                         <div className="w-24 h-24 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center mb-6 border-4 border-blue-100 dark:border-blue-800">
                           <School className="w-12 h-12 text-blue-600 dark:text-blue-400" />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mb-3">Smart School<br/><span className="text-blue-600">Management</span></h2>
-                        <p className="text-stone-500 dark:text-stone-400 text-sm mb-8 px-2">
+                        <h2 className="text-3xl font-serif font-bold text-slate-950 dark:text-slate-100 mb-3 leading-tight">Smart School<br/><span className="text-blue-600">Management</span><br/><span className="text-slate-900 dark:text-slate-100 text-2xl">Platform</span></h2>
+                        <p className="text-slate-700 dark:text-slate-400 text-sm mb-8 px-2 font-bold leading-relaxed">
                           A centralized, secure ecosystem designed to streamline operations and enhance learning.
                         </p>
                         <button
@@ -6029,8 +6067,8 @@ function AppContent() {
 
                     {currentPage === 1 && (
                       <div className="flex flex-col h-full animate-in slide-in-from-right-8 duration-300">
-                        <h3 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-1">Select Role</h3>
-                        <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">Choose your account type to proceed.</p>
+                        <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-slate-100 mb-1">Select Role</h3>
+                        <p className="text-slate-800 dark:text-slate-400 text-sm mb-6 font-bold">Choose your account type to proceed.</p>
                         <div className="space-y-3 pb-6 flex-1 overflow-y-auto custom-scrollbar">
                           {roles.map((role) => (
                             <button
@@ -6039,16 +6077,16 @@ function AppContent() {
                                 handleRoleSelect(role.role);
                                 setTimeout(() => setCurrentPage(2), 50);
                               }}
-                              className="w-full flex items-center p-4 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-blue-300 bg-stone-50/50 dark:bg-stone-800/20 active:scale-[0.98] transition-all"
+                              className="w-full flex items-center p-4 rounded-2xl border border-slate-200 dark:border-slate-900 hover:border-blue-300 bg-slate-50/50 dark:bg-slate-900/20 active:scale-[0.98] transition-all"
                             >
                               <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-md ${role.color} ${role.neon} mr-4`}>
                                 <role.icon className="w-6 h-6" />
                               </div>
                               <div className="text-left flex-1">
-                                <h4 className="font-bold text-stone-800 dark:text-stone-100">{role.role}</h4>
-                                <p className="text-[10px] text-stone-400 uppercase tracking-widest mt-0.5">Portal Access</p>
+                                <h4 className="font-bold text-slate-900 dark:text-slate-100">{role.role}</h4>
+                                <p className="text-[10px] text-slate-700 dark:text-slate-400 uppercase tracking-widest mt-0.5 font-black">Portal Access</p>
                               </div>
-                              <ArrowRight className="w-5 h-5 text-stone-300 dark:text-stone-600" />
+                              <ArrowRight className="w-5 h-5 text-slate-300 dark:text-slate-700" />
                             </button>
                           ))}
                         </div>
@@ -6057,8 +6095,8 @@ function AppContent() {
 
                     {currentPage === 2 && (
                       <div className="flex flex-col h-full animate-in slide-in-from-right-8 duration-300 overflow-y-auto pb-4">
-                        <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">{selectedRole} Login</h2>
-                        <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">Enter credentials to proceed.</p>
+                        <h2 className="text-2xl font-serif font-bold text-slate-950 dark:text-slate-100 mb-2">{selectedRole} Login</h2>
+                        <p className="text-slate-800 dark:text-slate-400 text-sm mb-6 font-bold">Enter credentials to proceed.</p>
                         
                         {verificationEmail ? (
                           <VerificationNotice 
@@ -6070,11 +6108,11 @@ function AppContent() {
                         ) : isForgotPassword ? (
                           <form onSubmit={handleForgotPassword} className="space-y-5">
                             <div>
-                              <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email Address</label>
+                              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email Address</label>
                               <input
                                 type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
                                 placeholder="e.g. user@school.com"
-                                className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 dark:text-stone-100 mb-2"
+                                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-100 mb-2"
                               />
                             </div>
                             {error && <p className="text-red-500 text-xs font-medium bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">{error}</p>}
@@ -6086,22 +6124,22 @@ function AppContent() {
                         ) : (
                           <form onSubmit={handleLogin} className="space-y-4">
                             <div>
-                              <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email</label>
+                              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email</label>
                               <input type="email" required value={email} onChange={(e) => { setEmail(e.target.value); setEmailError(''); }}
-                                className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 dark:text-stone-100" />
+                                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-100" />
                               {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
                             </div>
                             <div>
-                              <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Password</label>
+                              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Password</label>
                               <input type="password" required value={password} onChange={(e) => { setPassword(e.target.value); setPasswordError(''); }}
-                                className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 dark:text-stone-100" />
+                                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-100" />
                               {passwordError && <p className="text-red-500 text-xs mt-1">{passwordError}</p>}
                             </div>
                             
                             <div className="flex items-center justify-between mt-2 mb-4">
                               <div className="flex items-center">
                                 <input type="checkbox" id="mobile-remember" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} className="rounded" />
-                                <label htmlFor="mobile-remember" className="ml-2 text-xs font-bold text-stone-500">Remember Me</label>
+                                <label htmlFor="mobile-remember" className="ml-2 text-xs font-bold text-slate-600 dark:text-slate-400">Remember Me</label>
                               </div>
                               <button type="button" onClick={() => { setIsForgotPassword(true); setError(''); }} className="text-xs text-blue-600 font-bold">Forgot?</button>
                             </div>
@@ -6120,8 +6158,8 @@ function AppContent() {
 
                     {currentPage >= 3 && (
                       <div className="flex flex-col h-full animate-in slide-in-from-right-8 duration-300 overflow-y-auto pb-4">
-                        <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">{selectedRole} Register</h2>
-                        <p className="text-stone-500 dark:text-stone-400 text-sm mb-6">Create your account.</p>
+                        <h2 className="text-2xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-2">{selectedRole} Register</h2>
+                        <p className="text-slate-600 dark:text-slate-600 text-sm mb-6">Create your account.</p>
                         {verificationEmail ? (
                           <VerificationNotice 
                             email={verificationEmail} 
@@ -6132,14 +6170,14 @@ function AppContent() {
                         ) : (
                           <form onSubmit={handleSignUp} className="space-y-4">
                             <div>
-                              <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email</label>
+                              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email</label>
                               <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 dark:text-stone-100" />
+                                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-100" />
                             </div>
                             <div>
-                              <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Password</label>
+                              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Password</label>
                               <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 dark:text-stone-100" />
+                                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:text-slate-100" />
                             </div>
                             {error && <p className="text-red-500 text-xs font-medium bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">{error}</p>}
                             
@@ -6165,14 +6203,14 @@ function AppContent() {
               className="relative w-[1000px] h-[700px] preserve-3d book-shadow book-glow rounded-lg"
             >
             {/* Book Spine */}
-            <div className="absolute top-0 left-[calc(50%-15px)] w-[30px] h-full bg-stone-800 z-50 rounded-sm shadow-inner" />
+            <div className="absolute top-0 left-[calc(50%-15px)] w-[30px] h-full bg-slate-900 z-50 rounded-sm shadow-inner" />
 
             {/* Static Back Cover */}
-            <div className="absolute top-0 left-0 w-1/2 h-full bg-stone-900 rounded-l-lg border-r-4 border-stone-800" />
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-stone-900 rounded-r-lg border-l-4 border-stone-800" />
+            <div className="absolute top-0 left-0 w-1/2 h-full bg-slate-950 rounded-l-lg border-r-4 border-slate-900" />
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-950 rounded-r-lg border-l-4 border-slate-900" />
 
             {/* Static Left Page (Revealed when cover flips) */}
-            <div className="absolute top-0 left-0 w-1/2 h-full page-gradient border-r border-stone-300 page-shadow-right rounded-l-lg z-0">
+            <div className="absolute top-0 left-0 w-1/2 h-full page-gradient border-r border-slate-300 page-shadow-right rounded-l-lg z-0">
               <LeftSideContent />
             </div>
 
@@ -6189,7 +6227,7 @@ function AppContent() {
                   <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
                     <School className="w-5 h-5" />
                   </div>
-                  <span className="font-bold text-xl text-stone-800 dark:text-stone-100">EduSmart <span className="text-blue-600">Tech</span></span>
+                  <span className="font-bold text-xl text-slate-900 dark:text-slate-100">EduSmart <span className="text-blue-600">Tech</span></span>
                 </div>
 
                 <div className="space-y-6 flex-1">
@@ -6197,13 +6235,13 @@ function AppContent() {
                     • Enterprise Edition 2.0
                   </div>
                   
-                  <h1 className="text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">
+                  <h1 className="text-5xl font-serif font-bold text-slate-950 dark:text-slate-100 leading-tight">
                     Smart School <br />
                     <span className="text-blue-600 dark:text-blue-400">Management</span> <br />
-                    Platform
+                    <span className="text-slate-950 dark:text-slate-100">Platform</span>
                   </h1>
 
-                  <p className="text-stone-500 dark:text-stone-400 text-sm max-w-xs leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-400 text-sm max-w-xs leading-relaxed font-bold">
                     A centralized, secure, and AI-ready ecosystem designed to streamline operations and enhance the learning experience.
                   </p>
                 </div>
@@ -6231,12 +6269,12 @@ function AppContent() {
             >
               <div className="h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-6">
-                  <BookIcon className="w-5 h-5 text-stone-400" />
-                  <span className="text-xs font-mono text-stone-400 uppercase tracking-tighter">Select Your Role</span>
+                  <BookIcon className="w-5 h-5 text-slate-600" />
+                  <span className="text-xs font-mono text-slate-800 dark:text-slate-400 uppercase tracking-tighter font-bold">Select Your Role</span>
                 </div>
                 
-                <h2 className="text-3xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">Welcome Back</h2>
-                <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">Please select your role to continue to your personalized dashboard.</p>
+                <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-2">Welcome Back</h2>
+                <p className="text-slate-700 dark:text-slate-400 text-sm mb-8 font-bold">Please select your role to continue to your personalized dashboard.</p>
 
                 <div className="grid grid-cols-1 gap-3 overflow-y-auto pr-2 custom-scrollbar">
                   {roles.map((role) => (
@@ -6245,25 +6283,25 @@ function AppContent() {
                       whileHover={{ x: 10, backgroundColor: darkMode ? 'rgb(28 25 23)' : 'rgb(249 250 251)' }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handleRoleSelect(role.role)}
-                      className="group flex items-center justify-between p-4 rounded-2xl border border-stone-100 dark:border-stone-800 hover:border-blue-200 dark:hover:border-blue-800 transition-all text-left"
+                      className="group flex items-center justify-between p-4 rounded-2xl border border-slate-100 dark:border-slate-900 hover:border-blue-200 dark:hover:border-blue-800 transition-all text-left"
                     >
                       <div className="flex items-center gap-4">
                         <div className={`w-12 h-12 rounded-xl ${role.color} flex items-center justify-center text-white shadow-lg ${role.neon}`}>
                           <role.icon className="w-6 h-6" />
                         </div>
                         <div>
-                          <h3 className="font-bold text-stone-800 dark:text-stone-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{role.role}</h3>
-                          <p className="text-[10px] text-stone-400 dark:text-stone-500 uppercase tracking-widest">Access Portal</p>
+                          <h3 className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{role.role}</h3>
+                          <p className="text-[10px] text-slate-700 dark:text-slate-400 uppercase tracking-widest font-black">Access Portal</p>
                         </div>
                       </div>
-                      <ArrowRight className="w-5 h-5 text-stone-300 dark:text-stone-600 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-5 h-5 text-slate-300 dark:text-slate-700 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
                     </motion.button>
                   ))}
                 </div>
 
                 <button 
                   onClick={() => setCurrentPage(0)}
-                  className="mt-auto flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors text-sm"
+                  className="mt-auto flex items-center gap-2 text-slate-600 hover:text-slate-700 transition-colors text-sm"
                 >
                   <ArrowLeft className="w-4 h-4" /> Back to Cover
                 </button>
@@ -6288,25 +6326,25 @@ function AppContent() {
               ) : isForgotPassword ? (
                 <div className="h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-6">
-                    <Lock className="w-5 h-5 text-stone-400" />
-                    <span className="text-xs font-mono text-stone-400 uppercase tracking-tighter">Reset Password</span>
+                    <Lock className="w-5 h-5 text-slate-600" />
+                    <span className="text-xs font-mono text-slate-600 uppercase tracking-tighter">Reset Password</span>
                   </div>
                   
-                  <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">Forgot Password?</h2>
-                  <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">
+                  <h2 className="text-2xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-2">Forgot Password?</h2>
+                  <p className="text-slate-600 dark:text-slate-600 text-sm mb-8">
                     Enter your email address and we'll send you a link to reset your password.
                   </p>
 
                   <form onSubmit={handleForgotPassword} className="space-y-5">
                     <div>
-                      <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email Address</label>
+                      <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email Address</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="e.g. user@school.com"
-                        className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-stone-50 dark:bg-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 neon-border-blue"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-slate-50 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 neon-border-blue"
                       />
                     </div>
 
@@ -6343,18 +6381,18 @@ function AppContent() {
               ) : (
                 <div className="h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-6">
-                    <Lock className="w-5 h-5 text-stone-400" />
-                    <span className="text-xs font-mono text-stone-400 uppercase tracking-tighter">Authentication</span>
+                    <Lock className="w-5 h-5 text-slate-600" />
+                    <span className="text-xs font-mono text-slate-600 uppercase tracking-tighter">Authentication</span>
                   </div>
                   
-                  <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">{selectedRole} Login</h2>
-                  <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">
+                  <h2 className="text-2xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-2">{selectedRole} Login</h2>
+                  <p className="text-slate-600 dark:text-slate-600 text-sm mb-8">
                     Please enter your credentials to proceed.
                   </p>
 
                   <form onSubmit={handleLogin} className="space-y-5">
                     <div>
-                      <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email Address</label>
+                      <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email Address</label>
                       <input
                         type="email"
                         required
@@ -6364,12 +6402,12 @@ function AppContent() {
                           setEmailError('');
                         }}
                         placeholder="e.g. user@school.com"
-                        className={`w-full px-4 py-3 rounded-xl border ${emailError ? 'border-red-500' : 'border-stone-200 dark:border-stone-700'} focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 bg-stone-50 dark:bg-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 border-blue-500/50 shadow-inner shadow-blue-500/10`}
+                        className={`w-full px-4 py-3 rounded-xl border ${emailError ? 'border-red-500' : 'border-slate-200 dark:border-slate-800'} focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 bg-slate-50 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 border-blue-500/50 shadow-inner shadow-blue-500/10`}
                       />
                       {emailError && <p className="text-red-500 text-xs mt-1 ml-1">{emailError}</p>}
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Password</label>
+                      <label className="block text-xs font-bold text-slate-600 dark:text-slate-600 uppercase mb-1 ml-1">Password</label>
                       <input
                         type="password"
                         required
@@ -6379,7 +6417,7 @@ function AppContent() {
                           setPasswordError('');
                         }}
                         placeholder="••••••••"
-                        className={`w-full px-4 py-3 rounded-xl border ${passwordError ? 'border-red-500' : 'border-stone-200 dark:border-stone-700'} focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 bg-stone-50 dark:bg-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 border-blue-500/50 shadow-inner shadow-blue-500/10`}
+                        className={`w-full px-4 py-3 rounded-xl border ${passwordError ? 'border-red-500' : 'border-slate-200 dark:border-slate-800'} focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 bg-slate-50 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 border-blue-500/50 shadow-inner shadow-blue-500/10`}
                       />
                       {passwordError && <p className="text-red-500 text-xs mt-1 ml-1">{passwordError}</p>}
                     </div>
@@ -6390,9 +6428,9 @@ function AppContent() {
                         id="rememberMe"
                         checked={rememberMe}
                         onChange={(e) => setRememberMe(e.target.checked)}
-                        className="w-4 h-4 text-blue-600 border-stone-300 rounded focus:ring-blue-500"
+                        className="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
                       />
-                      <label htmlFor="rememberMe" className="ml-2 block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase">
+                      <label htmlFor="rememberMe" className="ml-2 block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase">
                         Remember Me
                       </label>
                     </div>
@@ -6411,7 +6449,7 @@ function AppContent() {
                           setIsForgotPassword(true);
                           setError('');
                         }}
-                        className="text-xs text-stone-400 dark:text-stone-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="text-xs text-slate-600 dark:text-slate-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         Forgot Password?
                       </button>
@@ -6441,7 +6479,7 @@ function AppContent() {
 
                   <button 
                     onClick={() => setCurrentPage(1)}
-                    className="mt-auto flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors text-sm"
+                    className="mt-auto flex items-center gap-2 text-slate-600 hover:text-slate-700 transition-colors text-sm"
                   >
                     <ArrowLeft className="w-4 h-4" /> Change Role
                   </button>
@@ -6467,36 +6505,36 @@ function AppContent() {
               ) : (
                 <div className="h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-6">
-                    <Lock className="w-5 h-5 text-stone-400" />
-                    <span className="text-xs font-mono text-stone-400 uppercase tracking-tighter">Registration</span>
+                    <Lock className="w-5 h-5 text-slate-600" />
+                    <span className="text-xs font-mono text-slate-600 uppercase tracking-tighter">Registration</span>
                   </div>
                   
-                  <h2 className="text-2xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-2">{selectedRole} Registration</h2>
-                  <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">
+                  <h2 className="text-2xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-2">{selectedRole} Registration</h2>
+                  <p className="text-slate-600 dark:text-slate-600 text-sm mb-8">
                     Create your account to get started.
                   </p>
 
                   <form onSubmit={handleSignUp} className="space-y-5">
                     <div>
-                      <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Email Address</label>
+                      <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1 ml-1">Email Address</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="e.g. user@school.com"
-                        className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-stone-50 dark:bg-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 neon-border-blue"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-slate-50 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 neon-border-blue"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-stone-400 dark:text-stone-500 uppercase mb-1 ml-1">Password</label>
+                      <label className="block text-xs font-bold text-slate-600 dark:text-slate-600 uppercase mb-1 ml-1">Password</label>
                       <input
                         type="password"
                         required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-stone-50 dark:bg-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 neon-border-blue"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-slate-50 dark:bg-slate-900 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-500 neon-border-blue"
                       />
                     </div>
 
@@ -6532,7 +6570,7 @@ function AppContent() {
 
                   <button 
                     onClick={() => setCurrentPage(1)}
-                    className="mt-auto flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors text-sm"
+                    className="mt-auto flex items-center gap-2 text-slate-600 hover:text-slate-700 transition-colors text-sm"
                   >
                     <ArrowLeft className="w-4 h-4" /> Change Role
                   </button>
@@ -6549,7 +6587,7 @@ function AppContent() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="fixed inset-0 bg-stone-100 dark:bg-stone-950 z-[100] flex"
+            className="fixed inset-0 bg-slate-100 dark:bg-slate-950 z-[100] flex"
           >
             {/* Sidebar */}
             {/* Mobile Sidebar Backdrop */}
@@ -6561,14 +6599,14 @@ function AppContent() {
             )}
             
             {/* Sidebar */}
-            <aside className={`absolute inset-y-0 left-0 bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800 flex flex-col shadow-xl z-50 transform ${isMobile && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'} md:relative md:translate-x-0 transition-transform duration-300 w-72`}>
-              <div className="p-6 flex items-center gap-3 border-b border-stone-100 dark:border-stone-800">
+            <aside className={`absolute inset-y-0 left-0 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-900 flex flex-col shadow-xl z-50 transform ${isMobile && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'} md:relative md:translate-x-0 transition-transform duration-300 w-72`}>
+              <div className="p-6 flex items-center gap-3 border-b border-slate-100 dark:border-slate-900">
                 <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
                   <School className="w-6 h-6" />
                 </div>
                 <div>
-                  <h1 className="font-serif font-bold text-lg text-stone-800 dark:text-stone-100">EduSmart Tech</h1>
-                  <p className="text-[9px] text-stone-400 uppercase tracking-widest">Enterprise Edition 2.0</p>
+                  <h1 className="font-serif font-bold text-lg text-slate-900 dark:text-slate-100">EduSmart Tech</h1>
+                  <p className="text-[9px] text-slate-600 uppercase tracking-widest">Enterprise Edition 2.0</p>
                 </div>
               </div>
 
@@ -6596,7 +6634,7 @@ function AppContent() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
                         ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        : 'text-slate-600 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6618,7 +6656,7 @@ function AppContent() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
                         ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        : 'text-slate-600 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6636,8 +6674,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6655,8 +6693,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-slate-700 text-white shadow-lg shadow-slate-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6674,8 +6712,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-stone-700 text-white shadow-lg shadow-stone-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6693,8 +6731,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-yellow-600 text-white shadow-lg shadow-yellow-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6717,8 +6755,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6740,8 +6778,8 @@ function AppContent() {
                     onClick={() => { setActiveAdminTab(tab.id as any); if (isMobile) setIsSidebarOpen(false); }}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all ${
                       activeAdminTab === tab.id 
-                        ? 'bg-rose-600 text-white shadow-lg shadow-rose-100 dark:shadow-none' 
-                        : 'text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800/50'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-900/50'
                     }`}
                   >
                     <tab.icon className="w-5 h-5" />
@@ -6750,7 +6788,7 @@ function AppContent() {
                 ))}
               </div>
 
-              <div className="p-4 border-t border-stone-100 dark:border-stone-800">
+              <div className="p-4 border-t border-slate-100 dark:border-slate-900">
                 <button 
                   onClick={handleLogout}
                   className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
@@ -6762,51 +6800,55 @@ function AppContent() {
             </aside>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col overflow-hidden bg-stone-50 dark:bg-stone-950">
+            <div className="flex-1 flex flex-col overflow-hidden bg-slate-50 dark:bg-slate-950">
               {/* Header */}
-              <header className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 px-4 md:px-8 py-4 flex items-center justify-between shadow-sm sticky top-0 z-30">
+              <header className="bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-900 px-4 md:px-8 py-4 flex items-center justify-between shadow-sm sticky top-0 z-30">
                 <div className="flex items-center gap-4">
                   {isMobile && (
-                    <button onClick={() => setIsSidebarOpen(true)} className="p-2 -ml-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-300 transition-colors">
+                    <button onClick={() => setIsSidebarOpen(true)} className="p-2 -ml-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300 transition-colors">
                       <Menu className="w-6 h-6" />
                     </button>
                   )}
-                  <h2 className="text-xl font-bold text-stone-800 dark:text-stone-100 capitalize">
+                  <h2 className="text-lg md:text-xl font-bold text-slate-900 dark:text-slate-100 capitalize truncate max-w-[150px] md:max-w-none">
                     {activeAdminTab.replace('-', ' ')}
                   </h2>
                 </div>
 
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3 md:gap-6">
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full shadow-sm">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                    <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">Data Secure</span>
+                  </div>
                   <button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all"
+                    className="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-600 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all"
                     title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
                   >
                     {darkMode ? <Sun className="w-5 h-5 text-amber-500" /> : <Moon className="w-5 h-5" />}
                   </button>
                   <div className="flex items-center gap-3">
                     <div className="text-right hidden sm:block">
-                      <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{loggedInUser.name}</p>
-                      <p className="text-[10px] text-stone-400 uppercase tracking-widest">{loggedInUser.role}</p>
+                      <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{loggedInUser.name}</p>
+                      <p className="text-[10px] text-slate-600 uppercase tracking-widest">{loggedInUser.role}</p>
                     </div>
-                    <div className="w-10 h-10 bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center overflow-hidden border border-stone-200 dark:border-stone-700">
+                    <div className="w-10 h-10 bg-slate-100 dark:bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-800">
                       {loggedInUser.photo ? (
                         <img src={loggedInUser.photo} alt="User" className="w-full h-full object-cover" />
                       ) : (
-                        <UserIcon className="w-6 h-6 text-stone-300 dark:text-stone-600" />
+                        <UserIcon className="w-6 h-6 text-slate-300 dark:text-slate-700" />
                       )}
                     </div>
                   </div>
                 </div>
               </header>
 
-              <main className="flex-1 p-8 overflow-y-auto bg-stone-50 dark:bg-stone-950">
-                <div className="max-w-6xl mx-auto space-y-8">
+              <main className="flex-1 p-4 md:p-8 overflow-y-auto bg-slate-50 dark:bg-slate-950">
+                <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
                   {/* Welcome Hero */}
-                  <section className="bg-white dark:bg-stone-900 rounded-3xl p-8 shadow-xl border border-stone-100 dark:border-stone-800 relative overflow-hidden">
+                  <section className="bg-white dark:bg-slate-950 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-900 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-900/10 rounded-full -mr-32 -mt-32 opacity-50" />
                     <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                      <div className="w-20 h-20 bg-stone-100 dark:bg-stone-800 rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-blue-500/20 border-4 border-white dark:border-stone-700 shadow-xl">
+                      <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-blue-500/20 border-4 border-white dark:border-slate-800 shadow-xl">
                         {loggedInUser.photo ? (
                           <img src={loggedInUser.photo} alt="User" className="w-full h-full object-cover" />
                         ) : (
@@ -6814,10 +6856,10 @@ function AppContent() {
                         )}
                       </div>
                       <div>
-                        <h2 className="text-3xl font-serif font-bold text-stone-800 dark:text-stone-100 mb-1">
+                        <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-1">
                           Welcome, {loggedInUser.name}!
                         </h2>
-                        <p className="text-stone-500 dark:text-stone-400 text-sm">
+                        <p className="text-slate-600 dark:text-slate-600 text-sm">
                           Accessing the <span className="font-bold text-blue-600 dark:text-blue-400">{loggedInUser.role} Dashboard</span>.
                         </p>
                       </div>
@@ -6843,7 +6885,7 @@ function AppContent() {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed bottom-8 right-8 z-[1000] flex items-center gap-4 p-4 rounded-2xl shadow-2xl border bg-white dark:bg-stone-900 border-stone-100 dark:border-stone-800"
+            className="fixed bottom-8 right-8 z-[1000] flex items-center gap-4 p-4 rounded-2xl shadow-2xl border bg-white dark:bg-slate-950 border-slate-100 dark:border-slate-900"
             style={{ 
               borderColor: notification.type === 'error' ? '#fee2e2' : notification.type === 'success' ? '#dcfce7' : '#e0f2fe'
             }}
@@ -6858,13 +6900,13 @@ function AppContent() {
                <Sparkles className="w-6 h-6" />}
             </div>
             <div className="pr-8">
-              <p className="text-sm font-bold text-stone-800 dark:text-stone-100">{notification.message}</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{notification.message}</p>
             </div>
             <button 
               onClick={() => setNotification(null)}
-              className="p-1 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-colors"
+              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-900 rounded-lg transition-colors"
             >
-              <X className="w-4 h-4 text-stone-400 dark:text-stone-500" />
+              <X className="w-4 h-4 text-slate-600 dark:text-slate-600" />
             </button>
             <motion.div 
               initial={{ width: '100%' }}
@@ -6889,12 +6931,12 @@ function AppContent() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
+              className="bg-white dark:bg-slate-950 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-100 dark:border-slate-900"
             >
-              <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
-                <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Pay Student Fees</h3>
-                <button onClick={() => setShowFeeModal(false)} className="p-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-xl transition-colors">
-                  <X className="w-5 h-5 text-stone-400 dark:text-stone-500" />
+              <div className="p-6 border-b border-slate-100 dark:border-slate-900 flex justify-between items-center">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Pay Student Fees</h3>
+                <button onClick={() => setShowFeeModal(false)} className="p-2 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-xl transition-colors">
+                  <X className="w-5 h-5 text-slate-600 dark:text-slate-600" />
                 </button>
               </div>
               
@@ -6905,22 +6947,22 @@ function AppContent() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Amount</label>
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Payment Amount</label>
                   <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 dark:text-stone-500" />
+                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-600 dark:text-slate-600" />
                     <input
                       type="number"
                       required
                       value={paymentAmount}
                       onChange={(e) => setPaymentAmount(e.target.value)}
                       placeholder="0.00"
-                      className="w-full pl-12 pr-4 py-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-bold dark:text-stone-100"
+                      className="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-bold dark:text-slate-100"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Method</label>
+                  <label className="text-xs font-bold text-slate-600 dark:text-slate-600 uppercase tracking-widest">Payment Method</label>
                   <div className="grid grid-cols-2 gap-3">
                     {['Credit Card', 'Bank Transfer', 'UPI'].map(method => (
                       <button
@@ -6930,7 +6972,7 @@ function AppContent() {
                         className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all ${
                           paymentMethod === method 
                             ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
-                            : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-blue-200 dark:hover:border-blue-800'
+                            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-600 hover:border-blue-200 dark:hover:border-blue-800'
                         }`}
                       >
                         {method}
@@ -6954,7 +6996,7 @@ function AppContent() {
                   )}
                 </button>
                 
-                <p className="text-[10px] text-center text-stone-400">
+                <p className="text-[10px] text-center text-slate-600">
                   Secure encrypted payment processing by EduSmart Pay
                 </p>
               </form>
@@ -6971,31 +7013,31 @@ function AppContent() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
+              className="bg-white dark:bg-slate-950 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-100 dark:border-slate-900"
             >
               <div className="p-8 text-center">
                 <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">Payment Successful!</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">Your transaction has been processed successfully.</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">Payment Successful!</h3>
+                <p className="text-slate-600 dark:text-slate-600 text-sm mb-8">Your transaction has been processed successfully.</p>
                 
-                <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 mb-8 space-y-3 text-left">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 mb-8 space-y-3 text-left">
                   <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Transaction ID</span>
-                    <span className="text-stone-800 font-mono">{lastTransaction.id}</span>
+                    <span className="text-slate-600 font-bold uppercase">Transaction ID</span>
+                    <span className="text-slate-900 font-mono">{lastTransaction.id}</span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Amount Paid</span>
+                    <span className="text-slate-600 font-bold uppercase">Amount Paid</span>
                     <span className="text-emerald-600 font-bold">${lastTransaction.amount}</span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Date</span>
-                    <span className="text-stone-800">{lastTransaction.date}</span>
+                    <span className="text-slate-600 font-bold uppercase">Date</span>
+                    <span className="text-slate-900">{lastTransaction.date}</span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Method</span>
-                    <span className="text-stone-800">{lastTransaction.method}</span>
+                    <span className="text-slate-600 font-bold uppercase">Method</span>
+                    <span className="text-slate-900">{lastTransaction.method}</span>
                   </div>
                 </div>
 
@@ -7012,7 +7054,7 @@ function AppContent() {
                   </button>
                   <button
                     onClick={() => setShowConfirmation(false)}
-                    className="w-full py-4 bg-stone-100 text-stone-600 rounded-2xl font-bold hover:bg-stone-200 transition-all"
+                    className="w-full py-4 bg-slate-100 text-slate-700 rounded-2xl font-bold hover:bg-slate-200 transition-all"
                   >
                     Dismiss
                   </button>
