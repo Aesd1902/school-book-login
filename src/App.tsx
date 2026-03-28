@@ -432,6 +432,12 @@ function AppContent() {
   const [showScanner, setShowScanner] = useState(false);
   const [viewingReceipt, setViewingReceipt] = useState<any>(null);
   const [showFeeModal, setShowFeeModal] = useState(false);
+  const [feeModalStudent, setFeeModalStudent] = useState<Student | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [lastTransaction, setLastTransaction] = useState<any>(null);
+  const [paymentAmount, setPaymentAmount] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('Credit Card');
+  const [isSubmittingFee, setIsSubmittingFee] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [isTeachersLoading, setIsTeachersLoading] = useState(true);
@@ -632,6 +638,51 @@ function AppContent() {
     setVerificationEmail(null);
     setCurrentPage(2); // Always return to login page
     setError('');
+  };
+
+  const handlePayFees = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!feeModalStudent || !paymentAmount || isNaN(Number(paymentAmount))) {
+      setNotification({ message: 'Please enter a valid amount', type: 'error' });
+      return;
+    }
+
+    setIsSubmittingFee(true);
+    try {
+      const studentRef = doc(db, 'students', feeModalStudent.student_id);
+      const amountNum = Number(paymentAmount);
+      const newPaid = (feeModalStudent.fees?.paid || 0) + amountNum;
+      const totalFees = feeModalStudent.fees?.total || 0;
+      const newStatus = newPaid >= totalFees ? 'Paid' : 'Pending';
+      
+      const newPayment: FeePayment = {
+        id: `REC-${Math.random().toString(36).substr(2, 9)}`,
+        amount: amountNum,
+        date: new Date().toISOString().split('T')[0],
+        method: paymentMethod,
+        receiptNo: `R-${Math.floor(Math.random() * 100000)}`
+      };
+
+      await updateDoc(studentRef, {
+        'fees.paid': newPaid,
+        'fees.status': newStatus,
+        'fees.history': [newPayment, ...(feeModalStudent.fees?.history || [])]
+      });
+      
+      setLastTransaction({
+        ...newPayment,
+        student: feeModalStudent.name,
+        class: `${feeModalStudent.class_id || feeModalStudent.class}-${feeModalStudent.section}`
+      });
+      setShowFeeModal(false);
+      setShowConfirmation(true);
+      setPaymentAmount('');
+      setNotification({ message: 'Payment Successful! Fee status updated.', type: 'success' });
+    } catch (error) {
+      handleFirestoreError(error, OperationType.UPDATE, `students/${feeModalStudent?.student_id}`);
+    } finally {
+      setIsSubmittingFee(false);
+    }
   };
 
   const handleRoleSelect = (role: UserRole) => {
@@ -3826,11 +3877,36 @@ function AppContent() {
     });
     const [selectedChildIndex, setSelectedChildIndex] = useState(0);
     const child = children[selectedChildIndex];
-    const [showConfirmation, setShowConfirmation] = useState(false);
-    const [lastTransaction, setLastTransaction] = useState<any>(null);
-    const [paymentAmount, setPaymentAmount] = useState('');
-    const [paymentMethod, setPaymentMethod] = useState('Credit Card');
-    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const studentAttendance = attendanceRecords.filter(a => a.student_id === child.student_id);
+    const studentAlerts = alerts.filter(a => a.scope === child.student_id);
+    
+    const activities = [
+      ...studentAttendance.map(a => ({
+        title: 'Attendance Marked',
+        time: `${new Date(a.date).toLocaleDateString()} ${new Date(a.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
+        desc: `${child.name} was marked ${a.status} for the day.`,
+        icon: a.status === 'Present' ? CheckCircle2 : XCircle,
+        color: a.status === 'Present' ? 'text-emerald-500' : 'text-red-500',
+        timestamp: new Date(a.timestamp).getTime()
+      })),
+      ...studentAlerts.map(a => ({
+        title: 'System Alert',
+        time: new Date(a.timestamp).toLocaleString([], { hour: '2-digit', minute: '2-digit' }),
+        desc: a.message,
+        icon: AlertTriangle,
+        color: 'text-amber-500',
+        timestamp: new Date(a.timestamp).getTime()
+      })),
+      ...(child.fees?.history || []).map(h => ({
+        title: 'Fee Payment',
+        time: h.date,
+        desc: `Amount: $${h.amount} via ${h.method}`,
+        icon: CreditCard,
+        color: 'text-blue-500',
+        timestamp: new Date(h.date).getTime()
+      }))
+    ].sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
     
     if (children.length === 0) {
       return (
@@ -3841,50 +3917,6 @@ function AppContent() {
         </div>
       );
     }
-
-    const handlePayFees = async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!paymentAmount || isNaN(Number(paymentAmount))) {
-        setNotification({ message: 'Please enter a valid amount', type: 'error' });
-        return;
-      }
-
-      setIsSubmitting(true);
-      try {
-        const studentRef = doc(db, 'students', child.student_id);
-        const amountNum = Number(paymentAmount);
-        const newPaid = child.fees.paid + amountNum;
-        const newStatus = newPaid >= child.fees.total ? 'Paid' : 'Pending';
-        
-        const newPayment: FeePayment = {
-          id: `REC-${Math.random().toString(36).substr(2, 9)}`,
-          amount: amountNum,
-          date: new Date().toISOString().split('T')[0],
-          method: paymentMethod,
-          receiptNo: `R-${Math.floor(Math.random() * 100000)}`
-        };
-
-        await updateDoc(studentRef, {
-          'fees.paid': newPaid,
-          'fees.status': newStatus,
-          'fees.history': [newPayment, ...(child.fees?.history || [])]
-        });
-        
-        setLastTransaction({
-          ...newPayment,
-          student: child.name,
-          class: `${child.class_id}-${child.section}`
-        });
-        setShowFeeModal(false);
-        setShowConfirmation(true);
-        setPaymentAmount('');
-        setNotification({ message: 'Payment Successful! Fee status updated.', type: 'success' });
-      } catch (error) {
-        handleFirestoreError(error, OperationType.UPDATE, `students/${child.id}`);
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
 
     const handleApplyLeave = async () => {
       const reason = prompt('Enter reason for leave:');
@@ -3975,11 +4007,7 @@ function AppContent() {
         <div className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-xl border border-stone-100 dark:border-stone-800">
           <h3 className="text-lg font-bold text-stone-800 dark:text-stone-100 mb-6">Recent Activities</h3>
           <div className="space-y-6">
-            {[
-              { title: 'Attendance Marked', time: 'Today, 08:30 AM', desc: `${child.name} was marked present for the day.`, icon: CheckCircle2, color: 'text-emerald-500' },
-              { title: 'New Grade Posted', time: 'Yesterday', desc: 'Mathematics Quiz 3: 18/20 (A+)', icon: GraduationCap, color: 'text-blue-500' },
-              { title: 'Library Book Issued', time: '2 days ago', desc: 'Advanced Physics by H.C. Verma', icon: BookIcon, color: 'text-purple-500' },
-            ].map((activity, i) => (
+            {activities.length > 0 ? activities.map((activity, i) => (
               <div key={i} className="flex gap-4">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-stone-50 dark:bg-stone-800 ${activity.color}`}>
                   <activity.icon className="w-5 h-5" />
@@ -3990,7 +4018,9 @@ function AppContent() {
                   <p className="text-xs text-stone-500 dark:text-stone-400">{activity.desc}</p>
                 </div>
               </div>
-            ))}
+            )) : (
+              <p className="text-sm text-stone-400 text-center py-4">No recent activities found.</p>
+            )}
           </div>
         </div>
       </div>
@@ -4001,7 +4031,7 @@ function AppContent() {
           <h3 className="text-sm font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: 'Pay Fees', icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20', action: () => setShowFeeModal(true) },
+              { label: 'Pay Fees', icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-900/20', action: () => { setFeeModalStudent(child); setShowFeeModal(true); } },
               { label: 'Leave Req', icon: Calendar, color: 'text-orange-600', bg: 'bg-orange-50 dark:bg-orange-900/20', action: handleApplyLeave },
               { label: 'Transport', icon: School, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20', action: () => setActiveAdminTab('transport') },
               { label: 'Contact', icon: Users, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20', action: () => setActiveAdminTab('contact') },
@@ -4061,147 +4091,6 @@ function AppContent() {
         </div>
       </div>
 
-      {/* Fee Payment Modal */}
-      <AnimatePresence>
-        {showFeeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
-            >
-              <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
-                <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Pay Student Fees</h3>
-                <button onClick={() => setShowFeeModal(false)} className="p-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-xl transition-colors">
-                  <X className="w-5 h-5 text-stone-400 dark:text-stone-500" />
-                </button>
-              </div>
-              
-              <form onSubmit={handlePayFees} className="p-6 space-y-6">
-                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-800">
-                  <p className="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mb-1">Total Outstanding</p>
-                  <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">${(child.fees?.total || 0) - (child.fees?.paid || 0)}</p>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Amount</label>
-                  <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 dark:text-stone-500" />
-                    <input
-                      type="number"
-                      required
-                      value={paymentAmount}
-                      onChange={(e) => setPaymentAmount(e.target.value)}
-                      placeholder="0.00"
-                      className="w-full pl-12 pr-4 py-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-bold dark:text-stone-100"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Method</label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {['Credit Card', 'Bank Transfer'].map(method => (
-                      <button
-                        key={method}
-                        type="button"
-                        onClick={() => setPaymentMethod(method)}
-                        className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all ${
-                          paymentMethod === method 
-                            ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
-                            : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-blue-200 dark:hover:border-blue-800'
-                        }`}
-                      >
-                        {method}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold shadow-lg shadow-emerald-100 hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <CreditCard className="w-5 h-5" />
-                      Pay Now
-                    </>
-                  )}
-                </button>
-                
-                <p className="text-[10px] text-center text-stone-400">
-                  Secure encrypted payment processing by EduSmart Pay
-                </p>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Payment Confirmation Modal */}
-      <AnimatePresence>
-        {showConfirmation && lastTransaction && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
-            >
-              <div className="p-8 text-center">
-                <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">Payment Successful!</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">Your transaction has been processed successfully.</p>
-                
-                <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 mb-8 space-y-3 text-left">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Transaction ID</span>
-                    <span className="text-stone-800 font-mono">{lastTransaction.id}</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Amount Paid</span>
-                    <span className="text-emerald-600 font-bold">${lastTransaction.amount}</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Date</span>
-                    <span className="text-stone-800">{lastTransaction.date}</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-stone-400 font-bold uppercase">Method</span>
-                    <span className="text-stone-800">{lastTransaction.method}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3">
-                  <button
-                    onClick={() => {
-                      setViewingReceipt(lastTransaction);
-                      setShowConfirmation(false);
-                    }}
-                    className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
-                  >
-                    <Eye className="w-5 h-5" />
-                    View Receipt
-                  </button>
-                  <button
-                    onClick={() => setShowConfirmation(false)}
-                    className="w-full py-4 bg-stone-100 text-stone-600 rounded-2xl font-bold hover:bg-stone-200 transition-all"
-                  >
-                    Dismiss
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   </div>
 );
@@ -5170,7 +5059,9 @@ function AppContent() {
                       {record.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-stone-500 dark:text-stone-400 text-sm">{record.timestamp}</td>
+                  <td className="px-6 py-4 text-stone-500 dark:text-stone-400 text-sm">
+                    {record.timestamp ? new Date(record.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -5216,7 +5107,7 @@ function AppContent() {
             <h3 className="font-bold text-stone-800 dark:text-stone-100">Payment History</h3>
             {student.fees.status !== 'Paid' && (
               <button 
-                onClick={() => setShowFeeModal(true)}
+                onClick={() => { setFeeModalStudent(student); setShowFeeModal(true); }}
                 className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
               >
                 Pay Balance
@@ -6990,36 +6881,142 @@ function AppContent() {
         )}
       </AnimatePresence>
 
-      {/* Confirmation Dialog */}
+      {/* Fee Payment Modal */}
       <AnimatePresence>
-        {confirmDialog && (
-          <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-sm">
+        {showFeeModal && feeModalStudent && (
+          <div className="fixed inset-0 z-[1002] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-2xl max-w-md w-full space-y-6 border border-stone-100 dark:border-stone-800"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
             >
-              <div className="bg-amber-50 dark:bg-amber-900/20 text-amber-500 dark:text-amber-400 rounded-2xl flex items-center justify-center mx-auto">
-                <AlertTriangle className="w-8 h-8" />
-              </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Are you sure?</h3>
-                <p className="text-stone-500 dark:text-stone-400 text-sm">{confirmDialog.message}</p>
-              </div>
-              <div className="flex gap-3">
-                <button 
-                  onClick={() => setConfirmDialog(null)}
-                  className="flex-1 py-3 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-xl font-bold hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
-                >
-                  Cancel
+              <div className="p-6 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
+                <h3 className="text-xl font-bold text-stone-800 dark:text-stone-100">Pay Student Fees</h3>
+                <button onClick={() => setShowFeeModal(false)} className="p-2 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-xl transition-colors">
+                  <X className="w-5 h-5 text-stone-400 dark:text-stone-500" />
                 </button>
-                <button 
-                  onClick={confirmDialog.onConfirm}
-                  className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-100 dark:shadow-none"
+              </div>
+              
+              <form onSubmit={handlePayFees} className="p-6 space-y-6">
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl border border-blue-100 dark:border-blue-800">
+                  <p className="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mb-1">Total Outstanding</p>
+                  <p className="text-2xl font-bold text-blue-800 dark:text-blue-100">${(feeModalStudent.fees?.total || 0) - (feeModalStudent.fees?.paid || 0)}</p>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Amount</label>
+                  <div className="relative">
+                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400 dark:text-stone-500" />
+                    <input
+                      type="number"
+                      required
+                      value={paymentAmount}
+                      onChange={(e) => setPaymentAmount(e.target.value)}
+                      placeholder="0.00"
+                      className="w-full pl-12 pr-4 py-3 bg-stone-50 dark:bg-stone-800 border border-stone-100 dark:border-stone-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-bold dark:text-stone-100"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-stone-400 dark:text-stone-500 uppercase tracking-widest">Payment Method</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {['Credit Card', 'Bank Transfer', 'UPI'].map(method => (
+                      <button
+                        key={method}
+                        type="button"
+                        onClick={() => setPaymentMethod(method)}
+                        className={`py-3 px-4 rounded-xl border text-xs font-bold transition-all ${
+                          paymentMethod === method 
+                            ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-100 dark:shadow-none' 
+                            : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-blue-200 dark:hover:border-blue-800'
+                        }`}
+                      >
+                        {method}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmittingFee}
+                  className="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold shadow-lg shadow-emerald-100 hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  Confirm
+                  {isSubmittingFee ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <CreditCard className="w-5 h-5" />
+                      Pay Now
+                    </>
+                  )}
                 </button>
+                
+                <p className="text-[10px] text-center text-stone-400">
+                  Secure encrypted payment processing by EduSmart Pay
+                </p>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Payment Confirmation Modal */}
+      <AnimatePresence>
+        {showConfirmation && lastTransaction && (
+          <div className="fixed inset-0 z-[1002] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white dark:bg-stone-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-stone-100 dark:border-stone-800"
+            >
+              <div className="p-8 text-center">
+                <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 className="w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-bold text-stone-800 dark:text-stone-100 mb-2">Payment Successful!</h3>
+                <p className="text-stone-500 dark:text-stone-400 text-sm mb-8">Your transaction has been processed successfully.</p>
+                
+                <div className="bg-stone-50 dark:bg-stone-800 rounded-2xl p-6 mb-8 space-y-3 text-left">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-stone-400 font-bold uppercase">Transaction ID</span>
+                    <span className="text-stone-800 font-mono">{lastTransaction.id}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-stone-400 font-bold uppercase">Amount Paid</span>
+                    <span className="text-emerald-600 font-bold">${lastTransaction.amount}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-stone-400 font-bold uppercase">Date</span>
+                    <span className="text-stone-800">{lastTransaction.date}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-stone-400 font-bold uppercase">Method</span>
+                    <span className="text-stone-800">{lastTransaction.method}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <button
+                    onClick={() => {
+                      setViewingReceipt(lastTransaction);
+                      setShowConfirmation(false);
+                    }}
+                    className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Eye className="w-5 h-5" />
+                    View Receipt
+                  </button>
+                  <button
+                    onClick={() => setShowConfirmation(false)}
+                    className="w-full py-4 bg-stone-100 text-stone-600 rounded-2xl font-bold hover:bg-stone-200 transition-all"
+                  >
+                    Dismiss
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>
